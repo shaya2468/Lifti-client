@@ -9,16 +9,18 @@ import {
   Redirect
 
 } from 'react-router-dom'
-export var TodoApp = React.createClass({
-  onLogout(e) {
+
+
+export class TodoApp extends React.Component{
+
+  onLogout = (e) => {
     var {dispatch} = this.props;
     e.preventDefault();
 
     dispatch(actions.startLogout());
-  },
-  render() {
+  }
 
-
+  render(){
     var {uid} = this.props;
     if (typeof uid==='undefined'){
       return (
@@ -48,11 +50,8 @@ export var TodoApp = React.createClass({
         </div>
       )
     }
-
-
-
   }
-});
+}
 
 export default Redux.connect(
   (state) => {
