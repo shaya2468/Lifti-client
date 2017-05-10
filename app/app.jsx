@@ -13,7 +13,8 @@ import {
 } from 'react-router-dom'
 
 import TodoApp from 'TodoApp';
-import Login from 'Login';
+// import Login from 'Login';
+import SignupLogin from 'SignupLogin';
 
 var firstRender = true;
 
@@ -36,7 +37,7 @@ firebase.auth().onAuthStateChanged((user) => {
           <div>
 
               <Route path="/todos" component={TodoApp}/>
-              <Route path="/" component={Login}/>
+              <Route path="/" component={SignupLogin}/>
 
             </div>
         </Router>
