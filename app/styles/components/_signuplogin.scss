@@ -187,3 +187,43 @@ textarea {
   margin-top: -20px;
   text-align: right;
 }
+
+#loading {
+  margin: 0 auto;
+  margin-top: 25px;
+  width: 300px;
+  height: 10px;
+  border: 1px solid #CCC;
+  box-shadow:0 0 0 1px rgba(0, 0, 0, 0.4);
+}
+
+#loading:before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 10px;
+  background:yellow;
+    // linear-gradient(135deg, #6188F5 32%, #5578D8 32%, #5578D8 65%, #6488F5 65%);
+  background-size: 20px 10px;
+  -webkit-animation: loading 2s infinite,
+                     loading_background 0.4s infinite;
+  animation-timing-function: ease-out, linear;
+}
+
+@-webkit-keyframes loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 300px;
+  }
+}
+
+@-webkit-keyframes loading_background {
+  0% {
+    background-position: 20px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}

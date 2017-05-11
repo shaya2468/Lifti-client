@@ -148,13 +148,22 @@ export class Login extends React.Component{
                 </div>
 
               </div>
+
+                {
+                  true
+                  ? <div id='loading'></div>
+                  : null
+                }
             </div>
+
           </div>
+
       </div>
       );
     }
   }
 };
+
 
 export default connect(
   (state) => {
