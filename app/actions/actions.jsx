@@ -130,16 +130,10 @@ export var isLoading = () => {
   };
 };
 
-export var logout = () => {
+export var startLogout = () => {
+  AuthAPI.logout();
   return {
     type: 'LOGOUT'
   };
-};
 
-export var startLogout = () => {
-  return (dispatch, getState) => {
-    return AuthAPI.logout().then(() => {
-      dispatch(logout())
-    });
-  };
 };

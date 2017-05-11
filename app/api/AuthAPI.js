@@ -1,5 +1,6 @@
 
 var fakeAccessToken = 'fakeAccessToken';
+var fakeTime = 5000;
 module.exports = {
 
   login:function (email, pass) {
@@ -7,7 +8,7 @@ module.exports = {
           setTimeout(function () {
             localStorage.setItem('access_token', fakeAccessToken);
             resolve({uid:fakeAccessToken});
-          }, 1000);
+          }, fakeTime);
       });
   },
 
@@ -16,16 +17,17 @@ module.exports = {
           setTimeout(function () {
             localStorage.setItem('access_token', fakeAccessToken);
             resolve({uid:fakeAccessToken});
-          }, 1000);
+          }, fakeTime);
       });
   },
 
   logout:function () {
+    localStorage.removeItem('access_token');
     return new Promise(function (resolve, reject) {
           setTimeout(function () {
-            localStorage.removeItem('access_token');
-              resolve();
-          }, 1000);
+
+             resolve();
+          }, fakeTime);
       });
   },
 

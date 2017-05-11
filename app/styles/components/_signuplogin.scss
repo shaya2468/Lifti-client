@@ -135,6 +135,10 @@ input:focus, textarea:focus {
   border-color: $active_button;
 }
 
+input:disabled{
+  color: #999999;
+}
+
 textarea {
   border: 2px solid #a0b3b0;
   resize: vertical;

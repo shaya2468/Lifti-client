@@ -89,14 +89,14 @@ export class Login extends React.Component{
                       <label>
                         First Name<span className="req">*</span>
                       </label>
-                      <input type="text" required autoComplete="off" onKeyUp={this.handleKeyUp} />
+                      <input type="text" required autoComplete="off" onKeyUp={this.handleKeyUp} disabled={this.props.isLoading}/>
                     </div>
 
                     <div className="field-wrap">
                       <label>
                         Last Name<span className="req">*</span>
                       </label>
-                      <input type="text"required autoComplete="off" onKeyUp={this.handleKeyUp} />
+                      <input type="text"required autoComplete="off" onKeyUp={this.handleKeyUp} disabled={this.props.isLoading}/>
                     </div>
                   </div>
 
@@ -104,17 +104,17 @@ export class Login extends React.Component{
                     <label>
                       Email Address<span className="req">*</span>
                     </label>
-                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupEmail"/>
+                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupEmail" disabled={this.props.isLoading}/>
                   </div>
 
                   <div className="field-wrap">
                     <label>
                       Set A Password<span className="req">*</span>
                     </label>
-                    <input type="password"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupPassword"/>
+                    <input type="password"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupPassword" disabled={this.props.isLoading}/>
                   </div>
 
-                  <button type="submit" className="button button-block">Get Started</button>
+                  <button type="submit" className="button button-block" disabled={this.props.isLoading} >Get Started</button>
 
                   </form>
 
@@ -129,19 +129,19 @@ export class Login extends React.Component{
                     <label>
                       Email Address<span className="req">*</span>
                     </label>
-                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="loginEmail"/>
+                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="loginEmail" disabled={this.props.isLoading}/>
                   </div>
 
                   <div className="field-wrap">
                     <label>
                       Password<span className="req">*</span>
                     </label>
-                    <input type="password"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="loginPassword"/>
+                    <input type="password"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="loginPassword" disabled={this.props.isLoading}/>
                   </div>
 
                   <p className="forgot"><a href="#">Forgot Password?</a></p>
 
-                  <button className="button button-block">Log In</button>
+                  <button className="button button-block" disabled={this.props.isLoading}>Log In</button>
 
                   </form>
 
