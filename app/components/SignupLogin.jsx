@@ -9,14 +9,21 @@ import {
 } from 'react-router-dom'
 
 export class Login extends React.Component{
+
+
+  constructor(props) {
+    super(props);
+    this.dispatch = props.dispatch;
+    console.log(this.dispatch);
+  }
+
   onLogin = (e) => {
     e.preventDefault();
     var email = this.refs.loginEmail.value;
     var password = this.refs.loginPassword.value;
-    var {dispatch} = this.props;
 
-    dispatch(actions.startLogin(email, password));
-    dispatch(actions.errorAuthErase());
+    this.dispatch(actions.startLogin(email, password));
+    this.dispatch(actions.errorAuthErase());
 
   }
 
@@ -24,9 +31,8 @@ export class Login extends React.Component{
     e.preventDefault();
     var email = this.refs.signupEmail.value;
     var password = this.refs.signupPassword.value;
-    var {dispatch} = this.props;
-    dispatch(actions.startSignup(email, password));
-    dispatch(actions.errorAuthErase());
+    this.dispatch(actions.startSignup(email, password));
+    this.dispatch(actions.errorAuthErase());
   }
 
   switchTabs = (e) => {
@@ -42,8 +48,7 @@ export class Login extends React.Component{
     $('.tab-content > div').not(target).hide();
 
     $(target).fadeIn(600);
-    var {dispatch} = this.props;
-    dispatch(actions.errorAuthErase());
+    this.dispatch(actions.errorAuthErase());
   }
 
   handleKeyUp= (e) =>{
