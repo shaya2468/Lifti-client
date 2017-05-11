@@ -18,23 +18,24 @@ export class Login extends React.Component{
 
   onLogin = (e) => {
     e.preventDefault();
-    var email = this.refs.loginEmail.value;
+
+    this.loginEmail = this.refs.loginEmail.value;
     var password = this.refs.loginPassword.value;
 
-    this.dispatch(actions.startLogin(email, password));
+    this.dispatch(actions.startLogin(this.loginEmail, password));
     this.dispatch(actions.errorAuthErase());
 
   }
 
   onSignup = (e) => {
     e.preventDefault();
-    var email = this.refs.signupEmail.value;
-    var password = this.refs.signupPassword.value;
 
-    this.signUpEmail = email;
-    this.signUpPassword = password;
+    this.signUpEmail = this.refs.signUpEmail.value;
+    var password = this.refs.signUpPassword.value;
+    this.signUpFirstName  = this.refs.signUpFirstName.value;
+    this.signUpLastName  = this.refs.signUpLastName.value;
 
-    this.dispatch(actions.startSignup(email, password));
+    this.dispatch(actions.startSignup(this.signUpEmail, password));
     this.dispatch(actions.errorAuthErase());
   }
 
@@ -75,6 +76,32 @@ export class Login extends React.Component{
     return val ? val : "";
   }
 
+  generateElementInForm = (title, fieldName, inputType) => {
+    return (
+      <div className="field-wrap">
+        <label className={ this.generateActiveHighlight(this[fieldName])}>
+          {title}<span className="req">*</span>
+        </label>
+        <input type={inputType} required autoComplete="off" onKeyUp={this.handleKeyUp} ref={fieldName}  disabled={this.props.isLoading} defaultValue={ this.generateDefaultValue(this[fieldName]) }/>
+      </div>
+    )
+  }
+
+  generateTabClassName = (fromLogin) => {
+      var both = 'tab';
+
+      if (fromLogin){
+        if (this.loginEmail){
+          both += ' active'
+        }
+      }else{
+        if (!this.loginEmail){
+          both += ' active'
+        }
+      }
+      return both;
+  }
+
   render() {
 
     var {uid, isLoading, errorMessage} = this.props;
@@ -106,8 +133,8 @@ export class Login extends React.Component{
           <div className="form">
 
               <ul className="tab-group">
-                <li className="tab active"><a href="#signup" onClick={this.switchTabs} id='bbb'>Sign Up</a></li>
-                <li className="tab"><a href="#login" onClick={this.switchTabs} id='aaa'>Log In</a></li>
+                <li className={this.generateTabClassName(false)}><a href="#signup" onClick={this.switchTabs} id='bbb'>Sign Up</a></li>
+                <li className={this.generateTabClassName(true)}><a href="#login" onClick={this.switchTabs} id='aaa'>Log In</a></li>
               </ul>
 
               <div className="tab-content">
@@ -121,35 +148,12 @@ export class Login extends React.Component{
                   <form onSubmit={this.onSignup}>
 
                   <div className="top-row">
-                    <div className="field-wrap">
-                      <label>
-                        First Name<span className="req">*</span>
-                      </label>
-
-                      <input type="text" required autoComplete="off" onKeyUp={this.handleKeyUp} disabled={this.props.isLoading}/>
-                    </div>
-
-                    <div className="field-wrap">
-                      <label>
-                        Last Name<span className="req">*</span>
-                      </label>
-                      <input type="text"required autoComplete="off" onKeyUp={this.handleKeyUp} disabled={this.props.isLoading}/>
-                    </div>
+                    {this.generateElementInForm("First Name", "signUpFirstName", "text")}
+                    {this.generateElementInForm("Last Name", "signUpLastName", "text")}
                   </div>
 
-                  <div className="field-wrap">
-                    <label className={ this.generateActiveHighlight(this.signUpEmail)}>
-                      Email Address<span className="req">*</span>
-                    </label>
-                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupEmail" disabled={this.props.isLoading} defaultValue={ this.generateDefaultValue(this.signUpEmail) }/>
-                  </div>
-
-                  <div className="field-wrap">
-                    <label>
-                      Set A Password<span className="req">*</span>
-                    </label>
-                    <input type="password"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupPassword" disabled={this.props.isLoading}/>
-                  </div>
+                  {this.generateElementInForm("Email Address", "signUpEmail", "email")}
+                  {this.generateElementInForm("Set A Password", "signUpPassword", "password")}
 
                   <button type="submit" className="button button-block" disabled={this.props.isLoading} >Get Started</button>
 
@@ -167,19 +171,8 @@ export class Login extends React.Component{
 
                   <form onSubmit={this.onLogin}>
 
-                    <div className="field-wrap">
-                    <label>
-                      Email Address<span className="req">*</span>
-                    </label>
-                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="loginEmail" disabled={this.props.isLoading}/>
-                  </div>
-
-                  <div className="field-wrap">
-                    <label>
-                      Password<span className="req">*</span>
-                    </label>
-                    <input type="password"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="loginPassword" disabled={this.props.isLoading}/>
-                  </div>
+                  {this.generateElementInForm("Email Address", "loginEmail", "email")}
+                  {this.generateElementInForm("Password", "loginPassword", "password")}
 
                   <p className="forgot"><a href="#">Forgot Password?</a></p>
 

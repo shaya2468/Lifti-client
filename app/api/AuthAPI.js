@@ -6,8 +6,9 @@ module.exports = {
   login:function (email, pass) {
     return new Promise(function (resolve, reject) {
           setTimeout(function () {
-            localStorage.setItem('access_token', fakeAccessToken);
-            resolve({uid:fakeAccessToken});
+            // localStorage.setItem('access_token', fakeAccessToken);
+            // resolve({uid:fakeAccessToken});
+            reject({errorMessage: 'incorrect password'})
           }, fakeTime);
       });
   },
