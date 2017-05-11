@@ -14,7 +14,6 @@ export class Login extends React.Component{
   constructor(props) {
     super(props);
     this.dispatch = props.dispatch;
-    console.log(this.dispatch);
   }
 
   onLogin = (e) => {
@@ -72,10 +71,14 @@ export class Login extends React.Component{
     return val ? "active highlight" : "";
   }
 
+  generateDefaultValue = (val)  => {
+    return val ? val : "";
+  }
+
   render() {
 
     var {uid, isLoading, errorMessage} = this.props;
-    console.log(errorMessage);
+
     if (!(typeof uid==='undefined')){
       return (
         <Redirect to={{
@@ -138,7 +141,7 @@ export class Login extends React.Component{
                     <label className={ this.generateActiveHighlight(this.signUpEmail)}>
                       Email Address<span className="req">*</span>
                     </label>
-                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupEmail" disabled={this.props.isLoading} defaultValue={ this.signUpEmail ? this.signUpEmail : ""}/>
+                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupEmail" disabled={this.props.isLoading} defaultValue={ this.generateDefaultValue(this.signUpEmail) }/>
                   </div>
 
                   <div className="field-wrap">
