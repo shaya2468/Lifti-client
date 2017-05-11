@@ -93,7 +93,7 @@ export var startToggleTodo = (id, completed) => {
   };
 };
 
-export var login = (uid) => {
+export var setAccessToken = (uid) => {
   return {
     type: 'LOGIN',
     uid
@@ -104,7 +104,7 @@ export var startLogin = (email, password) => {
   return (dispatch, getState) => {
     return AuthAPI.login(email, password).then((uid) => {
       console.log('Auth worked!', uid);
-      dispatch(login(uid))
+      dispatch(setAccessToken(uid))
     }, (error) => {
       console.log('Unable to auth', error);
     });

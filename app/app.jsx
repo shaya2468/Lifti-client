@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var {Provider} = require('react-redux');
 // require('play');
-
+import AuthAPI from 'AuthAPI';
 var actions = require('actions');
 var store = require('configureStore').configure();
 import firebase from 'app/firebase/';
@@ -29,25 +29,33 @@ firebase.auth().onAuthStateChanged((user) => {
     // hashHistory.push('/');
   }
 
-  if (firstRender){
-    firstRender = false;
 
-    ReactDOM.render(
-      <Provider store={store}>
-        <Router>
-          <div>
-
-              <Route path="/home" component={Home}/>
-              <Route path="/todos" component={TodoApp}/>
-              <Route path="/" component={SignupLogin}/>
-
-            </div>
-        </Router>
-      </Provider>,
-      document.getElementById('app')
-    );
-  }
 });
+
+if (firstRender){
+  firstRender = false;
+
+  ReactDOM.render(
+    <Provider store={store}>
+      <Router>
+        <div>
+
+            <Route path="/home" component={Home}/>
+            <Route path="/todos" component={TodoApp}/>
+            <Route path="/" component={SignupLogin}/>
+
+          </div>
+      </Router>
+    </Provider>,
+    document.getElementById('app')
+  );
+}
+
+var accessToken = AuthAPI.isLoggedIn();
+if (accessToken){
+  store.dispatch(actions.setAccessToken(accessToken));
+}
+
 
 // Load foundation
 $(document).foundation();
