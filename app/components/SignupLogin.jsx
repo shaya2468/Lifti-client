@@ -67,6 +67,18 @@ export class Login extends React.Component{
       );
     }
 
+    else if (isLoading){
+
+        return (
+          <div id="outer_div">
+           <div id="auth_page">
+             <h1 id="loading_text">Loading, please wait...</h1>
+             <div id='loading'></div>
+           </div>
+          </div>
+        )
+    }
+
     else{
       return (
         <div id="outer_div">
@@ -149,11 +161,7 @@ export class Login extends React.Component{
 
               </div>
 
-                {
-                  this.props.isLoading
-                  ? <div id='loading'></div>
-                  : null
-                }
+
             </div>
 
           </div>
