@@ -31,6 +31,10 @@ export class Login extends React.Component{
     e.preventDefault();
     var email = this.refs.signupEmail.value;
     var password = this.refs.signupPassword.value;
+
+    this.signUpEmail = email;
+    this.signUpPassword = password;
+
     this.dispatch(actions.startSignup(email, password));
     this.dispatch(actions.errorAuthErase());
   }
@@ -62,6 +66,10 @@ export class Login extends React.Component{
       } else {
         label.addClass('active highlight');
       }
+  }
+
+  generateActiveHighlight = (val)  => {
+    return val ? "active highlight" : "";
   }
 
   render() {
@@ -114,6 +122,7 @@ export class Login extends React.Component{
                       <label>
                         First Name<span className="req">*</span>
                       </label>
+
                       <input type="text" required autoComplete="off" onKeyUp={this.handleKeyUp} disabled={this.props.isLoading}/>
                     </div>
 
@@ -126,10 +135,10 @@ export class Login extends React.Component{
                   </div>
 
                   <div className="field-wrap">
-                    <label>
+                    <label className={ this.generateActiveHighlight(this.signUpEmail)}>
                       Email Address<span className="req">*</span>
                     </label>
-                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupEmail" disabled={this.props.isLoading}/>
+                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupEmail" disabled={this.props.isLoading} defaultValue={ this.signUpEmail ? this.signUpEmail : ""}/>
                   </div>
 
                   <div className="field-wrap">
