@@ -111,6 +111,17 @@ export var startLogin = (email, password) => {
   };
 };
 
+export var startSignup = (email, password) => {
+  return (dispatch, getState) => {
+    return AuthAPI.signUp(email, password).then((uid) => {
+      console.log('Auth worked!', uid);
+      dispatch(setAccessToken(uid))
+    }, (error) => {
+      console.log('Unable to auth', error);
+    });
+  };
+};
+
 export var logout = () => {
   return {
     type: 'LOGOUT'

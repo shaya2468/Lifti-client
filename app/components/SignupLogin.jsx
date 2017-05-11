@@ -21,7 +21,10 @@ export class Login extends React.Component{
 
   onSignup = (e) => {
     e.preventDefault();
-    console.log('i am in sign up');
+    var email = this.refs.signupEmail.value;
+    var password = this.refs.signupPassword.value;
+    var {dispatch} = this.props;
+    dispatch(actions.startSignup(email, password));
   }
 
   switchTabs (e) {
@@ -101,14 +104,14 @@ export class Login extends React.Component{
                     <label>
                       Email Address<span className="req">*</span>
                     </label>
-                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} />
+                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupEmail"/>
                   </div>
 
                   <div className="field-wrap">
                     <label>
                       Set A Password<span className="req">*</span>
                     </label>
-                    <input type="password"required autoComplete="off" onKeyUp={this.handleKeyUp} />
+                    <input type="password"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="signupPassword"/>
                   </div>
 
                   <button type="submit" className="button button-block">Get Started</button>

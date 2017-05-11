@@ -1,7 +1,8 @@
 
 var fakeAccessToken = 'fakeAccessToken';
 module.exports = {
-  signUp:function (email, pass) {
+
+  login:function (email, pass) {
     return new Promise(function (resolve, reject) {
           setTimeout(function () {
             localStorage.setItem('access_token', fakeAccessToken);
@@ -10,7 +11,7 @@ module.exports = {
       });
   },
 
-  login:function (email, pass) {
+  signUp:function (email, pass) {
     return new Promise(function (resolve, reject) {
           setTimeout(function () {
             localStorage.setItem('access_token', fakeAccessToken);
