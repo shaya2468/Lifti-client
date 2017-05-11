@@ -1,6 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import * as actions from 'actions';
+
 var {connect} = require('react-redux');
 import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
 import {
@@ -10,6 +11,17 @@ import {
 export class Login extends React.Component{
   onLogin = (e) => {
     e.preventDefault();
+    var email = this.refs.loginEmail.value;
+    var password = this.refs.loginPassword.value;
+    var {dispatch} = this.props;
+
+    dispatch(actions.startLogin(email, password));
+
+  }
+
+  onSignup = (e) => {
+    e.preventDefault();
+    console.log('i am in sign up');
   }
 
   switchTabs (e) {
@@ -43,9 +55,19 @@ export class Login extends React.Component{
   render() {
 
     var {uid} = this.props;
-    if (typeof uid==='undefined'){
+
+    if (!(typeof uid==='undefined')){
       return (
-        <div>
+        <Redirect to={{
+          pathname: '/home'
+        }}/>
+      );
+    }
+
+    else{
+      return (
+        <div id="outer_div">
+         <div id="auth_page">
           <div className="form">
 
               <ul className="tab-group">
@@ -57,7 +79,7 @@ export class Login extends React.Component{
                 <div id="signup">
                   <h1>Sign Up for Free</h1>
 
-                  <form onSubmit={this.onLogin}>
+                  <form onSubmit={this.onSignup}>
 
                   <div className="top-row">
                     <div className="field-wrap">
@@ -98,20 +120,20 @@ export class Login extends React.Component{
                 <div id="login">
                   <h1>Welcome Back!</h1>
 
-                  <form action="/" method="post">
+                  <form onSubmit={this.onLogin}>
 
                     <div className="field-wrap">
                     <label>
                       Email Address<span className="req">*</span>
                     </label>
-                    <input type="email"required autoComplete="off"/>
+                    <input type="email"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="loginEmail"/>
                   </div>
 
                   <div className="field-wrap">
                     <label>
                       Password<span className="req">*</span>
                     </label>
-                    <input type="password"required autoComplete="off"/>
+                    <input type="password"required autoComplete="off" onKeyUp={this.handleKeyUp} ref="loginPassword"/>
                   </div>
 
                   <p className="forgot"><a href="#">Forgot Password?</a></p>
@@ -124,15 +146,8 @@ export class Login extends React.Component{
 
               </div>
             </div>
-
+          </div>
       </div>
-      );
-    }else{
-      return (
-        <Redirect to={{
-          pathname: '/todos'
-
-        }}/>
       );
     }
   }

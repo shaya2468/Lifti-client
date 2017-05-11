@@ -1,7 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var {Provider} = require('react-redux');
-require('play');
+// require('play');
 
 var actions = require('actions');
 var store = require('configureStore').configure();
@@ -13,6 +13,7 @@ import {
 } from 'react-router-dom'
 
 import TodoApp from 'TodoApp';
+import Home from 'Home';
 // import Login from 'Login';
 import SignupLogin from 'SignupLogin';
 
@@ -20,11 +21,11 @@ var firstRender = true;
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    store.dispatch(actions.login(user.uid));
-    store.dispatch(actions.startAddTodos());
+    // store.dispatch(actions.login(user.uid));
+    // store.dispatch(actions.startAddTodos());
     // hashHistory.push('/todos');
   } else {
-    store.dispatch(actions.logout());
+    // store.dispatch(actions.logout());
     // hashHistory.push('/');
   }
 
@@ -36,6 +37,7 @@ firebase.auth().onAuthStateChanged((user) => {
         <Router>
           <div>
 
+              <Route path="/home" component={Home}/>
               <Route path="/todos" component={TodoApp}/>
               <Route path="/" component={SignupLogin}/>
 

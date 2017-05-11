@@ -1,5 +1,5 @@
 import moment from 'moment';
-
+import AuthAPI from 'AuthAPI';
 import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
 
 export var setSearchText = (searchText) => {
@@ -100,10 +100,11 @@ export var login = (uid) => {
   };
 };
 
-export var startLogin = () => {
+export var startLogin = (email, password) => {
   return (dispatch, getState) => {
-    return firebase.auth().signInWithPopup(githubProvider).then((result) => {
-      console.log('Auth worked!', result);
+    return AuthAPI.login(email, password).then((uid) => {
+      console.log('Auth worked!', uid);
+      dispatch(login(uid))
     }, (error) => {
       console.log('Unable to auth', error);
     });

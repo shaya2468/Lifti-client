@@ -3,6 +3,7 @@
 // foundation
 @import "base/foundation-settings";
 @import "foundation";
+@import "base/mcleod_reset";
 // @include foundation-everything;
 
 // Components
@@ -11,4 +12,5 @@
 @import "components/page-actions";
 @import "components/page-title";
 @import "components/todo";
-@import "components/signuplogin"
+@import "components/signuplogin";
+@import "components/home";
