@@ -57,7 +57,7 @@ export class Login extends React.Component{
 
   render() {
 
-    var {uid} = this.props;
+    var {uid, isLoading} = this.props;
 
     if (!(typeof uid==='undefined')){
       return (
@@ -150,7 +150,7 @@ export class Login extends React.Component{
               </div>
 
                 {
-                  true
+                  this.props.isLoading
                   ? <div id='loading'></div>
                   : null
                 }
@@ -169,6 +169,7 @@ export default connect(
   (state) => {
     return {
       uid: state.auth.uid,
+      isLoading: state.isLoading
     }
   }
 )(Login);

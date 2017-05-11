@@ -61,3 +61,12 @@ export var authReducer = (state = {}, action) => {
       return state;
   }
 };
+
+export var loadingReducer = (state = false, action) => {
+  switch (action.type) {
+    case 'IS_LOADING':
+      return !state;
+    default:
+      return state;
+  }
+};

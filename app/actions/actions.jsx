@@ -102,23 +102,31 @@ export var setAccessToken = (uid) => {
 
 export var startLogin = (email, password) => {
   return (dispatch, getState) => {
+    dispatch(isLoading());
     return AuthAPI.login(email, password).then((uid) => {
-      console.log('Auth worked!', uid);
+      dispatch(isLoading());
       dispatch(setAccessToken(uid))
     }, (error) => {
-      console.log('Unable to auth', error);
+      dispatch(isLoading());
     });
   };
 };
 
 export var startSignup = (email, password) => {
   return (dispatch, getState) => {
+    dispatch(isLoading());
     return AuthAPI.signUp(email, password).then((uid) => {
-      console.log('Auth worked!', uid);
+      dispatch(isLoading());
       dispatch(setAccessToken(uid))
     }, (error) => {
-      console.log('Unable to auth', error);
+      dispatch(isLoading());
     });
+  };
+};
+
+export var isLoading = () => {
+  return {
+    type: 'IS_LOADING'
   };
 };
 
