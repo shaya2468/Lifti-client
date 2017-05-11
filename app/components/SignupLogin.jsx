@@ -16,6 +16,7 @@ export class Login extends React.Component{
     var {dispatch} = this.props;
 
     dispatch(actions.startLogin(email, password));
+    dispatch(actions.errorAuthErase());
 
   }
 
@@ -25,9 +26,10 @@ export class Login extends React.Component{
     var password = this.refs.signupPassword.value;
     var {dispatch} = this.props;
     dispatch(actions.startSignup(email, password));
+    dispatch(actions.errorAuthErase());
   }
 
-  switchTabs (e) {
+  switchTabs = (e) => {
 
     e.preventDefault();
 
@@ -40,8 +42,8 @@ export class Login extends React.Component{
     $('.tab-content > div').not(target).hide();
 
     $(target).fadeIn(600);
-
-    // dispatch(actions.errorAuthErase());
+    var {dispatch} = this.props;
+    dispatch(actions.errorAuthErase());
   }
 
   handleKeyUp= (e) =>{
