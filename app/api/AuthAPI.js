@@ -15,5 +15,13 @@ module.exports = {
               resolve({uid:'abcdefg'});
           }, 1000);
       });
+  },
+
+  logout:function () {
+    return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+              resolve();
+          }, 1000);
+      });
   }
 }

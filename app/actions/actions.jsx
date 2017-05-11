@@ -119,8 +119,8 @@ export var logout = () => {
 
 export var startLogout = () => {
   return (dispatch, getState) => {
-    return firebase.auth().signOut().then(() => {
-      console.log('Logged out!');
+    return AuthAPI.logout().then(() => {
+      dispatch(logout())
     });
   };
 };

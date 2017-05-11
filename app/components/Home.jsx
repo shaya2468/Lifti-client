@@ -12,6 +12,13 @@ import {
 
 export class Home extends React.Component{
 
+
+  onLogout = (e) => {
+    e.preventDefault();
+    var {dispatch} = this.props;
+    dispatch(actions.startLogout());
+  }
+
   render(){
     var {uid} = this.props;
     if (typeof uid==='undefined'){
@@ -24,7 +31,7 @@ export class Home extends React.Component{
       return (
         <div id="home_full">
           <div id="home_nav">
-            <button type="button" name="button" id="btn_logout">Logout</button>
+            <button type="button" name="button" id="btn_logout" onClick={ this.onLogout }>Logout</button>
           </div>
         </div>
       )
