@@ -40,6 +40,8 @@ export class Login extends React.Component{
     $('.tab-content > div').not(target).hide();
 
     $(target).fadeIn(600);
+
+    // dispatch(actions.errorAuthErase());
   }
 
   handleKeyUp= (e) =>{
@@ -57,8 +59,8 @@ export class Login extends React.Component{
 
   render() {
 
-    var {uid, isLoading} = this.props;
-
+    var {uid, isLoading, errorMessage} = this.props;
+    console.log(errorMessage);
     if (!(typeof uid==='undefined')){
       return (
         <Redirect to={{
@@ -92,8 +94,12 @@ export class Login extends React.Component{
 
               <div className="tab-content">
                 <div id="signup">
-                  <h1>Sign Up for Free</h1>
 
+                  {
+                    this.props.errorMessage
+                    ? <h1 id="auth_error">{this.props.errorMessage}</h1>
+                    : <h1>Sign Up for Free</h1>
+                  }
                   <form onSubmit={this.onSignup}>
 
                   <div className="top-row">
@@ -133,7 +139,12 @@ export class Login extends React.Component{
                 </div>
 
                 <div id="login">
-                  <h1>Welcome Back!</h1>
+
+                  {
+                    this.props.errorMessage
+                    ? <h1 id="auth_error">{this.props.errorMessage}</h1>
+                    : <h1>Welcome Back!</h1>
+                  }
 
                   <form onSubmit={this.onLogin}>
 
@@ -177,7 +188,8 @@ export default connect(
   (state) => {
     return {
       uid: state.auth.uid,
-      isLoading: state.isLoading
+      isLoading: state.isLoading,
+      errorMessage: state.errorAuth.errorMessage
     }
   }
 )(Login);

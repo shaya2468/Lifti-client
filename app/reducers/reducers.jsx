@@ -19,6 +19,16 @@ export var showCompletedReducer = (state = false, action) => {
   }
 };
 
+
+export var errorAuthReucer = (state = '', action) => {
+  switch (action.type) {
+    case 'ERROR_AUTH':
+      return action.errorMessage;
+    default:
+      return state;
+  };
+};
+
 export var todosReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':

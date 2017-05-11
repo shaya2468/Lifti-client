@@ -1,6 +1,6 @@
 
 var fakeAccessToken = 'fakeAccessToken';
-var fakeTime = 5000;
+var fakeTime = 1000;
 module.exports = {
 
   login:function (email, pass) {
@@ -15,8 +15,9 @@ module.exports = {
   signUp:function (email, pass) {
     return new Promise(function (resolve, reject) {
           setTimeout(function () {
-            localStorage.setItem('access_token', fakeAccessToken);
-            resolve({uid:fakeAccessToken});
+            // localStorage.setItem('access_token', fakeAccessToken);
+            // resolve({uid:fakeAccessToken});
+            reject({errorMessage: 'user name already used'})
           }, fakeTime);
       });
   },

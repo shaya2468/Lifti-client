@@ -22,6 +22,19 @@ export var addTodo = (todo) => {
   };
 };
 
+export var errorAuth = (errorMessage) => {
+  return {
+    type: 'ERROR_AUTH',
+    errorMessage
+  };
+};
+
+export var errorAuthErase = () => {
+  return errorAuth('');
+}
+
+
+
 export var startAddTodo = (text) => {
   return (dispatch, getState) => {
     var todo = {
@@ -108,6 +121,7 @@ export var startLogin = (email, password) => {
       dispatch(setAccessToken(uid))
     }, (error) => {
       dispatch(isLoading());
+      dispatch(errorAuth(error));
     });
   };
 };
@@ -120,6 +134,7 @@ export var startSignup = (email, password) => {
       dispatch(setAccessToken(uid))
     }, (error) => {
       dispatch(isLoading());
+      dispatch(errorAuth(error));
     });
   };
 };
