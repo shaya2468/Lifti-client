@@ -102,6 +102,63 @@ export class Login extends React.Component{
       return both;
   }
 
+  generateSignUp = () => {
+    return (
+
+      <div id="signup">
+
+        {
+          this.props.errorMessage
+          ? <h1 id="auth_error">{this.props.errorMessage}</h1>
+          : <h1>Sign Up for Free</h1>
+        }
+        <form onSubmit={this.onSignup}>
+
+        <div className="top-row">
+          {this.generateElementInForm("First Name", "signUpFirstName", "text")}
+          {this.generateElementInForm("Last Name", "signUpLastName", "text")}
+        </div>
+
+        {this.generateElementInForm("Email Address", "signUpEmail", "email")}
+        {this.generateElementInForm("Set A Password", "signUpPassword", "password")}
+
+        <button type="submit" className="button button-block" disabled={this.props.isLoading} >Get Started</button>
+
+        </form>
+
+      </div>
+
+    )
+  }
+
+  generateLogin = () => {
+    return (
+
+      <div id="login">
+
+        {
+          this.props.errorMessage
+          ? <h1 id="auth_error">{this.props.errorMessage}</h1>
+          : <h1>Welcome Back!</h1>
+        }
+
+        <form onSubmit={this.onLogin}>
+
+        {this.generateElementInForm("Email Address", "loginEmail", "email")}
+        {this.generateElementInForm("Password", "loginPassword", "password")}
+
+        <p className="forgot"><a href="#">Forgot Password?</a></p>
+
+        <button className="button button-block" disabled={this.props.isLoading}>Log In</button>
+
+        </form>
+
+      </div>
+
+    )
+  }
+
+
   render() {
 
     var {uid, isLoading, errorMessage} = this.props;
@@ -138,52 +195,10 @@ export class Login extends React.Component{
               </ul>
 
               <div className="tab-content">
-                <div id="signup">
 
-                  {
-                    this.props.errorMessage
-                    ? <h1 id="auth_error">{this.props.errorMessage}</h1>
-                    : <h1>Sign Up for Free</h1>
-                  }
-                  <form onSubmit={this.onSignup}>
-
-                  <div className="top-row">
-                    {this.generateElementInForm("First Name", "signUpFirstName", "text")}
-                    {this.generateElementInForm("Last Name", "signUpLastName", "text")}
-                  </div>
-
-                  {this.generateElementInForm("Email Address", "signUpEmail", "email")}
-                  {this.generateElementInForm("Set A Password", "signUpPassword", "password")}
-
-                  <button type="submit" className="button button-block" disabled={this.props.isLoading} >Get Started</button>
-
-                  </form>
-
-                </div>
-
-                <div id="login">
-
-                  {
-                    this.props.errorMessage
-                    ? <h1 id="auth_error">{this.props.errorMessage}</h1>
-                    : <h1>Welcome Back!</h1>
-                  }
-
-                  <form onSubmit={this.onLogin}>
-
-                  {this.generateElementInForm("Email Address", "loginEmail", "email")}
-                  {this.generateElementInForm("Password", "loginPassword", "password")}
-
-                  <p className="forgot"><a href="#">Forgot Password?</a></p>
-
-                  <button className="button button-block" disabled={this.props.isLoading}>Log In</button>
-
-                  </form>
-
-                </div>
-
+                {this.generateSignUp()}
+                {this.generateLogin()}
               </div>
-
 
             </div>
 
