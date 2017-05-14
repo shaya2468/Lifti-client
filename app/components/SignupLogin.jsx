@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import * as actions from 'actions';
-
+var axios = require('axios')
 var {connect} = require('react-redux');
 import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
 import {
@@ -19,12 +19,16 @@ export class Login extends React.Component{
   onLogin = (e) => {
     e.preventDefault();
 
-    this.loginEmail = this.refs.loginEmail.value;
-    var password = this.refs.loginPassword.value;
-
-    this.dispatch(actions.startLogin(this.loginEmail, password));
-    this.dispatch(actions.errorAuthErase());
-
+    // this.loginEmail = this.refs.loginEmail.value;
+    // var password = this.refs.loginPassword.value;
+    //
+    // this.dispatch(actions.startLogin(this.loginEmail, password));
+    // this.dispatch(actions.errorAuthErase());
+    var url = '/todos'
+    axios.get(url).then((response) => {
+      console.log(response);
+    })
+//
   }
 
   onSignup = (e) => {
