@@ -19,15 +19,15 @@ export class Login extends React.Component{
   onLogin = (e) => {
     e.preventDefault();
 
-    // this.loginEmail = this.refs.loginEmail.value;
-    // var password = this.refs.loginPassword.value;
-    //
-    // this.dispatch(actions.startLogin(this.loginEmail, password));
-    // this.dispatch(actions.errorAuthErase());
-    var url = '/todos'
-    axios.get(url).then((response) => {
-      console.log(response);
-    })
+    this.loginEmail = this.refs.loginEmail.value;
+    var password = this.refs.loginPassword.value;
+
+    this.dispatch(actions.startLogin(this.loginEmail, password));
+    this.dispatch(actions.errorAuthErase());
+    // var url = '/todos'
+    // axios.get(url).then((response) => {
+    //   console.log(response);
+    // })
 //
   }
 
