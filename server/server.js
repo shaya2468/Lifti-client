@@ -15,11 +15,13 @@ app.use(function (req, res, next){
 
 app.use(express.static('public'));
 
-app.get('/todos', (req, res) => {
-  res.send({"text": "algir"});
-});
+
 
 
 app.listen(PORT, function () {
   console.log('Express server is up on port ' + PORT);
+});
+
+app.get('/todos', (req, res) => {
+  res.send({"text": "algir"});
 });
