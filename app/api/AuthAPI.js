@@ -4,20 +4,15 @@ var fakeAccessToken = 'fakeAccessToken';
 var fakeTime = 1000;
 module.exports = {
 
-  login:function (email, pass) {
-    return new Promise(function (resolve, reject) {
-          setTimeout(function () {
-            // localStorage.setItem('access_token', fakeAccessToken);
-            // resolve({uid:fakeAccessToken});
-            reject({errorMessage: 'incorrect password'})
-          }, fakeTime);
-      });
+  login:function (email, password) {
+    var url = `${process.env.URL}users/login`;
+    return axios.post(url, {email: email,password: password, name: "aaaaaa"});
   },
 
-  signUp:function (email, pass) {
+  signUp:function (email, password) {
 
     var url = `${process.env.URL}users`;
-    return axios.post(url, {email: email,password: "11111111", name: "aaaaaa"});
+    return axios.post(url, {email: email, password: password, name: "aaaaaa"});
   },
 
   logout:function () {

@@ -116,12 +116,21 @@ export var setAccessToken = (uid) => {
 export var startLogin = (email, password) => {
   return (dispatch, getState) => {
     dispatch(isLoading());
-    return AuthAPI.login(email, password).then((uid) => {
-      dispatch(isLoading());
-      dispatch(setAccessToken(uid))
+    return AuthAPI.login(email, password).then((response) => {
+
+
+      var accessToken = response.headers['x-auth'];
+      localStorage.setItem('access_token', accessToken);
+      var uid = {
+        uid: accessToken
+      }
+      var finish = finishAuthSuccess(uid, dispatch);
+      finish();
+
     }, (error) => {
+      console.log(error);
       dispatch(isLoading());
-      dispatch(errorAuth(error));
+      dispatch(errorAuth({errorMessage: error.statusText}));
     });
   };
 };
@@ -139,15 +148,13 @@ export var startSignup = (email, password, file) => {
 
     return AuthAPI.signUp(email, password).then((response) => {
 
-
       var accessToken = response.headers['x-auth'];
-
       localStorage.setItem('access_token', accessToken);
-
       var uid = {
         uid: accessToken
       }
       var finish = finishAuthSuccess(uid, dispatch);
+
       if (file){
         var xhr = new XMLHttpRequest();
         xhr.open('post', `${process.env.URL}upload`, true);
@@ -167,7 +174,7 @@ export var startSignup = (email, password, file) => {
       }
     }, (error) => {
       dispatch(isLoading());
-      dispatch(errorAuth(error));
+      dispatch(errorAuth({errorMessage: error.statusText}));
     });
   };
 };

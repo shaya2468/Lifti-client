@@ -26,10 +26,6 @@ export class Login extends React.Component{
 
     this.dispatch(actions.startLogin(this.loginEmail, password));
     this.dispatch(actions.errorAuthErase());
-    // var url = '/todos'
-    // axios.get(url).then((response) => {
-    //   console.log(response);
-    // })
 
   }
 
