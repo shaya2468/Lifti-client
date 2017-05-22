@@ -126,12 +126,45 @@ export var startLogin = (email, password) => {
   };
 };
 
-export var startSignup = (email, password) => {
+var finishAuthSuccess = (uid, dispatch) => {
+  return () => {
+    dispatch(isLoading());
+    dispatch(setAccessToken(uid))
+  }
+}
+
+export var startSignup = (email, password, file) => {
   return (dispatch, getState) => {
     dispatch(isLoading());
-    return AuthAPI.signUp(email, password).then((uid) => {
-      dispatch(isLoading());
-      dispatch(setAccessToken(uid))
+
+    return AuthAPI.signUp(email, password).then((response) => {
+
+
+      var accessToken = response.headers['x-auth'];
+
+      localStorage.setItem('access_token', accessToken);
+
+      var uid = {
+        uid: accessToken
+      }
+      var finish = finishAuthSuccess(uid, dispatch);
+      if (file){
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', 'http://localhost:4444/upload', true);
+        console.log(accessToken);
+        xhr.setRequestHeader("x-auth", accessToken);
+        var form = new FormData();
+        form.append("upload", file);
+        xhr.addEventListener("load", function(){
+          finish();
+        });
+        xhr.addEventListener("error", function(){
+          finish();
+        });
+        xhr.send(form);
+      }else{
+        finish();
+      }
     }, (error) => {
       dispatch(isLoading());
       dispatch(errorAuth(error));

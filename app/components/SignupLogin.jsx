@@ -30,7 +30,7 @@ export class Login extends React.Component{
     // axios.get(url).then((response) => {
     //   console.log(response);
     // })
-//
+
   }
 
   onSignup = (e) => {
@@ -41,7 +41,8 @@ export class Login extends React.Component{
     this.signUpFirstName  = this.refs.signUpFirstName.value;
     this.signUpLastName  = this.refs.signUpLastName.value;
 
-    this.dispatch(actions.startSignup(this.signUpEmail, password));
+    let {file} = this.state;
+    this.dispatch(actions.startSignup(this.signUpEmail, password, file));
     this.dispatch(actions.errorAuthErase());
   }
 
@@ -112,22 +113,12 @@ export class Login extends React.Component{
     e.preventDefault();
     let reader = new FileReader();
     let file = e.target.files[0];
-
     reader.onloadend = () => {
       this.setState({
         file: file,
         imagePreviewUrl: reader.result
       });
     }
-    var xhr = new XMLHttpRequest();
-    xhr.open('post', 'http://localhost:3001/upload', true);
-
-    var form = new FormData();
-    form.append("upload", file);
-    xhr.addEventListener("load", function(){
-
-    });
-    xhr.send(form);
     reader.readAsDataURL(file);
   }
 
@@ -165,7 +156,7 @@ export class Login extends React.Component{
         <form onSubmit={this.onSignup}>
 
           <div id="profile-pic">
-            <input type='file' onChange={(e)=>this._handleImageChange(e)}/>
+            <input required type='file' onChange={(e)=>this._handleImageChange(e)}/>
             <span id='val'></span>
 
             {$imagePreview}
