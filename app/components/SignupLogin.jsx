@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 import * as actions from 'actions';
-var axios = require('axios')
+var axios = require('axios');
 var {connect} = require('react-redux');
 import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
 import {
@@ -14,6 +14,8 @@ export class Login extends React.Component{
   constructor(props) {
     super(props);
     this.dispatch = props.dispatch;
+    this.state = {file: '',imagePreviewUrl: ''};
+
   }
 
   onLogin = (e) => {
@@ -106,7 +108,51 @@ export class Login extends React.Component{
       return both;
   }
 
+  _handleImageChange(e) {
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = e.target.files[0];
+
+    reader.onloadend = () => {
+      this.setState({
+        file: file,
+        imagePreviewUrl: reader.result
+      });
+    }
+    var xhr = new XMLHttpRequest();
+    xhr.open('post', 'http://localhost:3001/upload', true);
+
+    var form = new FormData();
+    form.append("upload", file);
+    xhr.addEventListener("load", function(){
+
+    });
+    xhr.send(form);
+    reader.readAsDataURL(file);
+  }
+
+
+  componentDidMount(){
+    console.log('i got here bbb');
+    $('.imgPreview').click(function(){
+      $("input[type='file']").trigger('click');
+    })
+
+    $("input[type='file']").change(function(){
+      $('#val').text(this.value.replace(/C:\\fakepath\\/i, ''))
+    })
+  }
+
+
   generateSignUp = () => {
+
+    let {imagePreviewUrl} = this.state;
+    let $imagePreview = null;
+    if (imagePreviewUrl) {
+      $imagePreview = (<button id='button' className="imgPreview"><img src={imagePreviewUrl} /></button>);
+    } else {
+       $imagePreview = (<button id='button' className="imgPreview">Profile pic</button>);
+    }
     return (
 
       <div id="signup">
@@ -117,6 +163,14 @@ export class Login extends React.Component{
           : <h1>Sign Up for Free</h1>
         }
         <form onSubmit={this.onSignup}>
+
+          <div id="profile-pic">
+            <input type='file' onChange={(e)=>this._handleImageChange(e)}/>
+            <span id='val'></span>
+
+            {$imagePreview}
+
+          </div>
 
         <div className="top-row">
           {this.generateElementInForm("First Name", "signUpFirstName", "text")}
@@ -175,6 +229,8 @@ export class Login extends React.Component{
       );
     }
 
+
+
     else if (isLoading){
 
         return (
@@ -213,6 +269,7 @@ export class Login extends React.Component{
     }
   }
 };
+
 
 
 export default connect(
