@@ -16,7 +16,7 @@ module.exports = {
 
   signUp:function (email, pass) {
 
-    var url = 'http://localhost:4444/users';
+    var url = `${process.env.URL}users`;
     return axios.post(url, {email: email,password: "11111111", name: "aaaaaa"});
   },
 

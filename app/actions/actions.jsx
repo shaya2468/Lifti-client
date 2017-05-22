@@ -150,7 +150,7 @@ export var startSignup = (email, password, file) => {
       var finish = finishAuthSuccess(uid, dispatch);
       if (file){
         var xhr = new XMLHttpRequest();
-        xhr.open('post', 'http://localhost:4444/upload', true);
+        xhr.open('post', `${process.env.URL}upload`, true);
         console.log(accessToken);
         xhr.setRequestHeader("x-auth", accessToken);
         var form = new FormData();
