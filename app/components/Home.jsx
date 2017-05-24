@@ -2,6 +2,8 @@ import React from 'react';
 import * as Redux from 'react-redux';
 
 import TodoList from 'TodoList'
+import Nav from 'Nav';
+import Dummy from 'Dummy';
 import AddTodo from 'AddTodo';
 import TodoSearch from 'TodoSearch';
 import * as actions from 'actions';
@@ -11,13 +13,6 @@ import {
 
 
 export class Home extends React.Component{
-
-
-  onLogout = (e) => {
-    e.preventDefault();
-    var {dispatch} = this.props;
-    dispatch(actions.startLogout());
-  }
 
   render(){
     var {uid} = this.props;
@@ -30,9 +25,8 @@ export class Home extends React.Component{
     }else{
       return (
         <div id="home_full">
-          <div id="home_nav">
-            <button type="button" name="button" id="btn_logout" onClick={ this.onLogout }>Logout</button>
-          </div>
+          <Nav/>
+          <Dummy/>
         </div>
       )
     }
