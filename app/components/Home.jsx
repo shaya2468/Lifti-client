@@ -4,6 +4,7 @@ import * as Redux from 'react-redux';
 import TodoList from 'TodoList'
 import Nav from 'Nav';
 import Dummy from 'Dummy';
+import Create from 'Create';
 import AddTodo from 'AddTodo';
 import TodoSearch from 'TodoSearch';
 import * as actions from 'actions';
@@ -30,11 +31,8 @@ export class Home extends React.Component{
     main: () => <Dummy/>
 
   },
-  { path: '/home/group',
-    main: () => <h2>group!</h2>
-  },
-  { path: '/home/lift',
-    main: () => <h2>lift!</h2>
+  { path: '/home/create',
+    main: () => <Create/>
   }
 ]
 
@@ -50,8 +48,7 @@ export class Home extends React.Component{
         <div id="home_full">
           <div id="home_nav">
             <Link to="/home" className="btn_nav">Home</Link>
-            <Link to="/home/group" className="btn_nav">Group</Link>
-            <Link to="/home/lift" className="btn_nav">Lift</Link>
+            <Link to="/home/create" className="btn_nav">Create</Link>
             <button type="button" name="button" className="btn_nav" onClick={ this.onLogout }>Logout</button>
           </div>
           {routes.map((route, index) => (
