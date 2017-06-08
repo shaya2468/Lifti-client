@@ -16,7 +16,7 @@ const Tabs = React.createClass({
          return <li className={style} key={index} onClick={this.handleChange.bind(this,index)}>{elem.props.title}</li>
         })}
       </ul>
-      <div className="tab">{this.props.children[this.state.selected]}</div>
+      <div className="tab_create">{this.props.children[this.state.selected]}</div>
       </div>
     )
   },
