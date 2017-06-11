@@ -1,0 +1,81 @@
+#container {
+  width: 840px;
+  margin: 25px auto;
+}
+
+.whysign {
+  float: left;
+  background-color: white;
+  width: 480px;
+  height: 347px;
+  border-radius: 0 5px 5px 0;
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+#create-group {
+  float: left;
+  width: 300px;
+  padding: 30px 20px;
+  background-color: white;
+  text-align: center;
+  border-radius: 5px 0 0 5px;
+}
+
+.create-group-input {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  border: 0;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  height: 45px;
+  line-height: 45px;
+  margin-bottom: 10px;
+  font-size: 1em;
+  color: rgba(0,0,0,.4);
+}
+
+#group-submit {
+  margin-top: 25px;
+  width: 70%;
+  border: 0;
+  background-color: #53CACE;
+  border-radius: 5px;
+  height: 50px;
+  color: white;
+  font-weight: 400;
+  font-size: 1em;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+#group-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-group-input:focus {
+  outline: none;
+  border-color: #53CACE;
+}
+
+.whysign > h1 {
+  color: rgba(0,0,0,.7);
+  font-weight: 900;
+  font-size: 2.5em;
+  text-align: left;
+}
+
+.whysign > p {
+  color: rgba(0,0,0,.6);
+  font-size: 1.2em;
+  margin: 50px 0 50px 0;
+}
+
+
+
+.whysign > p:nth-of-type(2) {
+  font-size: 1em;
+}
