@@ -120,7 +120,7 @@ export class Login extends React.Component{
 
 
   componentDidMount(){
-    console.log('i got here bbb');
+
     $('.imgPreview').click(function(){
       $("input[type='file']").trigger('click');
     })
