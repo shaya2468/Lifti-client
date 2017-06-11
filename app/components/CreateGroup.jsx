@@ -48,12 +48,19 @@ export class CreateGroup extends React.Component{
        $imagePreview = (<button id='button' className="imgPreview">Group pic</button>);
     }
 
+    if (false){
+      return(
+        <div>
+          <h1 id="loading_text">Loading, please wait...</h1>
+          <div id='loading'></div>
+        </div>
+      )
+    }
+
     return (
       <div id='container'>
         <div id='create-group'>
            <form id="group-form">
-
-
 
              <input className="create-group-input" type='text' placeholder='Name'  />
              <input className='text' className="create-group-input" placeholder='Description'  />
