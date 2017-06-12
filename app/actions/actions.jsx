@@ -24,6 +24,13 @@ export var addTodo = (todo) => {
   };
 };
 
+export var addGroup = (group) => {
+  return {
+    type: 'ADD_GROUP',
+    group
+  };
+};
+
 export var errorAuth = (errorMessage) => {
   return {
     type: 'ERROR_AUTH',
@@ -121,7 +128,10 @@ export var startCreateGroup = (name, description, file) => {
     return GroupApi.createGroup(name, description).then((res) => {
 
       if (file){
-        return UploadApi.uploadFile(file, res.data._id);
+        return UploadApi.uploadFile(file, res.data._id).then((newGroup) => {
+           dispatch(addGroup(newGroup));
+           return newGroup;
+        });
       }else{
         finish();
       }
