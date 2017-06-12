@@ -3,6 +3,7 @@ var ReactDOM = require('react-dom');
 var {Provider} = require('react-redux');
 // require('play');
 import AuthAPI from 'AuthAPI';
+import GroupInfo from 'GroupInfo';
 var actions = require('actions');
 var store = require('configureStore').configure();
 import firebase from 'app/firebase/';
@@ -41,6 +42,7 @@ if (firstRender){
         <div>
 
             <Route path="/home" component={Home}/>
+            <Route path="/home/group/:id" component={GroupInfo}/>
             <Route path="/todos" component={TodoApp}/>
             <Route path="/" component={SignupLogin}/>
 

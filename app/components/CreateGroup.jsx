@@ -3,15 +3,16 @@ import $ from 'jquery';
 import * as actions from 'actions';
 var axios = require('axios');
 var {connect} = require('react-redux');
-
+import {
+  Redirect
+} from 'react-router-dom'
 
 export class CreateGroup extends React.Component{
 
   constructor(props) {
     super(props);
     this.dispatch = props.dispatch;
-    this.state = {file: '',imagePreviewUrl: '', isLoading:false};
-
+    this.state = {file: '',imagePreviewUrl: '', isLoading:false, gropuId:null};
   }
 
   componentDidMount(){
@@ -48,23 +49,28 @@ export class CreateGroup extends React.Component{
     });
     let {file} = this.state;
 
-    let finish = () => {
+    let finish = (gropuId) => {
       this.setState({
-        isLoading: false
+        isLoading: false,
+        gropuId
       });
     }
 
     this.dispatch(actions.startCreateGroup(name, description, file))
     .then ((res) => {
-      finish();
+
+      this.setState({
+        isLoading: false,
+        gropuId: res._id
+      });
     }).catch((e) => {
-      finish();
+      finish('error');
     });
   }
 
   render() {
 
-    let {imagePreviewUrl, isLoading} = this.state;
+    let {imagePreviewUrl, isLoading, gropuId} = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
       $imagePreview = (<button id='button' className="imgPreview"><img src={imagePreviewUrl} /></button>);
@@ -72,6 +78,13 @@ export class CreateGroup extends React.Component{
        $imagePreview = (<button id='button' className="imgPreview">Group pic</button>);
     }
 
+    if (gropuId){
+      return (
+        <Redirect to={{
+          pathname: `/home/group/${gropuId}`
+        }}/>
+      );
+    }
 
     if (isLoading){
       return(
