@@ -10,7 +10,7 @@ export class CreateGroup extends React.Component{
   constructor(props) {
     super(props);
     this.dispatch = props.dispatch;
-    this.state = {file: '',imagePreviewUrl: ''};
+    this.state = {file: '',imagePreviewUrl: '', isLoading:false};
 
   }
 
@@ -38,9 +38,20 @@ export class CreateGroup extends React.Component{
     reader.readAsDataURL(file);
   }
 
+
+  onCreateGroup = (e) => {
+    e.preventDefault();
+    var name = this.refs.name.value;
+    var description = this.refs.description.value;
+    this.setState({
+      isLoading: true
+    });
+    this.dispatch(actions.startCreateGroup(name, description));
+  }
+
   render() {
 
-    let {imagePreviewUrl} = this.state;
+    let {imagePreviewUrl, isLoading} = this.state;
     let $imagePreview = null;
     if (imagePreviewUrl) {
       $imagePreview = (<button id='button' className="imgPreview"><img src={imagePreviewUrl} /></button>);
@@ -48,7 +59,8 @@ export class CreateGroup extends React.Component{
        $imagePreview = (<button id='button' className="imgPreview">Group pic</button>);
     }
 
-    if (false){
+
+    if (isLoading){
       return(
         <div>
           <h1 id="loading_text">Loading, please wait...</h1>
@@ -60,10 +72,10 @@ export class CreateGroup extends React.Component{
     return (
       <div id='container'>
         <div id='create-group'>
-           <form id="group-form">
+           <form id="group-form" onSubmit={this.onCreateGroup}>
 
-             <input className="create-group-input" type='text' placeholder='Name'  />
-             <input className='text' className="create-group-input" placeholder='Description'  />
+             <input className="create-group-input" type='text' placeholder='Name' ref="name" required/>
+             <input className='text' className="create-group-input" placeholder='Description' ref="description" required/>
 
                <div id="profile-pic">
                  <input required type='file' onChange={(e)=>this._handleImageChange(e)}/>

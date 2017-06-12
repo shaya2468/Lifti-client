@@ -1,7 +1,4 @@
-
 var axios = require('axios')
-var fakeAccessToken = 'fakeAccessToken';
-var fakeTime = 1000;
 module.exports = {
 
   login:function (email, password) {
@@ -18,10 +15,7 @@ module.exports = {
   logout:function () {
     localStorage.removeItem('access_token');
     return new Promise(function (resolve, reject) {
-          setTimeout(function () {
-
-             resolve();
-          }, fakeTime);
+          resolve();
       });
   },
 

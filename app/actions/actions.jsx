@@ -1,5 +1,6 @@
 import moment from 'moment';
 import AuthAPI from 'AuthAPI';
+import GroupApi from 'GroupApi';
 import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
 
 export var setSearchText = (searchText) => {
@@ -113,6 +114,15 @@ export var setAccessToken = (uid) => {
   };
 };
 
+export var startCreateGroup = (name, description) => {
+
+  return (dispatch, getState) => {
+    return GroupApi.createGroup(name, description).then((res) => {
+      console.log(res);
+    })
+  };
+};
+
 export var startLogin = (email, password) => {
   return (dispatch, getState) => {
     dispatch(isLoading());
@@ -162,6 +172,7 @@ export var startSignup = (email, password, file) => {
         xhr.setRequestHeader("x-auth", accessToken);
         var form = new FormData();
         form.append("upload", file);
+        form.append("aaa", "algir");
         xhr.addEventListener("load", function(){
           finish();
         });
