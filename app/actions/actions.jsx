@@ -1,5 +1,6 @@
 import moment from 'moment';
 import AuthAPI from 'AuthAPI';
+import UploadApi from 'UploadApi';
 import GroupApi from 'GroupApi';
 import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
 
@@ -114,11 +115,16 @@ export var setAccessToken = (uid) => {
   };
 };
 
-export var startCreateGroup = (name, description) => {
+export var startCreateGroup = (name, description, file) => {
 
   return (dispatch, getState) => {
     return GroupApi.createGroup(name, description).then((res) => {
-      console.log(res);
+
+      if (file){
+        return UploadApi.uploadFile(file, res.data._id);
+      }else{
+        finish();
+      }
     })
   };
 };
@@ -166,20 +172,9 @@ export var startSignup = (email, password, file) => {
       var finish = finishAuthSuccess(uid, dispatch);
 
       if (file){
-        var xhr = new XMLHttpRequest();
-        xhr.open('post', `${process.env.URL}upload`, true);
-        console.log(accessToken);
-        xhr.setRequestHeader("x-auth", accessToken);
-        var form = new FormData();
-        form.append("upload", file);
-        form.append("aaa", "algir");
-        xhr.addEventListener("load", function(){
+        return UploadApi.uploadFile(file, null, finish).then(() => {
           finish();
         });
-        xhr.addEventListener("error", function(){
-          finish();
-        });
-        xhr.send(form);
       }else{
         finish();
       }

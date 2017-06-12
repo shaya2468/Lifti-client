@@ -46,7 +46,20 @@ export class CreateGroup extends React.Component{
     this.setState({
       isLoading: true
     });
-    this.dispatch(actions.startCreateGroup(name, description));
+    let {file} = this.state;
+
+    let finish = () => {
+      this.setState({
+        isLoading: false
+      });
+    }
+
+    this.dispatch(actions.startCreateGroup(name, description, file))
+    .then ((res) => {
+      finish();
+    }).catch((e) => {
+      finish();
+    });
   }
 
   render() {
