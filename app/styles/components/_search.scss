@@ -1,0 +1,33 @@
+
+.search-form {
+  // height: 300px;
+  width: 200px;
+  // border: solid 1px gold;
+  position: absolute;
+  left: 70%;
+  top: 0;
+  overflow: hidden;
+  background: transparent;
+}
+.search-items {
+  // height: calc(100% - 35px);
+  height: 20rem;
+  overflow: auto;
+}
+.search-item {
+  background: white;
+  height: 2.5rem;
+  padding: 5px 10px;
+  color: black;
+  border-bottom: solid 1px goldenrod;
+  display: flex;
+  align-items: center;
+}
+
+.form-control{
+  height: 3rem;
+}
+
+#search-title::placeholder{
+  color: white;
+}
