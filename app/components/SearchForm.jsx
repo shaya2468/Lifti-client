@@ -44,19 +44,15 @@ var SearchForm = React.createClass({
     var val = e.target.value;
     var shouldShow = val.length >0;
     this.setState({ isFocus:shouldShow});
-    console.log(val);
-    console.log('onFocus');
   },
 
   onfocusout: function(e){
     this.setState({ isFocus:false});
-    console.log('onfocusout');
     this.refs.search_text.value="";
   },
   render: function() {
 
     const isFocus = this.state.isFocus;
-    console.log(isFocus);
     return (
       <div className="search-form">
         <input type="text" placeholder="Search" ref="search_text"
