@@ -50,6 +50,7 @@ var SearchForm = React.createClass({
     this.setState({ isFocus:false});
     this.refs.search_text.value="";
   },
+
   render: function() {
 
     const isFocus = this.state.isFocus;
@@ -58,33 +59,32 @@ var SearchForm = React.createClass({
         <input type="text" placeholder="Search" ref="search_text"
                className="form-control"
                onBlur={this.onfocusout} onFocus={this.onFocus} onChange={this.handleChange} id="search-title"/>
-
-
-
-
              <div className="search-items">
 
+          { isFocus &&
 
-
-        { isFocus &&
-
-            this.state.data.map(function(item){
+            this.state.data.map((item) => {
               return (
-                <SearchItem key={item} text={item} />
+                <SearchItem key={item} text={item} id={item}/>
               );
             })
-
-
-      }
+          }
         </div>
       </div>
     );
   }
 });
+
+
 var SearchItem = React.createClass({
+
+  onClickItem: function(e){
+    console.log('onClickSearchItem aafff! ' + this.props.id);
+  },
+
   render: function () {
     return (
-      <div className="search-item">{this.props.text}</div>
+      <div className="search-item" onMouseDown={this.onClickItem}>{this.props.text}</div>
     );
   }
 });
