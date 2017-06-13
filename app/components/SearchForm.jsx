@@ -1,6 +1,7 @@
 import React from 'react';
 var {connect} = require('react-redux');
 var _ = require('lodash')
+import GroupApi from 'GroupApi';
 var searchData = [
   'Aang',
   'Appa',
@@ -31,6 +32,7 @@ var SearchForm = React.createClass({
       isFocus: false
     }
   },
+
   handleChange: function(e) {
     var val = e.target.value;
     var that = this;
@@ -38,18 +40,19 @@ var SearchForm = React.createClass({
       that.setState({data: [], isFocus:false});
     }
     else{
-      setTimeout(function(){
 
-        var filteredItems = searchData.filter(function(item){
-          return _.includes(item.toLowerCase(), val.toLowerCase());
-        });
-        var shouldShow = val.length >0;
-        that.setState({data: filteredItems, isFocus:shouldShow});
-
-
-      }, 500);
+      GroupApi.searchGroups(val).then((groups) => {
+        groups = groups.data;
+        var shouldShow = groups.length >0;
+        var groupNames = groups.map((singleGroup) => {
+          return singleGroup.name;
+        })
+        that.setState({data: groupNames, isFocus:shouldShow});
+      }).catch((e) => {
+        console.log(e);
+        that.setState({data: [], isFocus:false});
+      })
     }
-
   },
 
   onFocus: function(e){
