@@ -33,11 +33,23 @@ var SearchForm = React.createClass({
   },
   handleChange: function(e) {
     var val = e.target.value;
-    var filteredItems = searchData.filter(function(item){
-      return _.includes(item.toLowerCase(), val.toLowerCase());
-    });
-    var shouldShow = val.length >0;
-    this.setState({data: filteredItems, isFocus:shouldShow});
+    var that = this;
+    if (val.length===0){
+      that.setState({data: [], isFocus:false});
+    }
+    else{
+      setTimeout(function(){
+
+        var filteredItems = searchData.filter(function(item){
+          return _.includes(item.toLowerCase(), val.toLowerCase());
+        });
+        var shouldShow = val.length >0;
+        that.setState({data: filteredItems, isFocus:shouldShow});
+
+
+      }, 500);
+    }
+
   },
 
   onFocus: function(e){
