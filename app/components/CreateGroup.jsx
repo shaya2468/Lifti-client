@@ -81,7 +81,8 @@ export class CreateGroup extends React.Component{
     if (gropuId){
       return (
         <Redirect to={{
-          pathname: `/home/group/${gropuId}`
+          pathname: `/home/group/${gropuId}`,
+          stam: 'stamba'
         }}/>
       );
     }

@@ -9,6 +9,9 @@ export class GroupInfo extends React.Component{
     this.dispatch = props.dispatch;
     var {groups} = this.props;
 
+    var {stam} = this.props.location;
+    console.log(stam);
+
     this.groupId = this.props.match.params.id;
 
     var group = groups.filter((group) => {
