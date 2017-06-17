@@ -9,14 +9,22 @@ export class GroupInfo extends React.Component{
     this.dispatch = props.dispatch;
     var {groups} = this.props;
 
-    var {stam} = this.props.location;
-    console.log(stam);
+    var {fromSearch} = this.props.location;
 
     this.groupId = this.props.match.params.id;
 
-    var group = groups.filter((group) => {
-      return group._id === this.groupId;
-    })[0]
+    var group;
+
+    if (fromSearch){
+      group = {
+        name: this.props.location.name,
+        pic: this.props.location.image
+      }
+    }else{
+      group = groups.filter((group) => {
+        return group._id === this.groupId;
+      })[0]
+    }
 
     this.name = group.name;
     this.pic = group.pic;

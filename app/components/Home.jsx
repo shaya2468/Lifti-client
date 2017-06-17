@@ -4,7 +4,8 @@ import * as Redux from 'react-redux';
 import TodoList from 'TodoList'
 import Nav from 'Nav';
 import Dummy from 'Dummy';
-import SearchForm from 'SearchForm';
+
+
 import Create from 'Create';
 import AddTodo from 'AddTodo';
 import TodoSearch from 'TodoSearch';
@@ -48,7 +49,7 @@ export class Home extends React.Component{
       return (
         <div id="home_full">
           <div id="home_nav">
-            <SearchForm/>
+
             <Link to="/home" className="btn_nav">Home</Link>
             <Link to="/home/create" className="btn_nav">Create</Link>
             <button type="button" name="button" id="logout-btn"className="btn_nav" onClick={ this.onLogout }>Logout</button>

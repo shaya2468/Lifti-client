@@ -101,8 +101,8 @@ export class CreateGroup extends React.Component{
         <div id='create-group'>
            <form id="group-form" onSubmit={this.onCreateGroup}>
 
-             <input className="create-group-input" type='text' placeholder='Name' ref="name" required/>
-             <input className='text' className="create-group-input" placeholder='Description' ref="description" required/>
+             <input className="create-group-input" type='text' placeholder='Name' ref="name" pattern=".{3,}"   required title="Name must be at least 3 characters"/>
+             <input className='text' className="create-group-input" placeholder='Description' ref="description" pattern=".{3,}"   required title="Name must be at least 3 characters"/>
 
                <div id="profile-pic">
                  <input required type='file' onChange={(e)=>this._handleImageChange(e)}/>

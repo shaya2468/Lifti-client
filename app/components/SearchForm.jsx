@@ -2,34 +2,19 @@ import React from 'react';
 var {connect} = require('react-redux');
 var _ = require('lodash')
 import GroupApi from 'GroupApi';
-var searchData = [
-  'Aang',
-  'Appa',
-  'Asami',
-  'Azula',
-  'Bolin',
-  'Katara',
-  'Korra',
-  'Jinora',
-  'Lin Beifong',
-  'Momo',
-  'Mai',
-  'Mako',
-  'Naga',
-  'Sokka',
-  'Suki',
-  'Tenzin',
-  'Toph Beifong',
-  'Ty Lee',
-  'Uncle Iroh',
-  'Zuko'
-];
+import {
+  Redirect
+} from 'react-router-dom'
+
+
 var SearchForm = React.createClass({
+
   getInitialState: function () {
     return {
-      data: searchData,
+      data: null,
       items: [],
-      isFocus: false
+      isFocus: false,
+      chosen: null
     }
   },
 
@@ -44,12 +29,8 @@ var SearchForm = React.createClass({
       GroupApi.searchGroups(val).then((groups) => {
         groups = groups.data;
         var shouldShow = groups.length >0;
-        var groupNames = groups.map((singleGroup) => {
-          return singleGroup.name;
-        })
-        that.setState({data: groupNames, isFocus:shouldShow});
+        that.setState({data: groups, isFocus:shouldShow});
       }).catch((e) => {
-        console.log(e);
         that.setState({data: [], isFocus:false});
       })
     }
@@ -65,41 +46,55 @@ var SearchForm = React.createClass({
     this.setState({ isFocus:false});
     this.refs.search_text.value="";
   },
+  onClickSearchItem: function(event, searchData){
+    this.setState({ chosen:searchData});
+  },
 
   render: function() {
 
     const isFocus = this.state.isFocus;
-    return (
-      <div className="search-form">
-        <input type="text" placeholder="Search" ref="search_text"
-               className="form-control"
-               onBlur={this.onfocusout} onFocus={this.onFocus} onChange={this.handleChange} id="search-title"/>
-             <div className="search-items">
 
-          { isFocus &&
+    if (this.state.chosen){
+      return(
+        <Redirect to={{
+          pathname: `/home/group/${this.state.chosen.id}`,
+          fromSearch: true,
+          image: this.state.chosen.image,
+          name: this.state.chosen.name
+        }}/>
+      )
 
-            this.state.data.map((item) => {
-              return (
-                <SearchItem key={item} text={item} id={item}/>
-              );
-            })
-          }
+    }
+    else{
+      return (
+        <div className="search-form">
+          <input type="text" placeholder="Search" ref="search_text"
+                 className="form-control"
+                 onBlur={this.onfocusout} onFocus={this.onFocus} onChange={this.handleChange} id="search-title"/>
+               <div className="search-items">
+
+            { isFocus &&
+
+              this.state.data.map((group) => {
+                return (
+                  <SearchItem key={group.id} name={group.name} image={group.image} id={group.id} onClickItem={this.onClickSearchItem}/>
+                );
+              })
+            }
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+
   }
 });
 
 
 var SearchItem = React.createClass({
 
-  onClickItem: function(e){
-    console.log('onClickSearchItem aafff! ' + this.props.id);
-  },
-
   render: function () {
     return (
-      <div className="search-item" onMouseDown={this.onClickItem}>{this.props.text}</div>
+      <div className="search-item" onMouseDown={e => this.props.onClickItem(e, {name:this.props.name, image: this.props.image, id:this.props.id })}>{this.props.name}</div>
     );
   }
 });
