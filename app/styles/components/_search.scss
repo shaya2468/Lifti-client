@@ -4,10 +4,14 @@
   width: 200px;
   // border: solid 1px gold;
   position: absolute;
-  left: 70%;
+
   top: 0;
   overflow: hidden;
   background: transparent;
+  left: 5%;
+  @media screen and (min-width: 800px) {
+    left: 40%;
+  }
 }
 .search-items {
   // height: calc(100% - 35px);
