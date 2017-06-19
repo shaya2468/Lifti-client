@@ -85,11 +85,11 @@ export class CreateLift extends React.Component{
 
                   <p className="left">
                     <label htmlFor="time-picker">time</label>
-                    <input id="time-picker" type="time" name="time-picker" ref="time"/>
+                    <input id="time-picker" type="time" name="time-picker" ref="time" required/>
                   </p>
                   <p className="pull-right">
                     <label htmlFor="date-picker">date</label>
-                    <input type="date" name="date-picker" id="date-picker" ref="date"/>
+                    <input type="date" name="date-picker" id="date-picker" ref="date" required/>
                   </p>
                 </div>
               </li>
