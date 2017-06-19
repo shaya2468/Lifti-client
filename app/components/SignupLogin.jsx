@@ -147,7 +147,7 @@ export class Login extends React.Component{
         {
           this.props.errorMessage
           ? <h1 id="auth_error">{this.props.errorMessage}</h1>
-          : <h1>Sign Up for Free</h1>
+          : <h1 id="sign-up-title">Sign Up for Free</h1>
         }
         <form onSubmit={this.onSignup}>
 

@@ -1,8 +1,8 @@
 @import "base/variables";
 
 // foundation
-@import "base/foundation-settings";
-@import "foundation";
+// @import "base/foundation-settings";
+// @import "foundation";
 @import "base/mcleod_reset";
 // @include foundation-everything;
 
@@ -20,3 +20,4 @@
 @import "components/create-group";
 @import "components/group-info";
 @import "components/search";
+@import "components/create-lift";

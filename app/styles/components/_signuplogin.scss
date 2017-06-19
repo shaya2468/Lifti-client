@@ -82,8 +82,11 @@ h1 {
   text-align: center;
   color: #ffffff;
   font-weight: 300;
-  margin: 0 0 40px;
   font-size: 26px;
+}
+
+#sign-up-title {
+  margin-bottom: 1rem;
 }
 
 #auth_error{
@@ -93,7 +96,7 @@ h1 {
 }
 
 label {
-  position: absolute;
+
   -webkit-transform: translateY(6px);
           transform: translateY(6px);
   left: 13px;
@@ -127,8 +130,6 @@ label.highlight {
 input, textarea {
   font-size: 22px;
   display: block;
-  width: 100%;
-  height: 100%;
   padding: 5px 10px;
   background: none;
   background-image: none;
@@ -138,6 +139,13 @@ input, textarea {
   -webkit-transition: border-color .25s ease, box-shadow .25s ease;
   transition: border-color .25s ease, box-shadow .25s ease;
 }
+
+#signup * input, textarea {
+  width: 100%;
+  height: 100%;
+}
+
+
 input:focus, textarea:focus {
   outline: 0;
   border-color: $active_button;
@@ -146,6 +154,8 @@ input:focus, textarea:focus {
 input:disabled{
   color: #999999;
 }
+
+
 
 textarea {
   border: 2px solid #a0b3b0;
@@ -270,6 +280,10 @@ input[type='file'] {
   opacity:0;
   height: 0.1px;
   width: 0.1px;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: checkbox;
 }
 
 span{

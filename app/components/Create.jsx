@@ -1,7 +1,10 @@
 var React = require('react');
 var {connect} = require('react-redux');
 import * as actions from 'actions';
+import CreateLift from 'CreateLift';
 import CreateGroup from 'CreateGroup';
+
+
 const Tabs = React.createClass({
   getInitialState(){
     return {
@@ -37,7 +40,7 @@ const Create = React.createClass({
 
         <Tabs selected={1}>
           <Panel title="Group"><CreateGroup/></Panel>
-          <Panel title="Lift"><h1>This is the Lift panel</h1></Panel>
+          <Panel title="Lift"><CreateLift/></Panel>
         </Tabs>
 
     )
