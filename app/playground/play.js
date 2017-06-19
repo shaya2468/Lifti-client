@@ -1,10 +1,10 @@
-var AuthAPI = require('AuthAPI');
+console.log('stupid');
+// function multiply(x, y) {
+//     return x - y;
+// }
+//
+// let multiplyBy10 = multiply.bind(null, 10);
+// console.log(multiplyBy10(15));
 
-AuthAPI.signUp('shaya', 123456)
-.then((res) => {
-  console.log('success');
-  console.log(res);
-}).catch((e) =>{
-  console.log('error');
-  console.log(e);
-})
+
+var json = {}
