@@ -10,8 +10,11 @@ export class CreateLift extends React.Component{
     e.preventDefault();
     var bike1 = this.refs.bike1.checked;
     var bike2 = this.refs.bike2.checked;
-    console.log('1: ' + bike1);
-    console.log('2: ' + bike2);
+    var time =  this.refs.time.value;
+    var date =  this.refs.date.value;
+    console.log( time);
+    console.log( date);
+
   }
 
 
@@ -82,11 +85,11 @@ export class CreateLift extends React.Component{
 
                   <p className="left">
                     <label htmlFor="time-picker">time</label>
-                    <input id="time-picker" type="time" name="time-picker" />
+                    <input id="time-picker" type="time" name="time-picker" ref="time"/>
                   </p>
                   <p className="pull-right">
                     <label htmlFor="date-picker">date</label>
-                    <input type="date" name="date-picker" id="date-picker"/>
+                    <input type="date" name="date-picker" id="date-picker" ref="date"/>
                   </p>
                 </div>
               </li>
