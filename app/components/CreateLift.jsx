@@ -8,6 +8,8 @@ export class CreateLift extends React.Component{
     super(props);
     this.state = {depart_city:'Jerusalem', depart_street: null, dest_city:'Jerusalem', dest_street: null, time:null, date:null, num_pass:null, comments:null}
     this.handleChange = this.handleChange.bind(this);
+    var {groups} = this.props;
+    console.log(groups);
   }
 
   handleChange( field, event) {
@@ -201,5 +203,10 @@ class Comments extends React.Component{
   }
 }
 
-
-export default connect()(CreateLift);
+export default connect(
+  (state) => {
+    return {
+      groups: state.groups
+    }
+  }
+)(CreateLift);
