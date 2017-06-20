@@ -6,18 +6,29 @@ export class CreateLift extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = {depart_city:'Jerusalem', depart_street: null, dest_city:'Jerusalem', dest_street: null, time:null, date:null, num_pass:null, comments:null}
+    this.state = {depart_city:'Jerusalem', depart_street: null, dest_city:'Jerusalem', dest_street: null, time:null, date:null, num_pass:null, comments:null, groupsToAdd: {}}
     this.handleChange = this.handleChange.bind(this);
+    this.groupChosen = this.groupChosen.bind(this);
     var {groups} = this.props;
     this.groups = groups;
   }
 
-  handleChange( field, event) {
+  handleChange(field, event) {
     event.preventDefault();
 
     this.setState({
       [field]: event.target.value
     });
+  }
+
+  groupChosen(id, event) {
+
+    var newState = {
+        ...this.state.groupsToAdd,
+        [id]: event.target.checked
+    }
+
+    this.setState({groupsToAdd: newState});
   }
 
   onCreateLift = (e) => {
@@ -41,50 +52,9 @@ export class CreateLift extends React.Component{
               <CityStreet info={{text:'Destination', id:'dest_' }} handleChange={this.handleChange}/>
               <LeavingAt handleChange={this.handleChange}/>
               <NumberOfPassengers handleChange={this.handleChange}/>
+              <GroupList groups={this.groups} groupChosen={this.groupChosen}/>
               <Comments handleChange={this.handleChange}/>
 
-
-
-
-
-{
-
-              // <h1 className="create-lift-h1"  className="address_info">Add to groups</h1>
-              // <div id="group-checkboxes">
-              //
-              //
-              //
-              //   <div className="group-div">
-              //     <input id="group-check" type="checkbox" ref="bike1"  name="bike1"  /> <label className="label-bike" htmlFor="bike1">time</label>
-              //   </div>
-              //
-              //   <div className="group-div">
-              //     <input id="group-check" type="checkbox"  ref="bike2" name="bike2"/> <label className="label-bike" htmlFor="bike2">time</label>
-              //   </div>
-              //
-              //   <div className="group-div">
-              //     <input id="group-check" type="checkbox" ref="bike3"  name="bike3"/> <label className="label-bike" htmlFor="bike3">time</label>
-              //   </div>
-              //
-              //   <div className="group-div">
-              //     <input id="group-check" type="checkbox" ref="bike4"  name="bike4"/> <label className="label-bike" htmlFor="bike4">time</label>
-              //   </div>
-              //
-              //   <div className="group-div">
-              //     <input id="group-check" type="checkbox" ref="bike5"  name="bike5"/> <label className="label-bike" htmlFor="bike5">time</label>
-              //   </div>
-              //
-              //   <div className="group-div">
-              //     <input id="group-check" type="checkbox"  ref="bike6" name="bike6"/> <label className="label-bike" htmlFor="bike6">time</label>
-              //   </div>
-              //
-              //   <div className="group-div">
-              //     <input id="group-check" type="checkbox" ref="bike7"  name="bike7"/> <label className="label-bike" htmlFor="bike7">time</label>
-              //   </div>
-              //
-              // </div>
-              //
-              }
               <li><div className="divider"></div></li>
 
 
@@ -101,6 +71,57 @@ export class CreateLift extends React.Component{
   }
 }
 
+
+class GroupList extends React.Component{
+
+  constructor(props) {
+    super(props);
+
+  }
+
+  render() {
+
+    var {groups} = this.props;
+
+    return (
+      <li>
+        <h1 className="create-lift-h1"  className="address_info">Add to groups</h1>
+        <div id="group-checkboxes">
+          {
+            groups.map((group) => {
+              return (
+                <SingleGroup key={group._id} name={group.name} id={group._id} groupChosen= {this.props.groupChosen}/>
+              );
+            })
+          }
+
+        </div>
+      </li>
+
+    )
+  }
+
+}
+
+class SingleGroup extends React.Component{
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+
+    var {name} = this.props;
+    var {id} = this.props;
+
+    return (
+      <div className="group-div">
+        <input id="group-check" type="checkbox" name={name} onChange={ this.props.groupChosen.bind( null, id)}/> <label className="label-bike" htmlFor={name}>{name}</label>
+      </div>
+    )
+  }
+
+}
 
 class CityStreet extends React.Component{
 
