@@ -9,7 +9,7 @@ export class CreateLift extends React.Component{
     this.state = {depart_city:'Jerusalem', depart_street: null, dest_city:'Jerusalem', dest_street: null, time:null, date:null, num_pass:null, comments:null}
     this.handleChange = this.handleChange.bind(this);
     var {groups} = this.props;
-    console.log(groups);
+    this.groups = groups;
   }
 
   handleChange( field, event) {

@@ -29,8 +29,18 @@ export var errorAuthReucer = (state = '', action) => {
   };
 };
 
+export var finishInitReducer = (state = false, action) => {
+  switch (action.type) {
+    case 'FINISH_INIT':
+      return true;
+    default:
+      return state;
+  };
+};
+
 export var groupsReducer = (state = [], action) => {
   switch (action.type) {
+
     case 'ADD_GROUP':
       return [
         ...state,
@@ -47,11 +57,8 @@ export var groupsReducer = (state = [], action) => {
           return todo;
         }
       });
-    case 'ADD_TODOS':
-      return [
-        ...state,
-        ...action.todos
-      ];
+    case 'ADD_GROUPS':
+      return action.groups;
     case 'LOGOUT':
       return [];
     default:

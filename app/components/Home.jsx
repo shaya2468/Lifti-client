@@ -18,6 +18,14 @@ import {
 
 export class Home extends React.Component{
 
+
+  constructor(props) {
+    super(props);
+
+    var {dispatch} = this.props;
+    dispatch(actions.getGroups());
+  }
+
   onLogout = (e) => {
     e.preventDefault();
     var {dispatch} = this.props;
@@ -25,7 +33,7 @@ export class Home extends React.Component{
   }
 
   render(){
-    var {uid} = this.props;
+    var {uid, finishInit} = this.props;
 
     const routes = [
   { path: '/home',
@@ -46,6 +54,19 @@ export class Home extends React.Component{
         }}/>
       );
     }else{
+
+      if (!finishInit){
+        return (
+          <div id="outer_div">
+           <div id="auth_page">
+             <h1 id="loading_text">Loading, please wait...</h1>
+             <div id='loading'></div>
+           </div>
+          </div>
+        )
+      }
+
+
       return (
         <div id="home_full">
           <div id="home_nav">
@@ -79,6 +100,7 @@ export default Redux.connect(
   (state) => {
     return {
       uid: state.auth.uid,
+      finishInit: state.finishInit
     }
   }
 )(Home);

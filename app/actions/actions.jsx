@@ -64,10 +64,10 @@ export var startAddTodo = (text) => {
   };
 };
 
-export var addTodos = (todos) => {
+export var addAllGroups = (groups) => {
   return {
-    type: 'ADD_TODOS',
-    todos
+    type: 'ADD_GROUPS',
+    groups
   };
 };
 
@@ -122,6 +122,15 @@ export var setAccessToken = (uid) => {
   };
 };
 
+export var finishInit = () => {
+  return {
+    type: 'FINISH_INIT'
+  };
+};
+
+
+
+
 export var startCreateGroup = (name, description, file) => {
 
   return (dispatch, getState) => {
@@ -135,6 +144,16 @@ export var startCreateGroup = (name, description, file) => {
       }else{
         finish();
       }
+    })
+  };
+};
+
+export var getGroups = () => {
+
+  return (dispatch, getState) => {
+    return GroupApi.getAllGroups().then((res) => {
+      dispatch(addAllGroups(res.data.groups));
+      dispatch(finishInit());
     })
   };
 };
