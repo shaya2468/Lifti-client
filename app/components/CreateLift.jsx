@@ -3,11 +3,12 @@ var {connect} = require('react-redux');
 var moment = require('moment');
 import * as actions from 'actions';
 import SearchForm from 'SearchForm';
+import LiftApi from 'LiftApi';
 export class CreateLift extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = {depart_city:'Jerusalem', depart_street: null, dest_city:'Jerusalem', dest_street: null, time:null, date:null, num_pass:null, comments:null, groupsToAdd: {}}
+    this.state = {isLoading:false, depart_city:'Jerusalem', depart_street: null, dest_city:'Jerusalem', dest_street: null, time:null, date:null, num_pass:null, comments:null, groupsToAdd: {}}
     this.handleChange = this.handleChange.bind(this);
     this.groupChosen = this.groupChosen.bind(this);
     var {groups} = this.props;
@@ -52,19 +53,45 @@ export class CreateLift extends React.Component{
 
     var leaveAtTimestamp  = moment("2017-06-29 14:33", "YYYY/MM/DD HH:mm").unix();
     var body = {
-      origin: this.state.depart_city,
-      destination: this.state.dest_city,
+      origin_city: this.state.depart_city,
+      origin_street: this.state.depart_street,
+      destination_city: this.state.dest_city,
+      destination_street: this.state.dest_street,
       description: this.state.comments,
       leave_at:leaveAtTimestamp,
       capacity: parseInt(this.state.num_pass),
       groups:groupIdsArray
     }
-    console.log(body);
 
+
+    this.setState({isLoading:true});
+    LiftApi.createLift(body).then((res) => {
+
+      this.setState({isLoading:false});
+      var data = res.data;
+
+      document.getElementById("lift-form").reset();
+      this.setState({groupsToAdd: {}})
+      alert('Lift added successfully!!')
+    }).catch((e) => {
+      this.setState({isLoading:false});
+      console.log('request error!');
+      console.log(e);
+    })
   }
 
 
   render() {
+
+    let {isLoading} = this.state;
+    if (isLoading){
+      return(
+        <div>
+          <h1 id="loading_text">Loading, please wait...</h1>
+          <div id='loading'></div>
+        </div>
+      )
+    }
 
     return (
       <div className="container-create-lift">
