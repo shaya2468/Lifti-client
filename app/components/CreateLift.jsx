@@ -1,5 +1,6 @@
 var React = require('react');
 var {connect} = require('react-redux');
+var moment = require('moment');
 import * as actions from 'actions';
 import SearchForm from 'SearchForm';
 export class CreateLift extends React.Component{
@@ -33,7 +34,33 @@ export class CreateLift extends React.Component{
 
   onCreateLift = (e) => {
     e.preventDefault();
-    console.log(this.state);
+
+    var p = this.state.groupsToAdd;
+    var groupIdsArray = [];
+    for (var key in p) {
+      if (p.hasOwnProperty(key)) {
+      if (p[key] === true){
+          groupIdsArray.push(key);
+        }
+      }
+    }
+
+    if (groupIdsArray.length === 0){
+      alert('please choose at least one group');
+      return;
+    }
+
+    var leaveAtTimestamp  = moment("2017-06-29 14:33", "YYYY/MM/DD HH:mm").unix();
+    var body = {
+      origin: this.state.depart_city,
+      destination: this.state.dest_city,
+      description: this.state.comments,
+      leave_at:leaveAtTimestamp,
+      capacity: parseInt(this.state.num_pass),
+      groups:groupIdsArray
+    }
+    console.log(body);
+
   }
 
 
@@ -152,7 +179,7 @@ class CityStreet extends React.Component{
           </p>
           <p className="pull-right">
             <label htmlFor="depart_street">street</label>
-            <input type="text" name="depart_street" onChange={  this.props.handleChange.bind( null, this.info.id + 'street') } />
+            <input type="text" required name="depart_street" onChange={  this.props.handleChange.bind( null, this.info.id + 'street') } />
           </p>
         </div>
       </li>
@@ -176,11 +203,11 @@ class LeavingAt extends React.Component{
 
           <p className="left">
             <label htmlFor="time-picker">time</label>
-            <input id="time-picker" type="time" name="time-picker" ref="time" onChange={  this.props.handleChange.bind( null, 'time') }/>
+            <input id="time-picker" required type="time" name="time-picker" ref="time" onChange={  this.props.handleChange.bind( null, 'time') }/>
           </p>
           <p className="pull-right">
             <label htmlFor="date-picker">date</label>
-            <input type="date" name="date-picker" id="date-picker" ref="date" onChange={  this.props.handleChange.bind( null, 'date') } />
+            <input type="date" required name="date-picker" id="date-picker" ref="date" onChange={  this.props.handleChange.bind( null, 'date') } />
           </p>
         </div>
       </li>
@@ -200,7 +227,7 @@ class NumberOfPassengers extends React.Component{
       <li id="num-pass">
         <p>
           <label htmlFor="pass-number">number of passengars</label>
-          <input type="number" name="pass-number" min="0" onChange={  this.props.handleChange.bind( null, 'num_pass') }/>
+          <input required type="number" name="pass-number" min="0" onChange={  this.props.handleChange.bind( null, 'num_pass') }/>
         </p>
       </li>
     )
