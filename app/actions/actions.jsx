@@ -198,11 +198,11 @@ var finishAuthSuccess = (uid, dispatch) => {
   }
 }
 
-export var startSignup = (email, password, file) => {
+export var startSignup = (email, password, name, file) => {
   return (dispatch, getState) => {
     dispatch(isLoading());
 
-    return AuthAPI.signUp(email, password).then((response) => {
+    return AuthAPI.signUp(email, password, name).then((response) => {
 
       var accessToken = response.headers['x-auth'];
       localStorage.setItem('access_token', accessToken);

@@ -6,10 +6,10 @@ module.exports = {
     return axios.post(url, {email: email,password: password, name: "aaaaaa"});
   },
 
-  signUp:function (email, password) {
+  signUp:function (email, password, name) {
 
     var url = `${process.env.URL}users`;
-    return axios.post(url, {email: email, password: password, name: "aaaaaa"});
+    return axios.post(url, {email: email, password: password, name: name});
   },
 
   logout:function () {

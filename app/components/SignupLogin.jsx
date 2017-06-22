@@ -38,7 +38,7 @@ export class Login extends React.Component{
     this.signUpLastName  = this.refs.signUpLastName.value;
 
     let {file} = this.state;
-    this.dispatch(actions.startSignup(this.signUpEmail, password, file));
+    this.dispatch(actions.startSignup(this.signUpEmail, password, this.signUpFirstName, file));
     this.dispatch(actions.errorAuthErase());
   }
 
