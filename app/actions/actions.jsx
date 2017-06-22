@@ -152,7 +152,10 @@ export var getGroups = () => {
 
   return (dispatch, getState) => {
     return GroupApi.getAllGroups().then((res) => {
-      dispatch(addAllGroups(res.data.groups));
+      if (res.data.groups){
+        dispatch(addAllGroups(res.data.groups));
+      }
+
       dispatch(finishInit());
     })
   };
