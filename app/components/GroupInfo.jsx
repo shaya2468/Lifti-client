@@ -18,13 +18,16 @@ export class GroupInfo extends React.Component{
     if (fromSearch){
       group = {
         name: this.props.location.name,
-        pic: this.props.location.image
+        pic: this.props.location.image,
+        userStatus: this.props.location.userStatus
       }
     }else{
       group = groups.filter((group) => {
         return group._id === this.groupId;
       })[0]
     }
+
+    console.log(group);
 
     this.name = group.name;
     this.pic = group.pic;

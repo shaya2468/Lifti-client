@@ -12,7 +12,6 @@ var SearchForm = React.createClass({
   getInitialState: function () {
     return {
       data: null,
-      items: [],
       isFocus: false,
       chosen: null
     }
@@ -60,7 +59,8 @@ var SearchForm = React.createClass({
           pathname: `/home/group/${this.state.chosen.id}`,
           fromSearch: true,
           image: this.state.chosen.image,
-          name: this.state.chosen.name
+          name: this.state.chosen.name,
+          userStatus: this.state.chosen.userStatus
         }}/>
       )
 
@@ -77,7 +77,7 @@ var SearchForm = React.createClass({
 
               this.state.data.map((group) => {
                 return (
-                  <SearchItem key={group.id} name={group.name} image={group.image} id={group.id} onClickItem={this.onClickSearchItem}/>
+                  <SearchItem key={group.id} name={group.name} image={group.image} id={group.id} userStatus={group.user_status} onClickItem={this.onClickSearchItem}/>
                 );
               })
             }
@@ -94,7 +94,7 @@ var SearchItem = React.createClass({
 
   render: function () {
     return (
-      <div className="search-item" onMouseDown={e => this.props.onClickItem(e, {name:this.props.name, image: this.props.image, id:this.props.id })}>{this.props.name}</div>
+      <div className="search-item" onMouseDown={e => this.props.onClickItem(e, {name:this.props.name, image: this.props.image, id:this.props.id, userStatus:this.props.userStatus })}>{this.props.name}</div>
     );
   }
 });
