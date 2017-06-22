@@ -15,5 +15,10 @@ module.exports = {
     var url = `${process.env.URL}groups/`;
     var accessToken = localStorage.getItem('access_token');
     return axios.get(url, {headers: {"x-auth":accessToken}});
+  },
+  requestJoinGroup:function (groupId, message){
+    var url = `${process.env.URL}perms/`;
+    var accessToken = localStorage.getItem('access_token');
+    return axios.post(url, {group_id:groupId, message}, {headers: {"x-auth":accessToken}});
   }
 }

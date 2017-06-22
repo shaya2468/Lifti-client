@@ -1,12 +1,15 @@
 var React = require('react');
-var {connect} = require('react-redux');
 import * as actions from 'actions';
+var {connect} = require('react-redux');
+
 
 export class GroupInfo extends React.Component{
 
   constructor(props) {
     super(props);
     this.dispatch = props.dispatch;
+
+    this.sendJoinRequest = this.sendJoinRequest.bind(this);
     var {groups} = this.props;
 
     var {fromSearch} = this.props.location;
@@ -30,17 +33,19 @@ export class GroupInfo extends React.Component{
       if (group){
         group.userStatus = 'manager';
       }
-
     }
-
-    console.log(group);
 
     if (group){
       this.name = group.name;
       this.pic = group.pic;
-      this.userStatus = group.userStatus
+      this.state = {userStatus: group.userStatus}
     }
+  }
 
+  sendJoinRequest( message){
+    // here we send the request to server to join the group.
+    this.setState({userStatus: 'permission_request_sent'})
+    this.dispatch(actions.sendJoinRequest(this.groupId, message));
   }
 
   render() {
@@ -51,7 +56,7 @@ export class GroupInfo extends React.Component{
           <img id="group-page-image"
            src={this.pic}
            alt="loading..." />
-         <UserStatus status={this.userStatus} />
+         <UserStatus status={this.state.userStatus} sendJoinRequest={this.sendJoinRequest}/>
       </div>
     )
   }
@@ -67,7 +72,18 @@ class UserStatus extends React.Component{
     var {status} = this.props;
     if (status === 'non_member'){
       return(
-        <button id="send-permission-request">join group</button>
+        <div id="join-group-layout">
+        
+        }
+            <label htmlFor="comments" id="label-join-group">Add join message</label>
+            <textarea ref= "message" cols="46" rows="3" name="comments" id="text-join-group" ></textarea>
+
+          <button id="send-permission-request-button" onClick={ (e) => {
+              var message = this.refs.message.value;
+              this.props.sendJoinRequest(message)
+            }}>join group</button>
+        </div>
+
       )
     }
     var message;
@@ -87,6 +103,8 @@ class UserStatus extends React.Component{
     )
   }
 }
+
+
 
 export default connect(
   (state) => {

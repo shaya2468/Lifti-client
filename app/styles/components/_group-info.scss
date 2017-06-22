@@ -9,9 +9,29 @@
   margin-top: 1rem;
 }
 
-#send-permission-request{
+#join-group-layout{
+  display: flex;
+  flex-flow: column nowrap;
+  width: 15rem;
+}
+
+#send-permission-request-button{
   background-color: hotpink;
   padding: 0.5rem;
   margin-top: 1rem;
-  border-radius: 5px
+  border-radius: 5px;
+  width: 8rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+#label-join-group{
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  color: black;
+  font-size: 1.5rem;
+}
+
+#text-join-group{
+  color: black;
 }

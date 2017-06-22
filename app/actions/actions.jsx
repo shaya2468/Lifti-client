@@ -128,7 +128,15 @@ export var finishInit = () => {
   };
 };
 
-
+export var sendJoinRequest = (groupId, message) => {
+  return (dispatch, getState) => {
+    return GroupApi.requestJoinGroup(groupId, message).then((res) => {
+      console.log(res);
+    }).catch((e) => {
+      console.log(e);
+    })
+  }
+}
 
 
 export var startCreateGroup = (name, description, file) => {
