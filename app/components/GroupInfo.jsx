@@ -27,13 +27,20 @@ export class GroupInfo extends React.Component{
       })[0];
 
       // this is for now, since we get here from create group page
-      group.userStatus = 'manager';
+      if (group){
+        group.userStatus = 'manager';
+      }
+
     }
 
     console.log(group);
 
-    this.name = group.name;
-    this.pic = group.pic;
+    if (group){
+      this.name = group.name;
+      this.pic = group.pic;
+      this.userStatus = group.userStatus
+    }
+
   }
 
   render() {
@@ -44,7 +51,39 @@ export class GroupInfo extends React.Component{
           <img id="group-page-image"
            src={this.pic}
            alt="loading..." />
+         <UserStatus status={this.userStatus} />
       </div>
+    )
+  }
+}
+
+class UserStatus extends React.Component{
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    var {status} = this.props;
+    if (status === 'non_member'){
+      return(
+        <button id="send-permission-request">join group</button>
+      )
+    }
+    var message;
+    if (status === 'permission_request_sent'){
+      message = 'join request sent'
+    }
+    if (status === 'manager'){
+      message = 'you are the manager'
+    }
+    if (status === 'member'){
+      message = 'you are a member'
+    }
+
+
+    return (
+      <h1 id="group-page-header">{message}</h1>
     )
   }
 }
