@@ -7,6 +7,7 @@ import Dummy from 'Dummy';
 
 
 import Create from 'Create';
+import Perms from 'Perms';
 import AddTodo from 'AddTodo';
 import TodoSearch from 'TodoSearch';
 import * as actions from 'actions';
@@ -43,6 +44,9 @@ export class Home extends React.Component{
   },
   { path: '/home/create',
     main: () => <Create/>
+  },
+  { path: '/home/perms',
+    main: () => <Perms/>
   }
 ]
 
@@ -73,6 +77,7 @@ export class Home extends React.Component{
 
             <Link to="/home" className="btn_nav">Home</Link>
             <Link to="/home/create" className="btn_nav">Create</Link>
+            <Link to="/home/perms" className="btn_nav">Permissions</Link>
             <button type="button" name="button" id="logout-btn"className="btn_nav" onClick={ this.onLogout }>Logout</button>
           </div>
           {routes.map((route, index) => (

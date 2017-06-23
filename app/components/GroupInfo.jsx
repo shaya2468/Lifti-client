@@ -73,8 +73,7 @@ class UserStatus extends React.Component{
     if (status === 'non_member'){
       return(
         <div id="join-group-layout">
-        
-        }
+
             <label htmlFor="comments" id="label-join-group">Add join message</label>
             <textarea ref= "message" cols="46" rows="3" name="comments" id="text-join-group" ></textarea>
 
