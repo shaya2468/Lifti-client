@@ -7,8 +7,34 @@ export class Perms extends React.Component{
   render() {
 
     return (
-      <div id="dummy">
-        <h1 id="dummy_title">Pending requests</h1>
+      <div >
+        <div className="cards-list">
+
+          <div className="card">
+            <div className="card-content">
+              <img src="https://goo.gl/mw8pHx" alt=""></img>
+              <div className="card-words">
+                  <h2 id="perm-title">Shaya Ajzner would like to join beer 7 students</h2>
+                  <h3 id="perm-message">"sup man you remember me from studying medicine together, would love to join"</h3>
+              </div>
+              <div className="acc-rej">
+                <button className="perm-button" id="acc">accept</button>
+                <button className="perm-button" id="rej">reject</button>
+              </div>
+            </div>
+
+          </div>
+          <div className="card">
+            Card 2
+          </div>
+          <div className="card">
+            Card 3
+          </div>
+          <div className="card">
+            Card 4
+          </div>
+
+        </div>
       </div>
     )
   }

@@ -1,0 +1,82 @@
+.cards-list {
+  padding: 30px;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cards-list .card {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+  border-radius: 4px;
+  padding: 15px;
+  background-color: #FFFFF7;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  min-height: 120px;
+}
+.cards-list .card:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+
+.cards-list .card img{
+  height: 6rem;
+  width: 6rem;
+}
+
+.card-content{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-words{
+  display: flex;
+  margin-left: 2rem;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+}
+
+.card-words span{
+  margin-bottom: 2rem;
+}
+
+.acc-rej{
+  display: flex;
+  flex-flow: column wrap;
+  margin-left: 2rem;
+}
+
+
+.perm-button{
+
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+#acc{
+  background-color: #4CAF50;
+}
+
+#rej{
+  background-color: #f44336;
+}
+
+#perm-title{
+  font-size: 1.5rem;
+}
+
+#perm-message{
+  font-size: 1rem;
+}
