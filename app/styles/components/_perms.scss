@@ -1,8 +1,15 @@
 .cards-list {
-  padding: 30px;
+  // padding: 30px;
   max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
+  // margin-left: auto;
+  // margin-right: auto;
+  margin: 0 auto;
+  boder: 5px solid red;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  height: 100%;
+  padding-top:3rem;
 }
 .cards-list .card {
   display: flex;
@@ -14,8 +21,9 @@
   background-color: #FFFFF7;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   min-height: 120px;
+  width: 40%;
 }
-.cards-list .card:not(:last-child) {
+.cards-list .card {
   margin-bottom: 15px;
 }
 
@@ -28,14 +36,18 @@
 .card-content{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
+}
+
+.card{
+   margin-left: 1rem;
 }
 
 .card-words{
   display: flex;
   margin-left: 2rem;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   justify-content: flex-start;
 }
 

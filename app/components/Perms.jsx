@@ -12,12 +12,44 @@ export class Perms extends React.Component{
       <div >
         <div className="cards-list">
 
-          <div className="card">
+          {
+            perms.map((perm) => {
+              return (
+                <SinglePerm key ={perm.applicant_id + perm.group_id} applicantName={perm.applicant_name}
+                  applicantPic={perm.applicant_pic} groupId={perm.group_id} groupName={perm.group_name}
+                  message={perm.message}
+                  />
+              )
+            })
+          }
+
+        </div>
+      </div>
+    )
+  }
+}
+
+class SinglePerm extends React.Component{
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+
+    var {applicantName} = this.props;
+    var {applicantPic} = this.props; // done
+    var {groupId} = this.props;
+    var {groupName} = this.props;
+    var {message} = this.props;
+    console.log(groupId, groupName, message);
+    return (
+      <div className="card" >
             <div className="card-content">
-              <img src="https://goo.gl/mw8pHx" alt=""></img>
+              <img src={applicantPic} alt=""></img>
               <div className="card-words">
-                  <h2 id="perm-title">Shaya Ajzner would like to join beer 7 students</h2>
-                  <h3 id="perm-message">"sup man you remember me from studying medicine together, would love to join"</h3>
+                  <h2 id="perm-title">{applicantName} would like to join {groupName}</h2>
+                  <h3 id="perm-message">{message}</h3>
               </div>
               <div className="acc-rej">
                 <button className="perm-button" id="acc">accept</button>
@@ -26,20 +58,10 @@ export class Perms extends React.Component{
             </div>
 
           </div>
-          <div className="card">
-            Card 2
-          </div>
-          <div className="card">
-            Card 3
-          </div>
-          <div className="card">
-            Card 4
-          </div>
 
-        </div>
-      </div>
     )
   }
+
 }
 
 export default connect(
