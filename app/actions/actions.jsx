@@ -71,6 +71,13 @@ export var addAllGroups = (groups) => {
   };
 };
 
+export var addAllPermRequests = (perms) => {
+  return {
+    type: 'ADD_PERMS',
+    perms
+  };
+};
+
 export var startAddTodos = () => {
   return (dispatch, getState) => {
     var uid = getState().auth.uid;
@@ -163,8 +170,10 @@ export var getGroups = () => {
       if (res.data.groups){
         dispatch(addAllGroups(res.data.groups));
       }
-
-      dispatch(finishInit());
+      return GroupApi.getAllJoinRequests().then((res) => {
+        dispatch(addAllPermRequests(res.data));
+        dispatch(finishInit());
+      })
     })
   };
 };

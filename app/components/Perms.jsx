@@ -5,7 +5,9 @@ import SearchForm from 'SearchForm';
 export class Perms extends React.Component{
 
   render() {
-
+    var {perms} = this.props;
+    console.log('in perms screen');
+    console.log(perms);
     return (
       <div >
         <div className="cards-list">
@@ -39,4 +41,11 @@ export class Perms extends React.Component{
     )
   }
 }
-export default connect()(Perms);
+
+export default connect(
+  (state) => {
+    return {
+      perms: state.perms
+    }
+  }
+)(Perms);

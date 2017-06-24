@@ -66,6 +66,15 @@ export var groupsReducer = (state = [], action) => {
   }
 };
 
+export var permsReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_PERMS':
+      return action.perms;
+    default:
+      return state;
+  }
+}
+
 export var todosReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TODO':
