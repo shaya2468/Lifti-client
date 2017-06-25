@@ -146,6 +146,39 @@ export var sendJoinRequest = (groupId, message) => {
 }
 
 
+export var sendingAcceptJoin = (applicantId, groupId) => {
+  return {
+    type: 'ACCEPT_JOIN',
+    groupId,
+    applicantId
+  };
+};
+
+export var joinAcceptDone = (applicantId, groupId) => {
+  return {
+    type: 'ACCEPT_JOIN_DONE',
+    groupId,
+    applicantId
+  };
+};
+
+
+export var acceptJoin = (applicantId, groupId) => {
+  return (dispatch, getState) => {
+
+    dispatch(sendingAcceptJoin(applicantId, groupId));
+    return GroupApi.acceptJoin(applicantId, groupId).then((res) => {
+        dispatch(joinAcceptDone(applicantId, groupId));
+    })
+  }
+}
+
+function delay(t) {
+   return new Promise(function(resolve) {
+       setTimeout(resolve, t)
+   });
+}
+
 export var startCreateGroup = (name, description, file) => {
 
   return (dispatch, getState) => {

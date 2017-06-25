@@ -25,6 +25,11 @@ module.exports = {
     var url = `${process.env.URL}perms/`;
     var accessToken = localStorage.getItem('access_token');
     return axios.get(url, {headers: {"x-auth":accessToken}});
+  },
+  acceptJoin:function (applicantId, groupId){
+    var url = `${process.env.URL}perms/accept`;
+    var accessToken = localStorage.getItem('access_token');
+    return axios.post(url, {applicant_id:applicantId, group_id:groupId }, {headers: {"x-auth":accessToken}});
   }
 
 }

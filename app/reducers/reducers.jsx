@@ -69,7 +69,32 @@ export var groupsReducer = (state = [], action) => {
 export var permsReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_PERMS':
-      return action.perms;
+
+      var perms = action.perms;
+      perms.map ( (perm) => {
+        perm.requestStatus = 'static';
+      })
+
+      return perms;
+
+    case 'ACCEPT_JOIN':
+    
+        var wantedPerm = state.filter( (e) => {
+          return ((e.applicant_id === action.applicantId) && (e.group_id === action.groupId));
+        })[0];
+
+        wantedPerm.requestStatus = 'loading';
+
+        return [...state];
+      case 'ACCEPT_JOIN_DONE':
+
+        var wantedPerm = state.filter( (e) => {
+          return ((e.applicant_id === action.applicantId) && (e.group_id === action.groupId));
+        })[0];
+
+        wantedPerm.requestStatus = 'done';
+
+        return [...state];
     default:
       return state;
   }
