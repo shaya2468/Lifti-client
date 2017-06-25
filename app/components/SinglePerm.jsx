@@ -8,12 +8,18 @@ export class SinglePerm extends React.Component{
   constructor(props) {
     super(props);
     this.onClickAccept = this.onClickAccept.bind(this);
+    this.onClickReject = this.onClickReject.bind(this);
     this.dispatch = props.dispatch;
   }
 
   onClickAccept(event){
     event.preventDefault();
-    this.dispatch(actions.acceptJoin(this.applicantId, this.groupId))
+    this.dispatch(actions.acceptJoin(this.applicantId, this.groupId, true))
+  }
+
+  onClickReject(event){
+    event.preventDefault();
+    this.dispatch(actions.acceptJoin(this.applicantId, this.groupId, false))
   }
 
   render() {
@@ -49,7 +55,7 @@ export class SinglePerm extends React.Component{
                     ?
                     <div className="acc-rej">
                       <button className="perm-button" id="acc" onClick={this.onClickAccept}>accept</button>
-                      <button className="perm-button" id="rej">reject</button>
+                      <button className="perm-button" id="rej" onClick={this.onClickReject}>reject</button>
                     </div>
                     :
                     <div className="acc-rej">

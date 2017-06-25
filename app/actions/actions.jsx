@@ -163,12 +163,15 @@ export var joinAcceptDone = (applicantId, groupId) => {
 };
 
 
-export var acceptJoin = (applicantId, groupId) => {
+export var acceptJoin = (applicantId, groupId, isAccept) => {
   return (dispatch, getState) => {
 
     dispatch(sendingAcceptJoin(applicantId, groupId));
-    return GroupApi.acceptJoin(applicantId, groupId).then((res) => {
+    return GroupApi.acceptJoin(applicantId, groupId, isAccept).then((res) => {
         dispatch(joinAcceptDone(applicantId, groupId));
+    }).catch((e) => {
+      console.log('exception on accept join');
+      console.log(e);
     })
   }
 }

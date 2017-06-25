@@ -7,15 +7,14 @@ export class Perms extends React.Component{
 
   render() {
     var {perms} = this.props;
-    console.log('in perms screen');
-    console.log(perms);
+
     return (
       <div >
         <div className="cards-list">
 
           {
             perms.map((perm, index) => {
-              
+
               return (
 
                 <SinglePerm key={index} applicantName={perm.applicant_name}

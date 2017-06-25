@@ -70,6 +70,7 @@ class UserStatus extends React.Component{
 
   render() {
     var {status} = this.props;
+
     if (status === 'non_member'){
       return(
         <div id="join-group-layout">
@@ -86,6 +87,7 @@ class UserStatus extends React.Component{
       )
     }
     var message;
+
     if (status === 'permission_request_sent'){
       message = 'join request sent'
     }
