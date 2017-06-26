@@ -1,0 +1,67 @@
+#see-lift-form ul{
+  display: flex;
+  align-items: center;
+  // border: 1px solid red;
+}
+
+#see-lift-form * input[type='submit']{
+  color: white;
+  background-color: green;
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+}
+
+#see-lift-form * label{
+  color: black;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+#see-lift-form * option{
+
+  color: black;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+
+.see-lift-city{
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0.5rem;
+}
+
+.see-lift-city label{
+  text-align: left;
+  // margin-left: 0.5rem;
+}
+
+.see-lift-date-picker{
+  font-family: 'Lato', sans-serif;
+  height: 2rem;
+  margin-top: 0.5rem;
+  padding: 0.2rem 0.1rem;
+  color: #555;
+  background: white;
+  border-radius: 5px;
+
+}
+
+.see-lift-city label{
+  margin-left: 0.5rem;
+}
+
+.timep{
+  margin: 0 0.5rem;
+}
+
+#timep-text{
+  margin-bottom: 5rem;
+  color: hotpink;
+}
+
+.drop-down-see-lift{
+  background-color: white;
+  border: 1px solid #ccc;
+
+}

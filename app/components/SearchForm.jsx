@@ -42,7 +42,7 @@ var SearchForm = React.createClass({
   },
 
   onfocusout: function(e){
-    this.setState({ isFocus:false});
+    this.setState({ isFocus:false, data:null});
     this.refs.search_text.value="";
   },
   onClickSearchItem: function(event, searchData){
@@ -71,7 +71,7 @@ var SearchForm = React.createClass({
           <input type="text" placeholder="Search" ref="search_text"
                  className="form-control"
                  onBlur={this.onfocusout} onFocus={this.onFocus} onChange={this.handleChange} id="search-title"/>
-               <div className="search-items">
+               <div className={this.state.data && this.state.data.length >0 ? "search-items" : ""}>
 
             { isFocus &&
 

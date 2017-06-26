@@ -3,7 +3,7 @@ import * as Redux from 'react-redux';
 
 import TodoList from 'TodoList'
 import Nav from 'Nav';
-import Dummy from 'Dummy';
+import SeeLifts from 'SeeLifts';
 
 
 import Create from 'Create';
@@ -39,7 +39,7 @@ export class Home extends React.Component{
     const routes = [
   { path: '/home',
     exact: true,
-    main: () => <Dummy/>
+    main: () => <SeeLifts/>
 
   },
   { path: '/home/create',
