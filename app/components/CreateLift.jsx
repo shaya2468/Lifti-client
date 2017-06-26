@@ -144,7 +144,7 @@ class GroupContainer extends React.Component{
           {
             groups.map((group, index) => {
               return (
-                <SingleGroup key={index} name={group.name} id={group._id} groupChosen= {this.props.groupChosen}/>
+                <SingleGroup key={index} name={group.name} id={group.id} groupChosen= {this.props.groupChosen}/>
               );
             })
           }
