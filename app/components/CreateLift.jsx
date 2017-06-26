@@ -106,7 +106,7 @@ export class CreateLift extends React.Component{
               <CityStreet info={{text:'Destination', id:'dest_' }} handleChange={this.handleChange}/>
               <LeavingAt handleChange={this.handleChange}/>
               <NumberOfPassengers handleChange={this.handleChange}/>
-              <GroupList groups={this.groups} groupChosen={this.groupChosen}/>
+              <GroupContainer groups={this.groups} groupChosen={this.groupChosen}/>
               <Comments handleChange={this.handleChange}/>
 
               <li><div className="divider"></div></li>
@@ -126,7 +126,7 @@ export class CreateLift extends React.Component{
 }
 
 
-class GroupList extends React.Component{
+class GroupContainer extends React.Component{
 
   constructor(props) {
     super(props);
@@ -142,9 +142,9 @@ class GroupList extends React.Component{
         <h1 className="create-lift-h1"  className="address_info">Add to groups</h1>
         <div id="group-checkboxes">
           {
-            groups.map((group) => {
+            groups.map((group, index) => {
               return (
-                <SingleGroup key={group._id} name={group.name} id={group._id} groupChosen= {this.props.groupChosen}/>
+                <SingleGroup key={index} name={group.name} id={group._id} groupChosen= {this.props.groupChosen}/>
               );
             })
           }

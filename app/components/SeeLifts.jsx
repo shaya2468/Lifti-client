@@ -94,7 +94,7 @@ export class SeeLifts extends React.Component{
                       <div className="driver-of-ride">
                         <h4>Driver is Walter white</h4>
                         <div className="ride-image-strip">
-                          <img src="https://goo.gl/jiiEQx" alt="" text="aaa"/>
+                          <img src="https://goo.gl/jiiEQx" alt="" />
                         </div>
                       </div>
                       <div className="join-ride-layout">
@@ -105,10 +105,10 @@ export class SeeLifts extends React.Component{
 
                   <h4>who's confirmed?</h4>
                   <div className="ride-image-strip confirmed-list">
-                      <img src="https://goo.gl/e3fq8V" alt="" text="aaa"/>
+                      <img src="https://goo.gl/e3fq8V" alt="" />
                       <img src="https://goo.gl/u5bPP7" alt=""/>
                       <img src="https://goo.gl/giKRBV" alt=""/>
-                      <img src="https://goo.gl/LxAz1b" alt="" text="aaa"/>
+                      <img src="https://goo.gl/LxAz1b" alt="" />
 
                   </div>
 
@@ -136,7 +136,7 @@ export class SeeLifts extends React.Component{
                       <div className="driver-of-ride">
                         <h4>Driver is Walter white</h4>
                         <div className="ride-image-strip">
-                          <img src="https://goo.gl/jiiEQx" alt="" text="aaa"/>
+                          <img src="https://goo.gl/jiiEQx" alt="" />
                         </div>
                       </div>
                       <div className="join-ride-layout">
@@ -147,10 +147,10 @@ export class SeeLifts extends React.Component{
 
                   <h4>who's confirmed?</h4>
                   <div className="ride-image-strip confirmed-list">
-                      <img src="https://goo.gl/e3fq8V" alt="" text="aaa"/>
+                      <img src="https://goo.gl/e3fq8V" alt="" />
                       <img src="https://goo.gl/u5bPP7" alt=""/>
                       <img src="https://goo.gl/giKRBV" alt=""/>
-                      <img src="https://goo.gl/LxAz1b" alt="" text="aaa"/>
+                      <img src="https://goo.gl/LxAz1b" alt="" />
 
                   </div>
 
@@ -178,7 +178,7 @@ export class SeeLifts extends React.Component{
                       <div className="driver-of-ride">
                         <h4>Driver is Walter white</h4>
                         <div className="ride-image-strip">
-                          <img src="https://goo.gl/jiiEQx" alt="" text="aaa"/>
+                          <img src="https://goo.gl/jiiEQx" alt="" />
                         </div>
                       </div>
                       <div className="join-ride-layout">
@@ -189,10 +189,10 @@ export class SeeLifts extends React.Component{
 
                   <h4>who's confirmed?</h4>
                   <div className="ride-image-strip confirmed-list">
-                      <img src="https://goo.gl/e3fq8V" alt="" text="aaa"/>
+                      <img src="https://goo.gl/e3fq8V" alt="" />
                       <img src="https://goo.gl/u5bPP7" alt=""/>
                       <img src="https://goo.gl/giKRBV" alt=""/>
-                      <img src="https://goo.gl/LxAz1b" alt="" text="aaa"/>
+                      <img src="https://goo.gl/LxAz1b" alt="" />
 
                   </div>
 
@@ -220,7 +220,7 @@ export class SeeLifts extends React.Component{
                       <div className="driver-of-ride">
                         <h4>Driver is Walter white</h4>
                         <div className="ride-image-strip">
-                          <img src="https://goo.gl/jiiEQx" alt="" text="aaa"/>
+                          <img src="https://goo.gl/jiiEQx" alt="" />
                         </div>
                       </div>
                       <div className="join-ride-layout">
@@ -231,10 +231,10 @@ export class SeeLifts extends React.Component{
 
                   <h4>who's confirmed?</h4>
                   <div className="ride-image-strip confirmed-list">
-                      <img src="https://goo.gl/e3fq8V" alt="" text="aaa"/>
+                      <img src="https://goo.gl/e3fq8V" alt="" />
                       <img src="https://goo.gl/u5bPP7" alt=""/>
                       <img src="https://goo.gl/giKRBV" alt=""/>
-                      <img src="https://goo.gl/LxAz1b" alt="" text="aaa"/>
+                      <img src="https://goo.gl/LxAz1b" alt="" />
 
                   </div>
 
@@ -262,7 +262,7 @@ export class SeeLifts extends React.Component{
                       <div className="driver-of-ride">
                         <h4>Driver is Walter white</h4>
                         <div className="ride-image-strip">
-                          <img src="https://goo.gl/jiiEQx" alt="" text="aaa"/>
+                          <img src="https://goo.gl/jiiEQx" alt="" />
                         </div>
                       </div>
                       <div className="join-ride-layout">
@@ -273,10 +273,10 @@ export class SeeLifts extends React.Component{
 
                   <h4>who's confirmed?</h4>
                   <div className="ride-image-strip confirmed-list">
-                      <img src="https://goo.gl/e3fq8V" alt="" text="aaa"/>
+                      <img src="https://goo.gl/e3fq8V" alt="" />
                       <img src="https://goo.gl/u5bPP7" alt=""/>
                       <img src="https://goo.gl/giKRBV" alt=""/>
-                      <img src="https://goo.gl/LxAz1b" alt="" text="aaa"/>
+                      <img src="https://goo.gl/LxAz1b" alt="" />
 
                   </div>
 
