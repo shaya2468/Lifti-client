@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Hind');
+
+#see-lift-form{
+  display: flex;
+  justify-content: center;
+
+}
+
+
 #see-lift-form ul{
   display: flex;
   align-items: center;
@@ -10,7 +19,7 @@
   margin-left: 2rem;
   margin-top: 1.5rem;
   cursor: pointer;
-
+  padding: 0.5rem;
 }
 
 #see-lift-form * label{
@@ -71,4 +80,186 @@
 #car-in-lift{
   width: 1.5rem;
   height: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+#lifts-list {
+  font-family: 'Hind', sans-serif;
+  background-color: #e6e6e6;
+  min-height: 100vh;
+
+}
+
+#lifts-list section {
+  margin: 2rem 3rem;
+}
+
+#lifts-list h1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  margin: 2rem 3rem;
+  border-bottom: 1px solid #BBB;
+}
+
+#lifts-list h2 {
+  font-size: 3rem;
+  margin: 0 0 0 15px;
+  text-transform: uppercase;
+}
+
+.single-lift-top-title {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  margin: 1rem 0 0 0;
+  line-height: 0.5;
+}
+
+.responsive ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 1rem;
+}
+
+.responsive2 ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-gap: 1rem;
+}
+
+#lifts-list ul {
+  list-style: none;
+  margin: 0rem;
+  padding: 1rem;
+
+
+}
+
+.list-item-lift {
+  background: #FFF;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  max-width: 28rem;
+
+}
+
+.list-item-lift:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.join-ride{
+
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.join-ride-layout{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  cursor: pointer;
+  /*border: 1px solid red;*/
+  margin-top: 2rem;
+}
+
+
+
+.join-ride-text {
+  padding-left: 0.5rem;
+}
+
+.join-car{
+  margin-left: 1rem;
+}
+
+.ride-image-strip{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  /*height: 5rem;*/
+}
+
+.ride-image-strip img{
+  display: block;
+  width: 10rem;
+  margin: 0 auto;
+  border: 6px solid lightsteelblue;
+  height: 10rem;
+  border-radius: 50%;
+
+  height: 4rem;
+  width: 4rem;
+  border: 1px solid green;
+  margin: 0.5rem 0.5rem;
+
+  /*vertical-align: middle;*/
+}
+
+.lift-address{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+.lift-address-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.lift-address h4{
+  text-align: center;
+
+}
+
+.driver-of-ride{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.when-leave{
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.join-ride-cost{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.join-ride-dollar{
+  margin-left: 1rem;
+}
+
+.driver-and-join{
+  display: flex;
+  justify-content: space-around;
+  /*align-items: center;*/
+}
+
+.lift-street{
+  margin-top: 1rem;
+}
+
+.confirmed-list{
+  margin-top: 1rem;
+}
+
+.ride-comments{
+  margin-top: 1rem;
+  line-height: 1.5rem;
 }
