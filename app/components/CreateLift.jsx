@@ -8,7 +8,7 @@ export class CreateLift extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = {isLoading:false, depart_city:'Jerusalem', depart_street: null, dest_city:'Jerusalem', dest_street: null, time:null, date:null, num_pass:null, comments:null, groupsToAdd: {}}
+    this.state = {isLoading:false, depart_city:null, depart_street: null, dest_city:null, dest_street: null, time:null, date:null, num_pass:null, comments:null, groupsToAdd: {}}
     this.handleChange = this.handleChange.bind(this);
     this.groupChosen = this.groupChosen.bind(this);
     var {groups, cities} = this.props;
@@ -194,15 +194,13 @@ class CityStreet extends React.Component{
 
           <p className="left">
             <label htmlFor="depart">city</label>
-            <select className="drop-down-lift" name="depart" onChange={  this.props.handleChange.bind( null, this.info.id + 'city') }>
-              <option>Jerulalem</option>
-              <option >Tel aviv</option>
-              <option>Eilat</option>
-              <option>Ramat Gan</option>
-              <option>Netivot</option>
-              <option>Yerucham</option>
-              <option>Tiberias</option>
-              <option>Lod</option>
+            <select required className="drop-down-lift" name="depart" onChange={  this.props.handleChange.bind( null, this.info.id + 'city') }>
+              <option value="">---</option>
+              <option value="Jerulalem">Jerulalem</option>
+              <option value="Tel aviv">Tel aviv</option>
+              <option value="Eilat">Eilat</option>
+              <option value="Ramat Gan">Ramat Gan</option>
+              <option value="Netivot">Netivot</option>
             </select>
           </p>
           <p className="pull-right">
