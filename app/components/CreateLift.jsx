@@ -103,8 +103,8 @@ export class CreateLift extends React.Component{
         <div className="row-create-lift body-create-lift">
           <form id="lift-form" onSubmit={this.onCreateLift}>
             <ul>
-              <CityStreet info={{text:'Point of Departure', id:'depart_' }} handleChange={this.handleChange}/>
-              <CityStreet info={{text:'Destination', id:'dest_' }} handleChange={this.handleChange}/>
+              <CityStreet cities={this.cities} info={{text:'Point of Departure', id:'depart_' }} handleChange={this.handleChange}/>
+              <CityStreet cities={this.cities} info={{text:'Destination', id:'dest_' }} handleChange={this.handleChange}/>
               <LeavingAt handleChange={this.handleChange}/>
               <NumberOfPassengers handleChange={this.handleChange}/>
               <GroupContainer groups={this.groups} groupChosen={this.groupChosen}/>
@@ -183,6 +183,7 @@ class CityStreet extends React.Component{
   constructor(props) {
     super(props);
     this.info = props.info;
+    this.cities = props.cities;
   }
 
   render() {
@@ -195,12 +196,15 @@ class CityStreet extends React.Component{
           <p className="left">
             <label htmlFor="depart">city</label>
             <select required className="drop-down-lift" name="depart" onChange={  this.props.handleChange.bind( null, this.info.id + 'city') }>
+
               <option value="">---</option>
-              <option value="Jerulalem">Jerulalem</option>
-              <option value="Tel aviv">Tel aviv</option>
-              <option value="Eilat">Eilat</option>
-              <option value="Ramat Gan">Ramat Gan</option>
-              <option value="Netivot">Netivot</option>
+              {
+                this.cities.map((city, index) => {
+                  return(
+                      <option key={index} value={city.id}>{city.name}</option>
+                  )
+                })
+              }
             </select>
           </p>
           <p className="pull-right">
