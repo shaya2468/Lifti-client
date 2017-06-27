@@ -11,8 +11,9 @@ export class CreateLift extends React.Component{
     this.state = {isLoading:false, depart_city:'Jerusalem', depart_street: null, dest_city:'Jerusalem', dest_street: null, time:null, date:null, num_pass:null, comments:null, groupsToAdd: {}}
     this.handleChange = this.handleChange.bind(this);
     this.groupChosen = this.groupChosen.bind(this);
-    var {groups} = this.props;
+    var {groups, cities} = this.props;
     this.groups = groups;
+    this.cities = cities;
   }
 
   handleChange(field, event) {
@@ -281,7 +282,8 @@ class Comments extends React.Component{
 export default connect(
   (state) => {
     return {
-      groups: state.groups
+      groups: state.groups,
+      cities: state.cities,
     }
   }
 )(CreateLift);

@@ -38,6 +38,18 @@ export var finishInitReducer = (state = false, action) => {
   };
 };
 
+
+
+export var citiesReducer = (state = [], action) => {
+  switch (action.type) {
+
+    case 'ADD_CITIES':
+      return action.cities;
+    default:
+      return state;
+  }
+};
+
 export var groupsReducer = (state = [], action) => {
   switch (action.type) {
 
@@ -78,7 +90,7 @@ export var permsReducer = (state = [], action) => {
       return perms;
 
     case 'ACCEPT_JOIN':
-    
+
         var wantedPerm = state.filter( (e) => {
           return ((e.applicant_id === action.applicantId) && (e.group_id === action.groupId));
         })[0];

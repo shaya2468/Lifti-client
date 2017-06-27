@@ -2,6 +2,7 @@ import moment from 'moment';
 import AuthAPI from 'AuthAPI';
 import UploadApi from 'UploadApi';
 import GroupApi from 'GroupApi';
+import CityApi from 'CityApi';
 import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
 
 export var setSearchText = (searchText) => {
@@ -70,6 +71,14 @@ export var addAllGroups = (groups) => {
     groups
   };
 };
+
+export var addAllCities = (cities) => {
+  return {
+    type: 'ADD_CITIES',
+    cities
+  };
+};
+
 
 export var addAllPermRequests = (perms) => {
   return {
@@ -202,14 +211,18 @@ export var startCreateGroup = (name, description, file) => {
 export var getGroups = () => {
 
   return (dispatch, getState) => {
-    return GroupApi.getAllGroups().then((res) => {
+    return GroupApi.getAllGroups()
+    .then((res) => {
       if (res.data.groups){
         dispatch(addAllGroups(res.data.groups));
       }
-      return GroupApi.getAllJoinRequests().then((res) => {
-        dispatch(addAllPermRequests(res.data));
-        dispatch(finishInit());
-      })
+      return GroupApi.getAllJoinRequests()
+    }).then((res) => {
+      dispatch(addAllPermRequests(res.data));
+      return CityApi.getCities();
+    }).then((res) => {
+      dispatch(addAllCities(res.data))
+      dispatch(finishInit());
     })
   };
 };
