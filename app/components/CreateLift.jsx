@@ -34,6 +34,14 @@ export class CreateLift extends React.Component{
     this.setState({groupsToAdd: newState});
   }
 
+  constructLeaveAtTimestamp(){
+    var time = this.state.time;
+    var date = this.state.date;
+
+    var timestamp = moment(date + " " + time, "YYYY/MM/DD HH:mm").unix();
+    return timestamp;
+  }
+
   onCreateLift = (e) => {
     e.preventDefault();
 
@@ -52,7 +60,8 @@ export class CreateLift extends React.Component{
       return;
     }
 
-    var leaveAtTimestamp  = moment("2017-06-29 14:33", "YYYY/MM/DD HH:mm").unix();
+
+    var leaveAtTimestamp = this.constructLeaveAtTimestamp();
     var body = {
       origin_city: this.state.depart_city,
       origin_street: this.state.depart_street,
@@ -63,6 +72,8 @@ export class CreateLift extends React.Component{
       capacity: parseInt(this.state.num_pass),
       groups:groupIdsArray
     }
+
+
 
 
     this.setState({isLoading:true});
