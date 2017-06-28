@@ -195,9 +195,8 @@ export var startCreateGroup = (name, description, file) => {
 
   return (dispatch, getState) => {
     return GroupApi.createGroup(name, description).then((res) => {
-
       if (file){
-        return UploadApi.uploadFile(file, res.data._id).then((newGroup) => {
+        return UploadApi.uploadFile(file, res.data.id).then((newGroup) => {
            dispatch(addGroup(newGroup));
            return newGroup;
         });

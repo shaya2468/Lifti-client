@@ -61,9 +61,11 @@ export class CreateGroup extends React.Component{
 
       this.setState({
         isLoading: false,
-        gropuId: res._id
+        gropuId: res.id
       });
     }).catch((e) => {
+      console.log('error?');
+      console.log(e);
       finish('error');
     });
   }

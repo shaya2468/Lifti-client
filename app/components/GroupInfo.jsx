@@ -26,7 +26,7 @@ export class GroupInfo extends React.Component{
       }
     }else{
       group = groups.filter((group) => {
-        return group._id === this.groupId;
+        return group.id === this.groupId;
       })[0];
 
       // this is for now, since we get here from create group page
