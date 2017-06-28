@@ -4,66 +4,22 @@ import * as actions from 'actions';
 import SearchForm from 'SearchForm';
 export class SeeLifts extends React.Component{
 
+  constructor(props){
+    super(props);
+    var {cities} = this.props;
+    this.cities = cities;
+
+    this.state = {origin_city: null, destination_city: null}
+  }
+
+
+
   render() {
 
     return (
       <div id="lifts-list">
         <SearchForm/>
-          <form id="see-lift-form" >
-            <ul>
-              <ul>
-                <p className="see-lift-city">
-                  <label htmlFor="depart">depart</label>
-                  <select className="drop-down-lift drop-down-see-lift" name="depart" >
-                    <option>Jerulalem</option>
-                    <option >Tel aviv</option>
-                    <option>Eilat</option>
-                    <option>Ramat Gan</option>
-                    <option>Netivot</option>
-                    <option>Yerucham</option>
-                    <option>Tiberias</option>
-                    <option>Lod</option>
-                  </select>
-                </p>
-              </ul>
-
-              <ul>
-                <p className="see-lift-city">
-                  <label htmlFor="depart">destination</label>
-                  <select className="drop-down-lift drop-down-see-lift" name="depart" >
-                    <option>Jerulalem</option>
-                    <option >Tel aviv</option>
-                    <option>Eilat</option>
-                    <option>Ramat Gan</option>
-                    <option>Netivot</option>
-                    <option>Yerucham</option>
-                    <option>Tiberias</option>
-                    <option>Lod</option>
-                  </select>
-                </p>
-              </ul>
-
-              <p className="timep">
-                <label htmlFor="date-picker" className="date-text" id="timep-text">date</label>
-                <input type="date" required name="date-picker" className="see-lift-date-picker" ref="date" />
-              </p>
-
-              <p className="timep">
-                <label htmlFor="time-picker">from</label>
-                <input  required type="time" name="time-picker" ref="time" className="see-lift-date-picker"/>
-              </p>
-
-              <p className="timep">
-                <label htmlFor="time-picker">to</label>
-                <input  required type="time" name="time-picker" ref="time" className="see-lift-date-picker"/>
-              </p>
-
-              <li>
-                <input id="see-lift-submit" type="submit" value="find lifts" />
-              </li>
-
-            </ul>
-          </form>
+          <SeeLiftsForm cities={this.cities}/>
           <div >
 
         <section className="responsive2">
@@ -120,7 +76,88 @@ export class SeeLifts extends React.Component{
   }
 }
 
+class SeeLiftsForm extends React.Component{
 
+  constructor(props) {
+    super(props);
+    this.cities = this.props.cities;
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(field, event) {
+    event.preventDefault();
+
+    this.setState({
+      [field]: event.target.value
+    });
+  }
+
+  render(){
+
+    return (
+      <form id="see-lift-form" >
+        <ul>
+
+          <SeeLiftsCity title={'depart'} cities={this.cities}  jsonKey={'origin_city'} handleChange={this.handleChange}/>
+          <SeeLiftsCity title={'destination'} cities={this.cities} jsonKey={'destination_city'} handleChange={this.handleChange}/>
+
+          <p className="timep">
+            <label htmlFor="date-picker" className="date-text" id="timep-text">date</label>
+            <input type="date" required name="date-picker" className="see-lift-date-picker" ref="date" />
+          </p>
+
+          <p className="timep">
+            <label htmlFor="time-picker">from</label>
+            <input  required type="time" name="time-picker" ref="time" className="see-lift-date-picker"/>
+          </p>
+
+          <p className="timep">
+            <label htmlFor="time-picker">to</label>
+            <input  required type="time" name="time-picker" ref="time" className="see-lift-date-picker"/>
+          </p>
+
+          <li>
+            <input id="see-lift-submit" type="submit" value="find lifts" />
+          </li>
+
+        </ul>
+      </form>
+    )
+  }
+}
+
+class SeeLiftsCity extends React.Component{
+
+  constructor(props) {
+    super(props);
+    this.title = props.title;
+    this.cities = props.cities;
+    this.jsonKey = props.jsonKey;
+    this.handleChange = props.handleChange;
+  }
+
+  render() {
+
+    return (
+
+      <ul>
+        <p className="see-lift-city">
+          <label htmlFor="depart">{this.title}</label>
+          <select required className="drop-down-lift drop-down-see-lift" name="depart" onChange={  this.props.handleChange.bind( null, this.jsonKey) } >
+            <option value="">---</option>
+            {
+              this.cities.map((city, index) => {
+                return(
+                    <option key={index} value={city.id}>{city.name}</option>
+                )
+              })
+            }
+          </select>
+        </p>
+      </ul>
+   )
+  }
+}
 
 class CarSVG extends React.Component{
 
@@ -137,6 +174,10 @@ class CarSVG extends React.Component{
 }
 
 
-
-
-export default connect()(SeeLifts);
+export default connect(
+  (state) => {
+    return {
+      cities: state.cities
+    }
+  }
+)(SeeLifts);
