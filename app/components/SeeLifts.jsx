@@ -8,7 +8,7 @@ export class SeeLifts extends React.Component{
 
     return (
       <div id="lifts-list">
-
+        <SearchForm/>
           <form id="see-lift-form" >
             <ul>
               <ul>
@@ -65,7 +65,7 @@ export class SeeLifts extends React.Component{
             </ul>
           </form>
 
-        <SearchForm/>
+
         <div >
 
         <section className="responsive2">
