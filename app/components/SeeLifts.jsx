@@ -23,60 +23,80 @@ export class SeeLifts extends React.Component{
       <div id="lifts-list">
         <SearchForm/>
           <SeeLiftsForm cities={this.cities}/>
-          <div >
-
-        <section className="responsive2">
-          <ul >
-             <li className="list-item-lift">
-                      <div className="lift-address-wrapper">
-
-                        <div className="lift-address">
-                          <h3 className="single-lift-top-title">Leaving from</h3>
-                          <h4 className="lift-street">Rachel Alter 34, lod</h4>
-                        </div>
-
-                        <div className="lift-address">
-                          <h3 className="single-lift-top-title">Destination</h3>
-                          <h4 className="lift-street">Alenbi 22, Tel aviv</h4>
-                        </div>
-
-                      </div>
-
-                        <h3 className="when-leave">Departing on August 21, 2017 at 11:30am</h3>
-
-                        <div className="driver-and-join">
-                          <div className="driver-of-ride">
-                            <h4>Driver is Walter white</h4>
-                            <div className="ride-image-strip">
-                              <img src="https://goo.gl/jiiEQx" alt="" />
-                            </div>
-                          </div>
-                          <div className="join-ride-layout">
-                            <CarSVG/>
-                            <h4 className="join-ride-text">join ride</h4>
-                          </div>
-                        </div>
-
-                      <h4>who's confirmed?</h4>
-                      <div className="ride-image-strip confirmed-list">
-                          <img src="https://goo.gl/e3fq8V" alt="" />
-                          <img src="https://goo.gl/u5bPP7" alt=""/>
-                          <img src="https://goo.gl/giKRBV" alt=""/>
-                          <img src="https://goo.gl/LxAz1b" alt="" />
-
-                      </div>
-
-                      <p className="ride-comments">The airconditioning is going to be on 12 degrees, so if you can't handle it please don't come. In addition
-                          we will be listening to norwegian death metal in full volume the entire way. Also, please be on time!! </p>
-                  </li>
-
-                </ul>
-              </section>
-
-        </div>
+          <LiftsGrid/>
       </div>
     )
   }
+}
+
+class LiftsGrid extends React.Component{
+
+  constructor(props) {
+    super(props);
+  }
+
+  render(){
+
+    return (
+
+      <div >
+
+      <section className="responsive2">
+      <ul >
+         <li className="list-item-lift">
+
+
+                  <div className="lift-address-wrapper">
+
+                    <div className="lift-address">
+                      <h3 className="single-lift-top-title">Leaving from</h3>
+                      <h4 className="lift-street">Rachel Alter 34, lod</h4>
+                    </div>
+
+                    <div className="lift-address">
+                      <h3 className="single-lift-top-title">Destination</h3>
+                      <h4 className="lift-street">Alenbi 22, Tel aviv</h4>
+                    </div>
+
+                  </div>
+
+                    <h3 className="when-leave">Departing on August 21, 2017 at 11:30am</h3>
+
+                    <div className="driver-and-join">
+                      <div className="driver-of-ride">
+                        <h4>Driver is Walter white</h4>
+                        <div className="ride-image-strip">
+                          <img src="https://goo.gl/jiiEQx" alt="" />
+                        </div>
+                      </div>
+                      <div className="join-ride-layout">
+                        <CarSVG/>
+                        <h4 className="join-ride-text">join ride</h4>
+                      </div>
+                    </div>
+
+                  <h4>who's confirmed?</h4>
+                  <div className="ride-image-strip confirmed-list">
+                      <img src="https://goo.gl/e3fq8V" alt="" />
+                      <img src="https://goo.gl/u5bPP7" alt=""/>
+                      <img src="https://goo.gl/giKRBV" alt=""/>
+                      <img src="https://goo.gl/LxAz1b" alt="" />
+
+                  </div>
+
+                  <p className="ride-comments">The airconditioning is going to be on 12 degrees, so if you can't handle it please don't come. In addition
+                      we will be listening to norwegian death metal in full volume the entire way. Also, please be on time!! </p>
+              </li>
+
+            </ul>
+          </section>
+
+    </div>
+
+    )
+  }
+
+
 }
 
 class SeeLiftsForm extends React.Component{
