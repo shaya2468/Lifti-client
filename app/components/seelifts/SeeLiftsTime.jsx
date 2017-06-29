@@ -20,7 +20,7 @@ class SeeLiftsTime extends React.Component{
     return (
 
       <p className="timep">
-        <label htmlFor="time-picker">to</label>
+        <label htmlFor="time-picker">{title}</label>
         <input  required type="time" name="time-picker" ref="time" className="see-lift-date-picker" onChange={  this.handleChange } value={ currentFilter? currentFilter : ""}/>
       </p>
     )
