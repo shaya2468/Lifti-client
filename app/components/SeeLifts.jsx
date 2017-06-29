@@ -2,6 +2,9 @@ var React = require('react');
 var {connect} = require('react-redux');
 import * as actions from 'actions';
 import SearchForm from 'SearchForm';
+import LiftApi from 'LiftApi';
+var moment = require('moment');
+var _ = require('lodash')
 export class SeeLifts extends React.Component{
 
   constructor(props){
@@ -9,7 +12,7 @@ export class SeeLifts extends React.Component{
     var {cities} = this.props;
     this.cities = cities;
 
-    this.state = {origin_city: null, destination_city: null}
+    this.state = {origin_city: null, destination_city: null, date:null, from_time:null, till_time:null}
   }
 
 
@@ -92,10 +95,31 @@ class SeeLiftsForm extends React.Component{
     });
   }
 
+  onFormFilled = (e) => {
+    e.preventDefault();
+    var timestamps = this.constructTimeStamps();
+    var query = _.merge(timestamps, {origin_city: this.state.origin_city, destination_city:this.state.destination_city});
+    return LiftApi.getLifts(query).then((result) => {
+      console.log(result);
+    }).catch((e) => {
+      console.log(e);
+    });
+  }
+
+  constructTimeStamps(){
+    var {date} = this.state;
+    var {from_time} = this.state;
+    var {till_time} = this.state;
+
+    var from_time = moment(date + " " + from_time, "YYYY/MM/DD HH:mm").unix();
+    var till_time = moment(date + " " + till_time, "YYYY/MM/DD HH:mm").unix();
+    return {from_time, till_time}
+  }
+
   render(){
 
     return (
-      <form id="see-lift-form" >
+      <form id="see-lift-form" onSubmit={this.onFormFilled}>
         <ul>
 
           <SeeLiftsCity title={'depart'} cities={this.cities}  jsonKey={'origin_city'} handleChange={this.handleChange}/>
@@ -103,17 +127,17 @@ class SeeLiftsForm extends React.Component{
 
           <p className="timep">
             <label htmlFor="date-picker" className="date-text" id="timep-text">date</label>
-            <input type="date" required name="date-picker" className="see-lift-date-picker" ref="date" />
+            <input type="date" required name="date-picker" className="see-lift-date-picker" ref="date" onChange={  this.handleChange.bind( null, 'date') }/>
           </p>
 
           <p className="timep">
             <label htmlFor="time-picker">from</label>
-            <input  required type="time" name="time-picker" ref="time" className="see-lift-date-picker"/>
+            <input  required type="time" name="time-picker" ref="time" className="see-lift-date-picker" onChange={  this.handleChange.bind( null, 'from_time') }/>
           </p>
 
           <p className="timep">
             <label htmlFor="time-picker">to</label>
-            <input  required type="time" name="time-picker" ref="time" className="see-lift-date-picker"/>
+            <input  required type="time" name="time-picker" ref="time" className="see-lift-date-picker" onChange={  this.handleChange.bind( null, 'till_time') }/>
           </p>
 
           <li>
