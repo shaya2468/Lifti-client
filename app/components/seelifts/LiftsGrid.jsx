@@ -18,7 +18,7 @@ class LiftsGrid extends React.Component{
 
       return lifts.map((lift, index) => {
         return (
-          <LiftItem key={index} {...lift}/>
+          <LiftItem key={index} lift = {lift}/>
         );
       })
     }

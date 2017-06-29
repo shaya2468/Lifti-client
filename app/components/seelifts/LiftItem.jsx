@@ -1,4 +1,5 @@
 var React = require('react');
+var moment = require('moment');
 import * as actions from 'actions';
 var {connect} = require('react-redux');
 
@@ -6,8 +7,13 @@ export class LiftItem extends React.Component{
 
   render() {
 
-    var {origin_city} = this.props;
-    console.log(origin_city);
+    var {lift} = this.props;
+    console.log(lift);
+
+    var messageDate = (timestamp) => {
+      return moment.unix(timestamp).format('MMM Do YYYY @ h:mm a');
+    }
+
 
     return (
 
@@ -19,23 +25,23 @@ export class LiftItem extends React.Component{
 
                         <div className="lift-address">
                           <h3 className="single-lift-top-title">Leaving from</h3>
-                          <h4 className="lift-street">Rachel Alter 34, lod</h4>
+                          <h4 className="lift-street">{lift.origin_city.name + ", " +lift.origin_street }</h4>
                         </div>
 
                         <div className="lift-address">
                           <h3 className="single-lift-top-title">Destination</h3>
-                          <h4 className="lift-street">Alenbi 22, Tel aviv</h4>
+                          <h4 className="lift-street">{lift.destination_city.name + ", " +lift.destination_street }</h4>
                         </div>
 
                       </div>
 
-                        <h3 className="when-leave">Departing on August 21, 2017 at 11:30am</h3>
+                        <h3 className="when-leave">Departing on {messageDate(lift.leave_at)}</h3>
 
                         <div className="driver-and-join">
                           <div className="driver-of-ride">
-                            <h4>Driver is Walter white</h4>
+                            <h4>Driver is {lift._owner.name}</h4>
                             <div className="ride-image-strip">
-                              <img src="https://goo.gl/jiiEQx" alt="" />
+                              <img src={lift._owner.pic} alt="" />
                             </div>
                           </div>
                           <div className="join-ride-layout">
@@ -43,18 +49,19 @@ export class LiftItem extends React.Component{
                             <h4 className="join-ride-text">join ride</h4>
                           </div>
                         </div>
+                        {
+                          // <h4>who's confirmed?</h4>
+                          // <div className="ride-image-strip confirmed-list">
+                          //     <img src="https://goo.gl/e3fq8V" alt="" />
+                          //     <img src="https://goo.gl/u5bPP7" alt=""/>
+                          //     <img src="https://goo.gl/giKRBV" alt=""/>
+                          //     <img src="https://goo.gl/LxAz1b" alt="" />
+                          //
+                          // </div>
+                        }
 
-                      <h4>who's confirmed?</h4>
-                      <div className="ride-image-strip confirmed-list">
-                          <img src="https://goo.gl/e3fq8V" alt="" />
-                          <img src="https://goo.gl/u5bPP7" alt=""/>
-                          <img src="https://goo.gl/giKRBV" alt=""/>
-                          <img src="https://goo.gl/LxAz1b" alt="" />
 
-                      </div>
-
-                      <p className="ride-comments">The airconditioning is going to be on 12 degrees, so if you can't handle it please don't come. In addition
-                          we will be listening to norwegian death metal in full volume the entire way. Also, please be on time!! </p>
+                      <p className="ride-comments">{lift.description} </p>
                   </li>
             )
   }
