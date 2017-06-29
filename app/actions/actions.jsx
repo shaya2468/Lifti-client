@@ -172,6 +172,15 @@ export var joinAcceptDone = (applicantId, groupId) => {
 };
 
 
+
+export var addFilter = (filter) => {
+  return {
+    type: 'ADD_FILTER',
+    filter
+  };
+};
+
+
 export var acceptJoin = (applicantId, groupId, isAccept) => {
   return (dispatch, getState) => {
 

@@ -163,3 +163,19 @@ export var loadingReducer = (state = false, action) => {
       return state;
   }
 };
+
+
+
+
+
+export var filtersReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'ADD_FILTER':
+      return {
+        ...state,
+        ...action.filter
+      };
+    default:
+      return state;
+  }
+};
