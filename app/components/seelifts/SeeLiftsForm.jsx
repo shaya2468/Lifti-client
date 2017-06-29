@@ -16,12 +16,7 @@ class SeeLiftsForm extends React.Component{
     var timestamps = this.constructTimeStamps();
     var query = _.merge(timestamps, {origin_city: this.props.filters.origin_city, destination_city:this.props.filters.destination_city});
 
-    return dispatch(actions.getLifts(query))
-      .then((result) => {
-        console.log(result.data);
-      }).catch((e) => {
-        console.log(e);
-      });
+    dispatch(actions.getLifts(query))
   }
 
   constructTimeStamps(){
