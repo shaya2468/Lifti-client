@@ -11,14 +11,13 @@ class LiftsGrid extends React.Component{
 
   render(){
 
+    var {lifts} = this.props;
+    console.log('soundgard');
+    console.log(lifts);
     var renderLift = () => {
-      var {lifts} = this.props;
-      console.log('in exile');
-      console.log(lifts);
-
       return lifts.map((lift, index) => {
         return (
-          <LiftItem key={index} lift = {lift}/>
+          <LiftItem key={index} {...lift}/>
         );
       })
     }

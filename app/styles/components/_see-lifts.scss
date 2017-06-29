@@ -146,7 +146,7 @@
   padding: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  max-width: 28rem;
+  max-width: 22rem;
   margin: 1rem;
 
 }
@@ -262,4 +262,13 @@
 .ride-comments{
   margin-top: 1rem;
   line-height: 1.5rem;
+}
+
+.lift-loading-div{
+  margin-top: 2rem;
+  justify-content: center;
+}
+
+#lift-loading-loader {
+  margin-right: 1.6rem;
 }

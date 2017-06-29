@@ -188,6 +188,21 @@ export var addLifts = (lifts) => {
   };
 };
 
+export var sendJoinLift = (id) => {
+  return {
+    type: 'JOIN_LIFT',
+    id
+  };
+};
+
+export var sendJoinLiftRequest = (rideId) => {
+  return (dispatch, getState) => {
+
+    dispatch(sendJoinLift(rideId));
+
+  }
+}
+
 
 
 export var acceptJoin = (applicantId, groupId, isAccept) => {
