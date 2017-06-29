@@ -10,8 +10,6 @@ export class SeeLifts extends React.Component{
 
   constructor(props){
     super(props);
-    var {cities} = this.props;
-    this.cities = cities;
   }
 
   render() {
@@ -19,7 +17,7 @@ export class SeeLifts extends React.Component{
     return (
       <div id="lifts-list">
         <SearchForm/>
-          <SeeLiftsForm cities={this.cities}/>
+          <SeeLiftsForm/>
           <LiftsGrid/>
       </div>
     )
@@ -109,10 +107,4 @@ class CarSVG extends React.Component{
 }
 
 
-export default connect(
-  (state) => {
-    return {
-      cities: state.cities
-    }
-  }
-)(SeeLifts);
+export default connect()(SeeLifts);
