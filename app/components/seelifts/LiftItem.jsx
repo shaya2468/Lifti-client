@@ -58,6 +58,12 @@ export class LiftItem extends React.Component{
                           //     <img src="https://goo.gl/LxAz1b" alt="" />
                           //
                           // </div>
+
+
+                          // for loading time
+                          // <div className="acc-rej">
+                          //   <div className="loader"></div>
+                          // </div>
                         }
 
 
