@@ -10,19 +10,18 @@ import LiftApi from 'LiftApi';
 
 class SeeLiftsForm extends React.Component{
 
-  constructor(props) {
-    super(props);
-  }
-
   onFormFilled = (e) => {
     e.preventDefault();
+    var { dispatch}  = this.props;
     var timestamps = this.constructTimeStamps();
     var query = _.merge(timestamps, {origin_city: this.props.filters.origin_city, destination_city:this.props.filters.destination_city});
-    return LiftApi.getLifts(query).then((result) => {
-      console.log(result.data);
-    }).catch((e) => {
-      console.log(e);
-    });
+
+    return dispatch(actions.getLifts(query))
+      .then((result) => {
+        console.log(result.data);
+      }).catch((e) => {
+        console.log(e);
+      });
   }
 
   constructTimeStamps(){

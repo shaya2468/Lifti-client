@@ -2,6 +2,7 @@ import moment from 'moment';
 import AuthAPI from 'AuthAPI';
 import UploadApi from 'UploadApi';
 import GroupApi from 'GroupApi';
+import LiftApi from 'LiftApi';
 import CityApi from 'CityApi';
 import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
 
@@ -213,6 +214,19 @@ export var startCreateGroup = (name, description, file) => {
         finish();
       }
     })
+  };
+};
+
+export var getLifts = (query) => {
+
+  return (dispatch, getState) => {
+    return LiftApi.getLifts(query)
+      .then((res) => {
+        return res;
+      }).catch((e) => {
+        console.log(e);
+        return e;
+      })
   };
 };
 
