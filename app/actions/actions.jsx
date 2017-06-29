@@ -181,6 +181,14 @@ export var addFilter = (filter) => {
   };
 };
 
+export var addLifts = (lifts) => {
+  return {
+    type: 'ADD_LIFTS',
+    lifts
+  };
+};
+
+
 
 export var acceptJoin = (applicantId, groupId, isAccept) => {
   return (dispatch, getState) => {
@@ -222,7 +230,7 @@ export var getLifts = (query) => {
   return (dispatch, getState) => {
     return LiftApi.getLifts(query)
       .then((res) => {
-        return res;
+        dispatch(addLifts(res.data))
       }).catch((e) => {
         console.log(e);
         return e;

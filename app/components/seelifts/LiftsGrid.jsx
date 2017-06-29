@@ -10,6 +10,9 @@ class LiftsGrid extends React.Component{
 
   render(){
 
+    var {lifts} = this.props;
+    console.log('in exile');
+    console.log(lifts);
     return (
 
       <div >
@@ -86,6 +89,8 @@ class CarSVG extends React.Component{
 
 export default connect(
   (state) => {
-    return state
+    return {
+      lifts: state.lifts
+    }
   }
 )(LiftsGrid);

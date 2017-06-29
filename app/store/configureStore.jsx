@@ -2,7 +2,7 @@ import * as redux from 'redux';
 import thunk from 'redux-thunk';
 
 import {searchTextReducer, showCompletedReducer, todosReducer, authReducer, loadingReducer,
-        errorAuthReucer, groupsReducer, citiesReducer, permsReducer, finishInitReducer, filtersReducer} from 'reducers'
+        errorAuthReucer, groupsReducer, citiesReducer, permsReducer, finishInitReducer, filtersReducer, liftsReducer} from 'reducers'
 
 export var configure = (initialState = {}) => {
   var reducer = redux.combineReducers({
@@ -16,7 +16,8 @@ export var configure = (initialState = {}) => {
     isLoading: loadingReducer,
     errorAuth: errorAuthReucer,
     finishInit: finishInitReducer,
-    filters: filtersReducer
+    filters: filtersReducer,
+    lifts: liftsReducer
   });
 
   var store = redux.createStore(reducer, initialState, redux.compose(
