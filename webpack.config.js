@@ -49,6 +49,7 @@ module.exports = {
     modulesDirectories: [
       'node_modules',
       './app/components',
+      './app/components/seelifts',
       './app/api',
       './app/playground'
     ],
