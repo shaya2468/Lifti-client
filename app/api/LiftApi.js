@@ -10,7 +10,6 @@ module.exports = {
   getLifts:function (query) {
     var url = `${process.env.URL}lifts`;
     var accessToken = localStorage.getItem('access_token');
-    console.log(querystring.stringify(query));
     return axios.get(url + "?" +querystring.stringify(query), {headers: {"x-auth":accessToken}});
   }
 }
