@@ -129,9 +129,8 @@
 }
 
 .responsive2 ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  grid-gap: 1rem;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 #lifts-list ul {
@@ -148,6 +147,7 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   max-width: 28rem;
+  margin: 1rem;
 
 }
 
