@@ -155,6 +155,25 @@ export var sendJoinRequest = (groupId, message) => {
   }
 }
 
+export var sendJoinLiftRequest = (liftId) => {
+  return (dispatch, getState) => {
+    dispatch(sendJoinLift(liftId));
+    return LiftApi.joinLift(liftId).then((res) => {
+      dispatch(liftJoinedSuccessfully(liftId));
+    }).catch((e) => {
+      console.log(e);
+    })
+  }
+}
+
+
+
+export var liftJoinedSuccessfully = (id) => {
+  return {
+    type: 'LIFT_JOINED_SUCCESSFULLY',
+    id
+  };
+};
 
 export var sendingAcceptJoin = (applicantId, groupId) => {
   return {
@@ -194,15 +213,6 @@ export var sendJoinLift = (id) => {
     id
   };
 };
-
-export var sendJoinLiftRequest = (rideId) => {
-  return (dispatch, getState) => {
-
-    dispatch(sendJoinLift(rideId));
-
-  }
-}
-
 
 
 export var acceptJoin = (applicantId, groupId, isAccept) => {

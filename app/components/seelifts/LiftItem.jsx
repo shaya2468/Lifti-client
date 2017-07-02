@@ -61,13 +61,13 @@ export class LiftItem extends React.Component{
                             :
                             user_status === 'rider'
                             ?
-                            <div className="join-ride-layout" onClick={this.sendJoinRequest}>
+                            <div className="join-ride-layout">
                               <h4 className="join-ride-text">your a rider</h4>
                             </div>
                             :
                             user_status === 'owner'
                             ?
-                            <div className="join-ride-layout" onClick={this.sendJoinRequest}>
+                            <div className="join-ride-layout">
                               <h4 className="join-ride-text">your the driver</h4>
                             </div>
                             :

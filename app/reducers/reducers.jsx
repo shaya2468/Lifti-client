@@ -187,9 +187,15 @@ export var liftsReducer = (state = [] , action) => {
       var liftRequested = state.filter( (e) => {
         return ((e.id === action.id));
       })[0];
-      console.log(liftRequested);
       liftRequested.user_status = 'sending_request';
-      console.log(state);
+      return [...state];
+
+    case 'LIFT_JOINED_SUCCESSFULLY':
+
+      var liftRequested = state.filter( (e) => {
+        return ((e.id === action.id));
+      })[0];
+      liftRequested.user_status = 'rider';
       return [...state];
     default:
       return state;
