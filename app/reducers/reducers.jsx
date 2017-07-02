@@ -180,10 +180,6 @@ export var filtersReducer = (state = {}, action) => {
 export var liftsReducer = (state = [] , action) => {
   switch (action.type) {
     case 'ADD_LIFTS':
-
-      action.lifts.map ( (lift) => {
-        lift.status = 'static';
-      })
       return action.lifts;
 
     case 'JOIN_LIFT':
@@ -192,7 +188,7 @@ export var liftsReducer = (state = [] , action) => {
         return ((e.id === action.id));
       })[0];
       console.log(liftRequested);
-      liftRequested.status = 'sending_request';
+      liftRequested.user_status = 'sending_request';
       console.log(state);
       return [...state];
     default:

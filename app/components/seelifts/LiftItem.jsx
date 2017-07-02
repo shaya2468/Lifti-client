@@ -15,7 +15,7 @@ export class LiftItem extends React.Component{
 
   render() {
 
-    var {origin_city, origin_street, destination_city, destination_street, leave_at, _owner, status, description} = this.props;
+    var {origin_city, origin_street, destination_city, destination_street, leave_at, _owner, user_status, description} = this.props;
     var messageDate = (timestamp) => {
       return moment.unix(timestamp).format('MMM Do YYYY @ h:mm a');
     }
@@ -52,11 +52,23 @@ export class LiftItem extends React.Component{
 
                           {
 
-                            status === 'static'
+                            user_status === 'none'
                             ?
                             <div className="join-ride-layout" onClick={this.sendJoinRequest}>
                               <CarSVG/>
                               <h4 className="join-ride-text">join ride</h4>
+                            </div>
+                            :
+                            user_status === 'rider'
+                            ?
+                            <div className="join-ride-layout" onClick={this.sendJoinRequest}>
+                              <h4 className="join-ride-text">your a rider</h4>
+                            </div>
+                            :
+                            user_status === 'owner'
+                            ?
+                            <div className="join-ride-layout" onClick={this.sendJoinRequest}>
+                              <h4 className="join-ride-text">your the driver</h4>
                             </div>
                             :
                             <div className="acc-rej lift-loading-div">
