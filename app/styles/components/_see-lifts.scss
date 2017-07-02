@@ -227,7 +227,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .when-leave{
@@ -272,4 +272,10 @@
 
 #lift-loading-loader {
   margin-right: 1.6rem;
+}
+
+#joined-rider-name{
+  text-align: center;
+  color: gray;
+  font-style: italic;
 }

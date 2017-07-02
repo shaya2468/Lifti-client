@@ -16,11 +16,6 @@ export class LiftItem extends React.Component{
 
     var {origin_city, origin_street, destination_city, destination_street, leave_at, _owner, user_status, description, riders} = this.props;
 
-
-    var ridersPics = riders.map((rider) => {
-      return rider.pic;
-    })
-
     var messageDate = (timestamp) => {
       return moment.unix(timestamp).format('MMM Do YYYY @ h:mm a');
     }
@@ -91,8 +86,11 @@ export class LiftItem extends React.Component{
 
 
                             {
-                              ridersPics.map((pic, index) => {
-                                return <img key={index} src={pic} alt="" />
+                              riders.map((ride, index) => {
+                                return <div key={index}>
+                                          <h6 id="joined-rider-name">{ride.name}</h6>
+                                          <img src={ride.pic} alt="" />
+                                      </div>
                               })
                             }
 
