@@ -8,14 +8,19 @@ export class LiftItem extends React.Component{
   sendJoinRequest = (e) => {
     e.preventDefault();
     var {id, dispatch} = this.props;
-    console.log(id);
     dispatch(actions.sendJoinLiftRequest(id));
   }
 
 
   render() {
 
-    var {origin_city, origin_street, destination_city, destination_street, leave_at, _owner, user_status, description} = this.props;
+    var {origin_city, origin_street, destination_city, destination_street, leave_at, _owner, user_status, description, riders} = this.props;
+
+
+    var ridersPics = riders.map((rider) => {
+      return rider.pic;
+    })
+
     var messageDate = (timestamp) => {
       return moment.unix(timestamp).format('MMM Do YYYY @ h:mm a');
     }
@@ -80,26 +85,25 @@ export class LiftItem extends React.Component{
 
 
                         </div>
-                        {
-                          // <h4>who's confirmed?</h4>
-                          // <div className="ride-image-strip confirmed-list">
-                          //     <img src="https://goo.gl/e3fq8V" alt="" />
-                          //     <img src="https://goo.gl/u5bPP7" alt=""/>
-                          //     <img src="https://goo.gl/giKRBV" alt=""/>
-                          //     <img src="https://goo.gl/LxAz1b" alt="" />
-                          //
-                          // </div>
+
+                          <h4>who's confirmed?</h4>
+                          <div className="ride-image-strip confirmed-list">
 
 
+                            {
+                              ridersPics.map((pic, index) => {
+                                return <img key={index} src={pic} alt="" />
+                              })
+                            }
 
-                        }
-
-
-                      <p className="ride-comments">{description} </p>
+                          </div>
+                    <p className="ride-comments">{description} </p>
                   </li>
             )
   }
 }
+
+
 
 class CarSVG extends React.Component{
 

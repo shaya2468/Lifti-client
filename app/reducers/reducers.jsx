@@ -196,6 +196,7 @@ export var liftsReducer = (state = [] , action) => {
         return ((e.id === action.id));
       })[0];
       liftRequested.user_status = 'rider';
+      liftRequested.riders = action.riders;
       return [...state];
     default:
       return state;

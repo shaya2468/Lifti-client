@@ -159,7 +159,7 @@ export var sendJoinLiftRequest = (liftId) => {
   return (dispatch, getState) => {
     dispatch(sendJoinLift(liftId));
     return LiftApi.joinLift(liftId).then((res) => {
-      dispatch(liftJoinedSuccessfully(liftId));
+      dispatch(liftJoinedSuccessfully(liftId, res.data.riders));
     }).catch((e) => {
       console.log(e);
     })
@@ -168,10 +168,11 @@ export var sendJoinLiftRequest = (liftId) => {
 
 
 
-export var liftJoinedSuccessfully = (id) => {
+export var liftJoinedSuccessfully = (id, riders) => {
   return {
     type: 'LIFT_JOINED_SUCCESSFULLY',
-    id
+    id,
+    riders
   };
 };
 
