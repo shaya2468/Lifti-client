@@ -6,32 +6,20 @@ import AuthAPI from 'AuthAPI';
 import GroupInfo from 'GroupInfo';
 var actions = require('actions');
 var store = require('configureStore').configure();
-import firebase from 'app/firebase/';
+
 
 import {
   HashRouter as Router,
   Route
 } from 'react-router-dom'
 
-import TodoApp from 'TodoApp';
 import Home from 'Home';
 // import Login from 'Login';
 import SignupLogin from 'SignupLogin';
 
 var firstRender = true;
 
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    // store.dispatch(actions.login(user.uid));
-    // store.dispatch(actions.startAddTodos());
-    // hashHistory.push('/todos');
-  } else {
-    // store.dispatch(actions.logout());
-    // hashHistory.push('/');
-  }
 
-
-});
 
 if (firstRender){
   firstRender = false;
@@ -43,7 +31,6 @@ if (firstRender){
 
             <Route path="/home" component={Home}/>
             <Route path="/home/group/:id" component={GroupInfo}/>
-            <Route path="/todos" component={TodoApp}/>
             <Route path="/" component={SignupLogin}/>
 
           </div>
@@ -57,10 +44,6 @@ var accessToken = AuthAPI.isLoggedIn();
 if (accessToken){
   store.dispatch(actions.setAccessToken(accessToken));
 }
-
-
-// Load foundation
-$(document).foundation();
 
 // App css
 require('style!css!sass!applicationStyles')

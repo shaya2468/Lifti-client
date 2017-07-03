@@ -4,7 +4,7 @@ import $ from 'jquery';
 import * as actions from 'actions';
 var axios = require('axios');
 var {connect} = require('react-redux');
-import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
+
 import {
   Redirect
 } from 'react-router-dom'
@@ -263,7 +263,7 @@ export class Login extends React.Component{
 
             </div>
             <div id="sign-up-background"></div>
-            
+
       </div>
       );
     }

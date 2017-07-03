@@ -1,14 +1,14 @@
 {
-  "name": "boilerplate",
+  "name": "lifti",
   "version": "1.0.0",
-  "description": "Simple react app",
+  "description": "lifti app",
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test karma start",
     "build": "webpack",
-    "start": "npm run build && node --optimize_for_size --max_old_space_size=920 --gc_interval=100 server.js" 
+    "start": "npm run build && node --optimize_for_size --max_old_space_size=920 --gc_interval=100 server.js"
   },
-  "author": "Andrew Mead",
+  "author": "Shaya Ajzner",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.9.1",
@@ -21,33 +21,20 @@
     "deep-freeze-strict": "^1.1.1",
     "expect": "^1.14.0",
     "express": "^4.13.4",
-    "firebase": "^3.0.2",
-    "foundation-sites": "6.2.0",
     "jquery": "^2.2.1",
     "moment": "^2.18.1",
     "node-env-file": "^0.1.8",
     "node-sass": "^3.4.2",
     "node-uuid": "^1.4.8",
     "react": "^15.5.4",
-    "react-addons-test-utils": "^0.14.7",
     "react-dom": "^15.5.4",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
-    "redux-mock-store": "^1.0.3",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^3.1.2",
     "script-loader": "^0.6.1",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.13"
-  },
-  "devDependencies": {
-    "karma": "^0.13.22",
-    "karma-chrome-launcher": "^0.2.2",
-    "karma-mocha": "^0.2.2",
-    "karma-mocha-reporter": "^2.0.0",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-webpack": "^1.7.0",
-    "mocha": "^2.4.5"
   }
 }

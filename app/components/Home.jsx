@@ -1,15 +1,12 @@
 import React from 'react';
 import * as Redux from 'react-redux';
 
-import TodoList from 'TodoList'
 import Nav from 'Nav';
 import SeeLifts from 'SeeLifts';
 
 
 import Create from 'Create';
 import Perms from 'Perms';
-import AddTodo from 'AddTodo';
-import TodoSearch from 'TodoSearch';
 import * as actions from 'actions';
 import {
   Redirect,  Route,
