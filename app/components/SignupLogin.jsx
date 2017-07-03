@@ -1,4 +1,5 @@
 import React from 'react';
+import LiftiModal from 'LiftiModal';
 import $ from 'jquery';
 import * as actions from 'actions';
 var axios = require('axios');
@@ -7,6 +8,28 @@ import firebase, {firebaseRef, githubProvider} from 'app/firebase/';
 import {
   Redirect
 } from 'react-router-dom'
+
+const modalStyle = {
+	overlay: {
+		backgroundColor: 'rgba(0, 0, 0,0.5)'
+	}
+};
+
+const mainStyle = {
+	app: {
+		margin: '120px 0'
+	},
+	button: {
+		backgroundColor: '#408cec',
+		border: 0,
+		padding: '12px 20px',
+		color: '#fff',
+		margin: '0 auto',
+		width: 150,
+		display: 'block',
+		borderRadius: 3
+	}
+};
 
 export class Login extends React.Component{
 
@@ -218,21 +241,28 @@ export class Login extends React.Component{
 
 
 
-    else if (isLoading){
-
-        return (
-          <div id="outer_div">
-           <div id="auth_page">
-             <h1 id="loading_text">Loading, please wait...</h1>
-             <div id='loading'></div>
-           </div>
-          </div>
-        )
-    }
-
     else{
       return (
         <div id="outer_div">
+          {
+            isLoading &&
+
+            <LiftiModal
+                isModalOpen={true}
+                closeModal={() => {console.log('do nothing');}}
+                style={modalStyle}>
+
+                <div id="loading_wrapper-layout">
+                  <div className="acc-rej">
+                    <div className="loader"></div>
+                  </div>
+
+                  <h1 id="loading-message">Loading, please wait ....</h1>
+                </div>
+            </LiftiModal>
+          }
+
+
          <div id="auth_page">
           <div className="form">
 
