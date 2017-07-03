@@ -254,10 +254,13 @@ export var startCreateGroup = (name, description, file) => {
 export var getLifts = (query) => {
 
   return (dispatch, getState) => {
+    dispatch(isLoadingLifts());
     return LiftApi.getLifts(query)
       .then((res) => {
+        dispatch(isLoadingLifts());
         dispatch(addLifts(res.data))
       }).catch((e) => {
+        dispatch(isLoadingLifts());
         console.log(e);
         return e;
       })
@@ -344,6 +347,13 @@ export var isLoading = () => {
     type: 'IS_LOADING'
   };
 };
+export var isLoadingLifts = () => {
+  return {
+    type: 'IS_LOADING_LIFTS'
+  };
+};
+
+
 
 export var startLogout = () => {
   AuthAPI.logout();

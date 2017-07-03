@@ -164,6 +164,17 @@ export var loadingReducer = (state = false, action) => {
   }
 };
 
+export var loadingLiftsReducer = (state = false, action) => {
+  switch (action.type) {
+    case 'IS_LOADING_LIFTS':
+      return !state;
+    default:
+      return state;
+  }
+};
+
+
+
 export var filtersReducer = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_FILTER':

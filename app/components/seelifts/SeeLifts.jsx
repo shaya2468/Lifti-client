@@ -3,6 +3,7 @@ var {connect} = require('react-redux');
 import * as actions from 'actions';
 import SearchForm from 'SearchForm';
 import SeeLiftsForm from 'SeeLiftsForm';
+import LiftiModal from 'LiftiModal';
 import LiftApi from 'LiftApi';
 import LiftsGrid from 'LiftsGrid';
 var moment = require('moment');
@@ -15,8 +16,29 @@ export class SeeLifts extends React.Component{
 
   render() {
 
+    var isLoadingLifts = this.props.loadingLifts;
     return (
       <div id="lifts-list">
+
+        {
+          isLoadingLifts &&
+
+          <LiftiModal
+              isModalOpen={true}
+              closeModal={() => {console.log('do nothing');}}
+              >
+
+              <div id="loading_wrapper-layout">
+                <div className="acc-rej">
+                  <div className="loader"></div>
+                </div>
+
+                <h5 id="loading-message">Finding Lifts...</h5>
+
+              </div>
+          </LiftiModal>
+        }
+
           <SearchForm/>
           <SeeLiftsForm/>
           <LiftsGrid/>
@@ -25,4 +47,10 @@ export class SeeLifts extends React.Component{
   }
 }
 
-export default connect()(SeeLifts);
+export default connect(
+  (state) => {
+    return {
+      loadingLifts: state.loadingLifts
+    }
+  }
+)(SeeLifts);
