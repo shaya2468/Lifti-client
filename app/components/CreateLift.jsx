@@ -4,11 +4,12 @@ var moment = require('moment');
 import * as actions from 'actions';
 import SearchForm from 'SearchForm';
 import LiftApi from 'LiftApi';
+import LiftiModal from 'LiftiModal';
 export class CreateLift extends React.Component{
 
   constructor(props) {
     super(props);
-    this.state = {isLoading:false, depart_city:null, depart_street: null, dest_city:null, dest_street: null, time:null, date:null, num_pass:null, comments:null, groupsToAdd: {}}
+    this.state = {isLoading:false, lift_created:false, depart_city:null, depart_street: null, dest_city:null, dest_street: null, time:null, date:null, num_pass:null, comments:null, groupsToAdd: {}}
     this.handleChange = this.handleChange.bind(this);
     this.groupChosen = this.groupChosen.bind(this);
     var {groups, cities} = this.props;
@@ -83,8 +84,8 @@ export class CreateLift extends React.Component{
       var data = res.data;
 
       document.getElementById("lift-form").reset();
-      this.setState({groupsToAdd: {}})
-      alert('Lift added successfully!!')
+      this.setState({groupsToAdd: {}, lift_created:true})
+
     }).catch((e) => {
       this.setState({isLoading:false});
       console.log('request error!');
@@ -95,18 +96,48 @@ export class CreateLift extends React.Component{
 
   render() {
 
-    let {isLoading} = this.state;
-    if (isLoading){
-      return(
-        <div>
-          <h1 id="loading_text">Loading, please wait...</h1>
-          <div id='loading'></div>
-        </div>
-      )
-    }
+    let {isLoading, lift_created} = this.state;
 
     return (
       <div className="container-create-lift">
+
+        {
+          isLoading &&
+
+          <LiftiModal
+              isModalOpen={true}
+              closeModal={() => {console.log('do nothing');}}
+              >
+
+              <div id="loading_wrapper-layout">
+                <div className="acc-rej">
+                  <div className="loader"></div>
+                </div>
+
+                <h1 id="loading-message">Creating your lift...</h1>
+
+              </div>
+          </LiftiModal>
+        }
+
+        {
+          lift_created &&
+
+          <LiftiModal
+              isModalOpen={true}
+              closeModal={() => {console.log('do nothing');}}
+              >
+
+              <div id="lift-created-layout">
+
+                <h1 id="loading-message">Lift created successfully!</h1>
+
+                <button id="loading-close"  onClick={() => {this.setState({lift_created:false})}}>Close</button>
+
+              </div>
+          </LiftiModal>
+        }
+
         <div className="row-create-lift header-create-lift">
           <h1 className="create-lift-h1" >Create Lift&nbsp;</h1>
           <h3>Add a lift to your group and invite people to join</h3>

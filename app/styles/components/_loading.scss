@@ -33,3 +33,21 @@
   display: flex;
   justify-content: center;
 }
+
+#lift-created-layout{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
+#loading-close{
+    background-color: rgb(64, 140, 236);
+    border: 0px;
+    padding: 12px 20px;
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    margin-top: 2rem;
+    width: 5rem;
+    display: block;
+    border-radius: 3px;
+}
