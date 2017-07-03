@@ -221,47 +221,49 @@ export class Login extends React.Component{
 
     else{
       return (
-        <div id="outer_div">
-          {
-            isLoading &&
 
-            <LiftiModal
-                isModalOpen={true}
-                closeModal={() => {console.log('do nothing');}}
-                >
+          <div id="outer_div">
+            {
+              isLoading &&
 
-                <div id="loading_wrapper-layout">
-                  <div className="acc-rej">
-                    <div className="loader"></div>
+              <LiftiModal
+                  isModalOpen={true}
+                  closeModal={() => {console.log('do nothing');}}
+                  >
+
+                  <div id="loading_wrapper-layout">
+                    <div className="acc-rej">
+                      <div className="loader"></div>
+                    </div>
+
+                    <h1 id="loading-message">Loading, please wait ....</h1>
                   </div>
+              </LiftiModal>
+            }
 
-                  <h1 id="loading-message">Loading, please wait ....</h1>
+
+           <div id="auth_page">
+
+             <SignUpBuzz/>
+
+            <div className="form">
+
+                <ul className="tab-group">
+                  <li className={this.generateTabClassName(false)}><a href="#signup" onClick={this.switchTabs} id='bbb'>Sign Up</a></li>
+                  <li className={this.generateTabClassName(true)}><a href="#login" onClick={this.switchTabs} id='aaa'>Log In</a></li>
+                </ul>
+
+                <div className="tab-content">
+
+                  {this.generateSignUp()}
+                  {this.generateLogin()}
                 </div>
-            </LiftiModal>
-          }
 
-
-         <div id="auth_page">
-
-           <SignUpBuzz/>
-
-          <div className="form">
-
-              <ul className="tab-group">
-                <li className={this.generateTabClassName(false)}><a href="#signup" onClick={this.switchTabs} id='bbb'>Sign Up</a></li>
-                <li className={this.generateTabClassName(true)}><a href="#login" onClick={this.switchTabs} id='aaa'>Log In</a></li>
-              </ul>
-
-              <div className="tab-content">
-
-                {this.generateSignUp()}
-                {this.generateLogin()}
               </div>
 
             </div>
-
-          </div>
-
+            <div id="sign-up-background"></div>
+            
       </div>
       );
     }
