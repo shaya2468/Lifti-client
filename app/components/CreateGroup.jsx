@@ -3,6 +3,7 @@ import $ from 'jquery';
 import * as actions from 'actions';
 var axios = require('axios');
 var {connect} = require('react-redux');
+import LiftiModal from 'LiftiModal';
 import {
   Redirect
 } from 'react-router-dom'
@@ -89,17 +90,28 @@ export class CreateGroup extends React.Component{
       );
     }
 
-    if (isLoading){
-      return(
-        <div>
-          <h1 id="loading_text">Loading, please wait...</h1>
-          <div id='loading'></div>
-        </div>
-      )
-    }
-
     return (
       <div id='container'>
+
+        {
+          isLoading &&
+
+          <LiftiModal
+              isModalOpen={true}
+              closeModal={() => {console.log('do nothing');}}
+              >
+
+              <div id="loading_wrapper-layout">
+                <div className="acc-rej">
+                  <div className="loader"></div>
+                </div>
+
+                <h1 id="loading-message">Creating new Group...</h1>
+
+              </div>
+          </LiftiModal>
+        }
+
         <div id='create-group'>
            <form id="group-form" onSubmit={this.onCreateGroup}>
 
