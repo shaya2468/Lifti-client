@@ -7,8 +7,7 @@ class LiftiModal extends React.Component {
 		isModalOpen: React.PropTypes.bool.isRequired,
 		closeModal: React.PropTypes.func.isRequired,
 		style: React.PropTypes.shape({
-			modal: React.PropTypes.object,
-			overlay: React.PropTypes.object
+			modalStyle
 		})
 	};
 
@@ -39,7 +38,7 @@ class LiftiModal extends React.Component {
 				zIndex: 2,
 				textAlign: 'left',
 				boxShadow: '0 20px 30px rgba(0, 0, 0, 0.2)',
-				...this.props.style.modal,
+				
 			},
 			overlay: {
 				position: 'fixed',
@@ -50,7 +49,7 @@ class LiftiModal extends React.Component {
 				width: "100%",
 				height: "100%",
 				backgroundColor: 'rgba(0,0,0,0.5)',
-				...this.props.style.overlay
+
 			}
 		}
 	}
