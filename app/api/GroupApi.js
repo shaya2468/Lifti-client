@@ -16,6 +16,11 @@ module.exports = {
     var accessToken = localStorage.getItem('access_token');
     return axios.get(url, {headers: {"x-auth":accessToken}});
   },
+  getGroupById:function (id){
+    var url = `${process.env.URL}groups/${id}`;
+    var accessToken = localStorage.getItem('access_token');
+    return axios.get(url, {headers: {"x-auth":accessToken}});
+  },
   requestJoinGroup:function (groupId, message){
     var url = `${process.env.URL}perms/`;
     var accessToken = localStorage.getItem('access_token');

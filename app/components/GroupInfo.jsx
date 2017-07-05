@@ -1,7 +1,7 @@
 var React = require('react');
 import * as actions from 'actions';
 var {connect} = require('react-redux');
-
+import GroupApi from 'GroupApi';
 
 export class GroupInfo extends React.Component{
 
@@ -40,8 +40,16 @@ export class GroupInfo extends React.Component{
       this.name = group.name;
       this.pic = group.pic;
       this.description = group.description;
-      this.state = {userStatus: group.userStatus}
+      this.state = {userStatus: group.userStatus, members:[]}
+      GroupApi.getGroupById(this.groupId).then((result) => {
+        this.setState({members: result.data.members})
+      }).catch((e) => {
+          console.log(e);
+      })
     }
+
+
+
   }
 
   sendJoinRequest( message){
@@ -53,6 +61,8 @@ export class GroupInfo extends React.Component{
   render() {
 
     var status = this.state.userStatus;
+    var members = this.state.members;
+    console.log(members);
     var message;
     if (status === 'permission_request_sent'){
       message = 'join request sent'
@@ -82,7 +92,7 @@ export class GroupInfo extends React.Component{
                 <li className="group-main-info-layout group-join-layout">
 
                     <h5 id="group-interested">Looks interesting?</h5>
-                    <label htmlFor="comments" id="label-join-group">Add message</label>
+                    <label htmlFor="comments" id="label-join-group">Add message:</label>
                    <textarea ref= "message" cols="46" rows="3" name="comments" id="text-join-group" ></textarea>
 
                   <button id="send-permission-request-button" onClick={ (e) => {
@@ -94,45 +104,26 @@ export class GroupInfo extends React.Component{
               }
 
           </ul>
+
+
+            <h2 className="group-main-info-layout group-members-title">
+                members
+            </h2>
+
           <div id="who-in-group">
             <ul className="group-users-layout ">
 
-              
-              <li className="group-main-info-layout group-user-single-layout">
+              {
+                  members.map((member, index) => {
+                    return(
+                      <li key={index} className="group-main-info-layout group-user-single-layout">
+                          <img id="group-info-user-image" src={member.pic}/>
+                          <h3 id="group-user-title">{member.name}</h3>
+                      </li>
+                    )
 
-                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
-                  <h3 id="group-user-title">Shaya ajzner</h3>
-              </li>
-              <li className="group-main-info-layout group-user-single-layout">
-
-                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
-                  <h3 id="group-user-title">Shaya ajzner</h3>
-              </li>
-              <li className="group-main-info-layout group-user-single-layout">
-
-                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
-                  <h3 id="group-user-title">Shaya ajzner</h3>
-              </li>
-              <li className="group-main-info-layout group-user-single-layout">
-
-                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
-                  <h3 id="group-user-title">Shaya ajzner</h3>
-              </li>
-              <li className="group-main-info-layout group-user-single-layout">
-
-                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
-                  <h3 id="group-user-title">Shaya ajzner</h3>
-              </li>
-              <li className="group-main-info-layout group-user-single-layout">
-
-                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
-                  <h3 id="group-user-title">Shaya ajzner</h3>
-              </li>
-              <li className="group-main-info-layout group-user-single-layout">
-
-                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
-                  <h3 id="group-user-title">Shaya ajzner</h3>
-              </li>
+                  })
+              }
 
             </ul>
           </div>
