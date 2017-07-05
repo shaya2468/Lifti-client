@@ -60,6 +60,7 @@ var SearchForm = React.createClass({
           fromSearch: true,
           image: this.state.chosen.image,
           name: this.state.chosen.name,
+          description: this.state.chosen.description,
           userStatus: this.state.chosen.userStatus
         }}/>
       )
@@ -77,7 +78,7 @@ var SearchForm = React.createClass({
 
               this.state.data.map((group) => {
                 return (
-                  <SearchItem key={group.id} name={group.name} image={group.image} id={group.id} userStatus={group.user_status} onClickItem={this.onClickSearchItem}/>
+                  <SearchItem key={group.id} description={group.description} name={group.name} image={group.image} id={group.id} userStatus={group.user_status} onClickItem={this.onClickSearchItem}/>
                 );
               })
             }
@@ -94,7 +95,7 @@ var SearchItem = React.createClass({
 
   render: function () {
     return (
-      <div className="search-item" onMouseDown={e => this.props.onClickItem(e, {name:this.props.name, image: this.props.image, id:this.props.id, userStatus:this.props.userStatus })}>{this.props.name}</div>
+      <div className="search-item" onMouseDown={e => this.props.onClickItem(e, {name:this.props.name, description:this.props.description, image: this.props.image, id:this.props.id, userStatus:this.props.userStatus })}>{this.props.name}</div>
     );
   }
 });

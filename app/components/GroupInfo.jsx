@@ -22,7 +22,8 @@ export class GroupInfo extends React.Component{
       group = {
         name: this.props.location.name,
         pic: this.props.location.image,
-        userStatus: this.props.location.userStatus
+        userStatus: this.props.location.userStatus,
+        description: this.props.location.description
       }
     }else{
       group = groups.filter((group) => {
@@ -38,6 +39,7 @@ export class GroupInfo extends React.Component{
     if (group){
       this.name = group.name;
       this.pic = group.pic;
+      this.description = group.description;
       this.state = {userStatus: group.userStatus}
     }
   }
@@ -50,30 +52,47 @@ export class GroupInfo extends React.Component{
 
   render() {
 
+    var status = this.state.userStatus;
+    var message;
+    if (status === 'permission_request_sent'){
+      message = 'join request sent'
+    }
+    if (status === 'manager'){
+      message = 'you are the manager'
+    }
+    if (status === 'member'){
+      message = 'you are a member'
+    }
+
     return (
       <div id="dummy">
 
         <div id= "whole-group-layout">
             <ul className="group-main-things-layout">
               <li className="group-main-info-layout">
-                <h5 id="group-is-member">you are not a member</h5>
-                <img id="group-info-main-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
-                <h3 className="single-lift-top-title">TEL AVIV UNIVERSITY STUDENTS</h3>
-                <h4 className="lift-street" id="group-info-secondary-title">Group for all the students who study at tel aviv University</h4>
+                <h5 id="group-is-member">{message}</h5>
+                <img id="group-info-main-image" src={this.pic}/>
+                <h3 className="single-lift-top-title">{this.name}</h3>
+                <h4 className="lift-street" id="group-info-secondary-title">{this.description}</h4>
                 <h5 id="group-number-members">27 members</h5>
               </li>
-            <li className="group-main-info-layout group-join-layout">
 
-                <h5 id="group-interested">Looks interesting?</h5>
-                <label htmlFor="comments" id="label-join-group">Add message</label>
-               <textarea ref= "message" cols="46" rows="3" name="comments" id="text-join-group" ></textarea>
+              {
+                (status === 'non_member') &&
+                <li className="group-main-info-layout group-join-layout">
 
-              <button id="send-permission-request-button" onClick={ (e) => {
-                  var message = this.refs.message.value;
-                  this.props.sendJoinRequest(message)
-                }}>join group</button>
+                    <h5 id="group-interested">Looks interesting?</h5>
+                    <label htmlFor="comments" id="label-join-group">Add message</label>
+                   <textarea ref= "message" cols="46" rows="3" name="comments" id="text-join-group" ></textarea>
 
-            </li>
+                  <button id="send-permission-request-button" onClick={ (e) => {
+                      var message = this.refs.message.value;
+                      this.sendJoinRequest(message)
+                    }}>join group</button>
+
+                </li>
+              }
+
           </ul>
           <div id="who-in-group">
             <ul className="group-users-layout ">
