@@ -52,58 +52,243 @@ export class GroupInfo extends React.Component{
 
     return (
       <div id="dummy">
-        <h1 id="group-page-header">Welcome to {this.name}!!</h1>
-          <img id="group-page-image"
-           src={this.pic}
-           alt="loading..." />
-         <UserStatus status={this.state.userStatus} sendJoinRequest={this.sendJoinRequest}/>
+
+        <div id= "whole-group-layout">
+            <ul className="group-main-things-layout">
+              <li className="group-main-info-layout">
+                <h5 id="group-is-member">you are not a member</h5>
+                <img id="group-info-main-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                <h3 className="single-lift-top-title">TEL AVIV UNIVERSITY STUDENTS</h3>
+                <h4 className="lift-street" id="group-info-secondary-title">Group for all the students who study at tel aviv University</h4>
+                <h5 id="group-number-members">27 members</h5>
+              </li>
+            <li className="group-main-info-layout group-join-layout">
+
+                <h5 id="group-interested">Looks interesting?</h5>
+                <label htmlFor="comments" id="label-join-group">Add message</label>
+               <textarea ref= "message" cols="46" rows="3" name="comments" id="text-join-group" ></textarea>
+
+              <button id="send-permission-request-button" onClick={ (e) => {
+                  var message = this.refs.message.value;
+                  this.props.sendJoinRequest(message)
+                }}>join group</button>
+
+            </li>
+          </ul>
+          <div id="who-in-group">
+            <ul className="group-users-layout ">
+
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+              <li className="group-main-info-layout group-user-single-layout">
+
+                  <img id="group-info-user-image" src="http://www.sarairivera.net/images/workthumb05.png"/>
+                  <h3 id="group-user-title">Shaya ajzner</h3>
+              </li>
+
+            </ul>
+          </div>
+      </div>
       </div>
     )
   }
 }
 
-class UserStatus extends React.Component{
-
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    var {status} = this.props;
-
-    if (status === 'non_member'){
-      return(
-        <div id="join-group-layout">
-
-            <label htmlFor="comments" id="label-join-group">Add join message</label>
-            <textarea ref= "message" cols="46" rows="3" name="comments" id="text-join-group" ></textarea>
-
-          <button id="send-permission-request-button" onClick={ (e) => {
-              var message = this.refs.message.value;
-              this.props.sendJoinRequest(message)
-            }}>join group</button>
-        </div>
-
-      )
-    }
-    var message;
-
-    if (status === 'permission_request_sent'){
-      message = 'join request sent'
-    }
-    if (status === 'manager'){
-      message = 'you are the manager'
-    }
-    if (status === 'member'){
-      message = 'you are a member'
-    }
-
-
-    return (
-      <h1 id="group-page-header">{message}</h1>
-    )
-  }
-}
+// class UserStatus extends React.Component{
+//
+//   constructor(props) {
+//     super(props);
+//   }
+//
+//   render() {
+//     var {status} = this.props;
+//
+//     if (status === 'non_member'){
+//       return(
+//         <div id="join-group-layout">
+//
+//             <label htmlFor="comments" id="label-join-group" </label></label></label>oin message</label>
+//             <textarea ref= "message" cols="46" rows="3" name="comments" id="text-join-group" ></textarea>
+//
+//           <button id="send-permission-request-button" onClick={ (e) => {
+//               var message = this.refs.message.value;
+//               this.props.sendJoinRequest(message)
+//             }}>join group</button>
+//         </div>
+//
+//       )
+//     }
+//     var message;
+//
+//     if (status === 'permission_request_sent'){
+//       message = 'join request sent'
+//     }
+//     if (status === 'manager'){
+//       message = 'you are the manager'
+//     }
+//     if (status === 'member'){
+//       message = 'you are a member'
+//     }
+//
+//
+//     return (
+//       <h1 id="group-page-header">{message}</h1>
+//     )
+//   }
+// }
 
 
 

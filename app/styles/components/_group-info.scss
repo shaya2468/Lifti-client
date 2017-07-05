@@ -1,20 +1,93 @@
-#group-page-image{
-  height: 10rem;
-  width: 10rem;
-  border-radius: 10%;
-  background-color: black;
-}
+@import url('https://fonts.googleapis.com/css?family=Hind');
 
-#group-page-header{
-  margin-top: 1rem;
-}
-
-#join-group-layout{
+.group-main-things-layout{
   display: flex;
-  flex-flow: column nowrap;
-  width: 15rem;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.group-users-layout{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }
 
+.group-main-info-layout{
+  font-family: 'Hind', sans-serif;
+  width: 45rem;
+  background: #FFF;
+  padding: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  // max-width: 22rem;
+  width: 40rem;
+  margin: 1rem;
+}
+
+.group-join-layout{
+  width: 20rem;
+}
+
+#group-info-main-layout:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#group-info-secondary-title{
+  text-align: center;
+}
+
+#group-info-main-image {
+  display: block;
+  margin: 0 auto;
+  width: 10rem;
+  height: 10rem;
+  border: 6px solid lightsteelblue;
+  border-radius: 50%;
+}
+#group-info-user-image{
+  display: block;
+  margin: 0 auto;
+  width: 5rem;
+  height: 5rem;
+  border: 6px solid lightsteelblue;
+  border-radius: 50%;
+}
+
+
+#group-number-members{
+  text-align: left;
+  margin-top: 0.5rem;
+}
+
+#group-is-member{
+  text-align: right;
+  color: gray;
+}
+
+#group-interested{
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+
+
+// #group-page-image{
+//   height: 10rem;
+//   width: 10rem;
+//   border-radius: 10%;
+//   background-color: black;
+// }
+//
+// #group-page-header{
+//   margin-top: 1rem;
+// }
+//
+// #join-group-layout{
+//   display: flex;
+//   flex-flow: column nowrap;
+//   width: 15rem;
+// }
+//
 #send-permission-request-button{
   background-color: hotpink;
   padding: 0.5rem;
@@ -23,15 +96,34 @@
   width: 8rem;
   margin: 0 auto;
   margin-top: 1rem;
+  display: block;
 }
 
 #label-join-group{
   margin-bottom: 1rem;
+  margin-top: 1.5rem;
   margin-top: 1rem;
   color: black;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 #text-join-group{
+  margin-top: 1rem;
+  width: 90%;
+  height: 40%;
   color: black;
+}
+
+#whole-group-layout{
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+}
+
+#group-user-title{
+  text-align: center;
+
+}
+.group-user-single-layout{
+  width: 10rem;
 }
