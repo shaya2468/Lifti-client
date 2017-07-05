@@ -129,10 +129,26 @@
 }
 
 .group-members-title{
-  width: 12rem;
-  margin: 1rem auto;
+
   font-size: 2rem;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
 
+}
+
+#group-members-title-layout{
+  display: flex;
+  width: 14rem;
+  // margin: 1rem auto;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#members-svg{
+  width: 2rem;
+  height: 1.5rem;
+  margin-left: 1rem;
+  fill: gray;
+  stroke:black;
+  stroke-width:10;
 }
