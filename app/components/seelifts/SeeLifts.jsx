@@ -39,9 +39,10 @@ export class SeeLifts extends React.Component{
           </LiftiModal>
         }
 
-          <SearchForm/>
+
           <SeeLiftsForm/>
           <LiftsGrid/>
+          <SearchForm/>
       </div>
     )
   }
