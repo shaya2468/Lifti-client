@@ -40,7 +40,7 @@
   margin: 0 auto;
   width: 10rem;
   height: 10rem;
-  border: 6px solid lightsteelblue;
+  border: 6px solid $not_active_button;
   border-radius: 50%;
 }
 #group-info-user-image{
@@ -48,7 +48,7 @@
   margin: 0 auto;
   width: 5rem;
   height: 5rem;
-  border: 6px solid lightsteelblue;
+  border: 6px solid $not_active_button;
   border-radius: 50%;
 }
 

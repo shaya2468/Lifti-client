@@ -84,7 +84,7 @@ export class GroupInfo extends React.Component{
                 <img id="group-info-main-image" src={this.pic}/>
                 <h3 className="single-lift-top-title">{this.name}</h3>
                 <h4 className="lift-street" id="group-info-secondary-title">{this.description}</h4>
-                <h5 id="group-number-members">27 members</h5>
+                <h5 id="group-number-members">{members.length} members</h5>
               </li>
 
               {
