@@ -89,8 +89,9 @@
 // }
 //
 #send-permission-request-button{
-  background-color: hotpink;
+  background-color: $theme_color;
   padding: 0.5rem;
+  color: white;
   margin-top: 1rem;
   border-radius: 5px;
   width: 8rem;
