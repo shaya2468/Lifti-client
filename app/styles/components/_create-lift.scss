@@ -18,7 +18,7 @@
 .row-create-lift.header-create-lift {
   padding: 1.5em 2.5em;
   border-bottom: 1px solid #ccc;
-  background: green left -80px;
+  background: $theme_color left -80px;
   color: #fff;
 }
 .row-create-lift.body-create-lift {
@@ -68,7 +68,7 @@ h3 {
 }
 #btn-submit {
   color: #fff;
-  background-color: green;
+  background-color: $theme_color;
   border-bottom-color: transparent;
   display: inline-block;
   text-align: center;
@@ -112,8 +112,8 @@ h3 {
   height: 1px;
   width: 100%;
   display: block;
-  background-color: green;
-  background-image: linear-gradient(to right, #ee9cb4, green);
+  background-color: $theme_color;
+  background-image: linear-gradient(to right, #ee9cb4, $theme_color);
 }
 .container-create-lift * form ul li .req {
   color: #ee9cb4;
@@ -121,7 +121,7 @@ h3 {
 .container-create-lift * form label {
   display: block;
   margin: 0 0 0.5em 0;
-  color: green;
+  color: $theme_color;
   font-size: 1em;
 }
 .container-create-lift * form input {
@@ -169,7 +169,7 @@ h3 {
   font-size: 16px;
   text-align: left;
   display: block;
-  color: black;
+  color: $theme_color;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
@@ -181,7 +181,7 @@ h3 {
   color: #555;
 }
 .container-create-lift * form small {
-  color: green;
+  color: $theme_color;
   margin: 0 0 0 0.5em;
 }
 
@@ -250,7 +250,7 @@ h3 {
 
 #time-picker{
   padding: 5px;
-  /*border: 1px solid green;*/
+  /*border: 1px solid $theme_color;*/
   // padding-top: 7px;
   // padding-bottom: 7px;
   padding-right: 4rem;
@@ -259,7 +259,7 @@ h3 {
 
 #date-picker{
   padding: 5px;
-  /*border: 1px solid green;*/
+  /*border: 1px solid $theme_color;*/
   // padding-top: 7px;
   // padding-bottom: 7px;
   padding-right: 1rem;

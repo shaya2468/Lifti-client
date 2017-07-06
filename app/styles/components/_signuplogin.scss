@@ -50,7 +50,7 @@ html {
 
 a {
   text-decoration: none;
-  color: $active_button;
+  color: $theme_color;
   -webkit-transition: .5s ease;
   transition: .5s ease;
 }
@@ -84,7 +84,7 @@ a:hover {
   display: block;
   text-decoration: none;
   padding: 15px;
-  background: rgba(0, 255, 176, 0.25);
+  background: $not_active_button;
   color: #a0b3b0;
   font-size: 20px;
   float: left;
@@ -99,7 +99,7 @@ a:hover {
   color: #ffffff;
 }
 .tab-group .active a {
-  background: $active_button;
+  background: $theme_color;
   color: #ffffff;
 }
 
@@ -138,7 +138,7 @@ label {
 }
 label .req {
   margin: 2px;
-  color: $active_button;
+  color: $theme_color;
 }
 
 label.active {
@@ -192,7 +192,7 @@ input, textarea {
 
 input:focus, textarea:focus {
   outline: 0;
-  border-color: $active_button;
+  border-color: $theme_color;
 }
 
 input:disabled{
@@ -236,7 +236,7 @@ textarea {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  background: $active_button;
+  background: $theme_color;
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
