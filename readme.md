@@ -1,1 +1,1 @@
-Boilerplate React App
+Lifti Client app, written in React
