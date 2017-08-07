@@ -241,7 +241,7 @@ export class Login extends React.Component{
               </LiftiModal>
             }
 
-
+           <h1 id="sign-up-exp">Sign up for lifti, create and join groups with their associated lifts, for more information <a href="https://medium.com/@shayaajzner/67027d263a3b" target="_blank" >see here</a>.</h1>
            <div id="auth_page">
 
              <SignUpBuzz/>

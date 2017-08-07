@@ -39,7 +39,7 @@ export class SeeLifts extends React.Component{
           </LiftiModal>
         }
 
-
+          <p id="see-lifts-exp">Search for groups in the search bar, and create lifts and groups in the 'Create' tab</p>
           <SeeLiftsForm/>
           <LiftsGrid/>
           <SearchForm/>

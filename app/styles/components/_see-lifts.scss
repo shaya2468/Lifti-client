@@ -6,6 +6,13 @@
 
 }
 
+#see-lifts-exp{
+  font-size: 1.5rem;
+  color: black;
+  text-align: center;
+  padding-top: 1rem;
+
+}
 
 #see-lift-form ul{
   display: flex;
@@ -25,14 +32,14 @@
 #see-lift-form * label{
   color: black;
   font-size: 1rem;
-  margin-bottom: 0.2rem;
+  // margin-bottom: 0.2rem;
 }
 
 #see-lift-form * option{
 
   color: black;
   font-size: 1rem;
-  margin-bottom: 0.2rem;
+  // margin-bottom: 0.2rem;
 }
 
 
@@ -64,11 +71,15 @@
 
 .timep{
   margin: 0 0.5rem;
+  display: flex;
+  flex-flow: column nowrap;
+  // margin-bottom: 0.7rem;
 }
 
-#timep-text{
-  margin-bottom: 5rem;
+.timep-text1{
+  // margin-bottom: 5rem;
   color: hotpink;
+  margin-left: .5rem;
 }
 
 .drop-down-see-lift{
@@ -83,7 +94,9 @@
 }
 
 
-
+// .text-my-date{
+//   margin-top: 1.2rem;
+// }
 
 
 
@@ -176,6 +189,7 @@
 
 .join-ride-text {
   padding-left: 0.5rem;
+  text-align: center;
 }
 
 .join-car{
@@ -278,4 +292,81 @@
   text-align: center;
   color: gray;
   font-style: italic;
+}
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
+
+
+.input-date-screen {
+  box-sizing: border-box;
+  border-radius: 2px;
+  border: 1px solid #999;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 3px 3px 0px #ddd;
+}
+
+// h3 {
+//   font-family: 'Open Sans', sans-serif;
+// }
+
+.date {
+  font-family: 'Open Sans', sans-serif;
+  color: #111;
+  max-width: 110px;
+  min-height: 32px;
+  text-align: center;
+  font-size: 14px;
+  color: #222;
+  position: relative;
+}
+
+.date-time {
+  max-width: 170px;
+  margin-top:0.5rem;
+  border-radius: 5px;
+  background-color: white;
+  border: 1px solid #ccc;
+  // padding: 0.4rem 0;
+      padding: 8px 0 8px 0;
+}
+
+.time {
+  min-width: 110px;
+}
+
+.date:focus {
+  border-color: #333;
+}
+
+.fa-calendar {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 4px;
+  vertical-align: middle;
+  color: #555;
+}
+
+.fa-calendar:hover {
+  color: #333;
+}
+
+.date::-webkit-inner-spin-button,
+.date::-webkit-outer-spin-button,
+.date::-webkit-calendar-picker-indicator,
+.date::-webkit-clear-button {
+  -webkit-appearance: none;
+  display: none;
+  margin: 0;
+}
+
+.date::-webkit-datetime-edit-text,
+.date::-webkit-datetime-edit-hour-field,
+.date::-webkit-datetime-edit-minute-field,
+.date::-webkit-datetime-edit-second-field,
+.date::-webkit-datetime-edit-ampm-field {
+  color: #666;
 }

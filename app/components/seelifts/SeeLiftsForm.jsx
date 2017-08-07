@@ -15,17 +15,14 @@ class SeeLiftsForm extends React.Component{
     var { dispatch}  = this.props;
     var timestamps = this.constructTimeStamps();
     var query = _.merge(timestamps, {origin_city: this.props.filters.origin_city, destination_city:this.props.filters.destination_city});
-
     dispatch(actions.getLifts(query))
   }
 
   constructTimeStamps(){
-    var {date} = this.props.filters;
     var {from_time} = this.props.filters;
     var {till_time} = this.props.filters;
-
-    var from_time = moment(date + " " + from_time, "YYYY/MM/DD HH:mm").unix();
-    var till_time = moment(date + " " + till_time, "YYYY/MM/DD HH:mm").unix();
+    var from_time = moment(from_time, "YYYY-MM-DDTHH:mm").unix();
+    var till_time = moment(till_time, "YYYY-MM-DDTHH:mm").unix();
     return {from_time, till_time}
   }
 
@@ -37,9 +34,9 @@ class SeeLiftsForm extends React.Component{
 
           <SeeLiftsCity title={'depart'}  jsonKey={'origin_city'} />
           <SeeLiftsCity title={'destination'}  jsonKey={'destination_city'}/>
-          <SeeLiftsDate jsonKey={'date'}/>
-          <SeeLiftsTime title={'from'} jsonKey={'from_time'}/>
-          <SeeLiftsTime title={'till'} jsonKey={'till_time'}/>
+          <SeeLiftsDate jsonKey={'from_time'} title={'from'}/>
+          <SeeLiftsDate jsonKey={'till_time'} title={'till'}/>
+
 
         <li>
             <input id="see-lift-submit" type="submit" value="find lifts" />

@@ -12,8 +12,7 @@ class LiftsGrid extends React.Component{
   render(){
 
     var {lifts} = this.props;
-    console.log('soundgard');
-    console.log(lifts);
+
     var renderLift = () => {
       return lifts.map((lift, index) => {
         return (
