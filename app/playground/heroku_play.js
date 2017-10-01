@@ -26,9 +26,35 @@ function sendXHRCities() {
   });
 }
 
+function sendSimilarClient() {
+  var url = `https://history-exercise.herokuapp.com/`;
+  axios.get(url)
+  .then((res) => {
+    console.log('success getting site of similar');
+
+  }).catch((e) => {
+    console.log('error');
+    console.log(e);
+  });
+}
+
+function sendSimilarServer() {
+  var url = `https://history-server.herokuapp.com/entries?user_name=5.28.183.9`;
+  axios.get(url)
+  .then((res) => {
+    console.log('success getting server similar ' );
+
+  }).catch((e) => {
+    console.log('error');
+    console.log(e);
+  });
+}
+
 function infinite() {
     sendXHR('url/path');
     sendXHRCities();
+    sendSimilarClient();
+    sendSimilarServer();
     setTimeout(infinite, 5 * 60 * 1000);
 }
 
